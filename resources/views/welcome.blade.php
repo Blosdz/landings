@@ -12,17 +12,135 @@
 		<link rel="stylesheet" href="welcome/css/main.css" />
 		<noscript><link rel="stylesheet" href="welcome/css/noscript.css" /></noscript>
 	</head>
+
+<style>
+    /*
+    .form-group label {
+        font-weight: bold;
+    }
+    div .card-header {
+        background-color: #72371F;
+        color: white;
+    }
+
+    .nav-link:focus,
+    .nav-link:hover {
+        background-color: #940818 !important;
+    }
+
+    .dropdown .nav-link {
+        background-color: white !important;
+    }
+
+    .btn-primary {
+        background-color: #bb0a1e;
+        border-color: #bb0a1e;
+    }
+
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+        color: #fff;
+        background-color: #940818;
+        border-color: #940818;
+    }
+    .breadcrumb-item a {
+        color: #bb0a1e;
+    }
+    .sidebar .nav-link.active .nav-icon {
+        color: red;
+    }
+
+    .card .card-body-filter {
+        padding-bottom: 0px;
+    }
+
+    div .card-header {
+        background-color: #940818;
+        color: white;
+    }
+
+    .sidebar {
+        background-color: #940818;
+    }
+    .nav-link:focus,
+    .nav-link:hover {
+        background-color: white !important;
+        color: black !important;
+    }
+    .nav-link:focus .nav-icon,
+    .nav-link:hover .nav-icon {
+        color: #940818 !important;
+    }
+    .sidebar .nav-link.active{
+        color: #940818 !important;
+        background-color: white !important;
+    }
+    */
+    #sidebar {
+        background: #09114A;
+    }
+    #intro {
+        position: relative;
+        background: #5C97FF;
+        overflow: hidden;
+    }
+    #intro .inner {
+        padding: 50px;
+        position: relative;
+        z-index: 2;
+    }
+    #intro::before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0.8;
+        background-image: url(welcome/images/intro.png);
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        background-size: cover;
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+        color: #EAB226;
+    }
+
+    input[type="button"], button, .button {
+        background-color: #0079BE;
+    }
+
+    .image {
+        margin: 50px;
+    }
+
+    .spotlights > section > .image {
+        background-size: auto;
+        background-repeat: no-repeat;
+    }
+
+    .style2 {
+        background-color: #1C305C !important;
+    }
+    
+</style>
+    
 	<body class="is-preload">
 
 		<!-- Sidebar -->
 			<section id="sidebar">
 				<div class="inner">
+                    <img src="welcome/images/logo.png" alt="" data-position="center center" />
 					<nav>
 						<ul>
-							<li><a href="#intro">Welcome</a></li>
-							<li><a href="#one">Who we are</a></li>
-							<li><a href="#two">What we do</a></li>
-							<li><a href="#three">Get in touch</a></li>
+							<li><a href="#intro">Inicio</a></li>
+							<li><a href="#one">Registro</a></li>
+							<li><a href="#two">Empieza a invertir</a></li>
+							<li><a href="#three">Suspcriptores</a></li>
+                            <li><a href="#four">Clientes</a></li>
+                            <li><a href="#five">Eventos</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -34,49 +152,39 @@
 				<!-- Intro -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
-							<h1>Hyperspace</h1>
-							<p>Just another fine responsive site template designed by <a href="http://html5up.net">HTML5 UP</a><br />
-							and released for free under the <a href="http://html5up.net/license">Creative Commons</a>.</p>
+							<h1>Quisque velit nisi</h1>
+							<p>
+                                Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.<br>
+                                Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.
+                            </p>
 							<ul class="actions">
-								<li><a href="#one" class="button scrolly">Learn more</a></li>
+								<li><a href="#one" class="button scrolly">Empieza a invertir</a></li>
 							</ul>
 						</div>
 					</section>
 
 				<!-- One -->
-					<section id="one" class="wrapper style2 spotlights">
+					<section id="one" class="wrapper style2 spotlights" >
 						<section>
-							<a href="#" class="image"><img src="welcome/images/pic01.jpg" alt="" data-position="center center" /></a>
+							<a href="#" class="image"><img src="welcome/images/suspcriptor.png" alt="" data-position="center center"/></a>
 							<div class="content">
 								<div class="inner">
-									<h2>Sed ipsum dolor</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
+									<h2>Suscriptor</h2>
+									<p>Serás nuestro solcio comercial.</p>
 									<ul class="actions">
-										<li><a href="generic.html" class="button">Learn more</a></li>
+										<li><a href="#" class="button">Conocer más</a></li>
 									</ul>
 								</div>
 							</div>
 						</section>
 						<section>
-							<a href="#" class="image"><img src="welcome/images/pic02.jpg" alt="" data-position="top center" /></a>
+							<a href="#" class="image"><img src="welcome/images/cliente.png" alt="" data-position="top center" /></a>
 							<div class="content">
 								<div class="inner">
-									<h2>Feugiat consequat</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
+									<h2>Cliente</h2>
+									<p>Tendrás un crecimiento individual.</p>
 									<ul class="actions">
-										<li><a href="generic.html" class="button">Learn more</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="welcome/images/pic03.jpg" alt="" data-position="25% 25%" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Ultricies aliquam</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="generic.html" class="button">Learn more</a></li>
+										<li><a href="#" class="button">Conocer más</a></li>
 									</ul>
 								</div>
 							</div>
@@ -84,50 +192,7 @@
 					</section>
 
 				<!-- Two -->
-					<section id="two" class="wrapper style3 fade-up">
-						<div class="inner">
-							<h2>What we do</h2>
-							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
-							<div class="features">
-								<section>
-									<span class="icon solid major fa-code"></span>
-									<h3>Lorem ipsum amet</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-lock"></span>
-									<h3>Aliquam sed nullam</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-cog"></span>
-									<h3>Sed erat ullam corper</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-desktop"></span>
-									<h3>Veroeros quis lorem</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-link"></span>
-									<h3>Urna quis bibendum</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-gem"></span>
-									<h3>Aliquam urna dapibus</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-							</div>
-							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn more</a></li>
-							</ul>
-						</div>
-					</section>
-
-				<!-- Three -->
-					<section id="three" class="wrapper style1 fade-up">
+                    <section id="two" class="wrapper style1 fade-up">
 						<div class="inner">
 							<h2>Get in touch</h2>
 							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
@@ -184,6 +249,101 @@
 							</div>
 						</div>
 					</section>
+					
+
+				<!-- Three -->
+                    <section id="three" class="wrapper style3 fade-up" style="background: #09114A;">
+                        <div class="inner">
+							<h2>Suscriptor</h2>
+							<p>Si te interesa ser nuestro socio comercial te encargarás de gestionar la distribución de servicios financieros de la empresa AEIA, realizando procesos de venta y monitoreo de tus clientes afiliados.</p>
+							<div class="features">
+								<section>
+									<span class="icon solid major fa-circle"></span>
+									<p>Código único para comisiones</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-circle"></span>
+									<p>Ingreso al panel de control</p>
+								</section>
+                                <section>
+									<span class="icon solid major fa-circle"></span>
+									<p>Más de 180 robots</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-circle"></span>
+									<p>Una membresía de clientes</p>
+								</section>
+							</div>
+							<ul class="actions">
+								<li><a href="#" class="button">Iniciar ahora</a></li>
+							</ul>
+						</div>
+					</section>
+
+                <!-- Four -->
+                    <section id="four" class="wrapper style3 fade-up" style="background: #09114A;">
+                        <div class="inner">
+							<h2>Cliente</h2>
+							<p>Si deseas iniciar a generar ingresos pasivos a través de la plataforma mediante la implementación de estrategias de mercado, diversificación del riesgo y seguimiento de su dinero, afíliate como cliente.</p>
+							<div class="features">
+								<section>
+									<span class="icon solid major fa-circle"></span>
+									<p>Contrato legal de registro</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-circle"></span>
+									<p>Cuenta individual</p>
+								</section>
+                                <section>
+									<span class="icon solid major fa-circle"></span>
+									<p>Más de 180 robots</p>
+								</section>
+								<section>
+									
+								</section>
+							</div>
+							<ul class="actions">
+								<li><a href="#" class="button">Iniciar ahora</a></li>
+							</ul>
+						</div>
+					</section>
+
+                <!-- Five -->
+					<section id="five" class="wrapper style2 spotlights" >
+						<section>
+							<a href="#" class="image"><img src="welcome/images/img1.png" alt="" data-position="center center"/></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Evento 1</h2>
+									<p>
+                                        Fecha: 01/01/3001<br>
+Hora: 23:30<br>
+Ponente: Diego Butron
+                                    </p>
+									<ul class="actions">
+										<li><a href="#" class="button">Participar</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section>
+							<a href="#" class="image"><img src="welcome/images/img2.png" alt="" data-position="top center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Evento 2</h2>
+									<p>
+                                        Fecha: 01/01/3001<br>
+Hora: 23:30<br>
+Ponente: Diego Butron
+                                    </p>
+									<ul class="actions">
+										<li><a href="#" class="button">Participar</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</section>
+					
 
 			</div>
 
@@ -191,7 +351,7 @@
 			<footer id="footer" class="wrapper style1-alt">
 				<div class="inner">
 					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>&copy; AEIA. All rights reserved.</li>
 					</ul>
 				</div>
 			</footer>
