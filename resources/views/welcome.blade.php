@@ -385,6 +385,14 @@
                 },
                 dataType: "json"
             });
+
+            $("#name").val("");
+            $("#mail").val("");
+            $("#phone").val("");
+            $("#category").val("");
+
+            alert("Registro enviado satisfactoriamente");
+
             event.preventDefault();
 
         })
