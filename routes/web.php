@@ -19,7 +19,7 @@ Route::get('/welcome_default', function () {
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
@@ -28,4 +28,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('/mail/sendmail', [App\Http\Controllers\HomeController::class, 'sendmail'])->name('send.mail');
 
 
-Route::resource('users', 'UserController')->middleware('auth');
+//Route::resource('users', 'UserController')->middleware('auth');
+Route::resource('users', App\Http\Controllers\UserController::class);

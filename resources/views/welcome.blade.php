@@ -145,6 +145,7 @@
 							<li><a href="#three">Suspcriptores</a></li>
                             <li><a href="#four">Clientes</a></li>
                             <li><a href="#five">Eventos</a></li>
+							<li><a href="{{ url('/login') }}">Iniciar Session</a></li>
 						</ul>
 					</nav>
 				</div>
