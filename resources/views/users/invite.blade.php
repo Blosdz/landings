@@ -1,0 +1,52 @@
+@extends('layouts.app')
+
+@section('content')
+
+@php
+    $codigo = explode("@", $user->email)[0]
+@endphp
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Invitar</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+             @include('flash::message')
+             <div class="row">
+                 <div class="col-lg-12">
+                     <div class="card">
+                         <div class="card-header">
+                             <i class="fa fa-align-justify"></i>
+                             Invita a clientes
+                         </div>
+                         <div class="card-body">
+                            <p>
+                            Donec rutrum congue leo eget malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta. Cras ultricies ligula sed magna dictum porta. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+                            </p>
+
+                            {!! Form::model($user, ['route' => ['users.link'], 'method' => 'post']) !!}
+
+                            <div class="form-group col-sm-6">
+                                {!! Form::label('link', 'Tu codigo:') !!}
+                                {!! Form::text('link', $codigo, ['class' => 'form-control']) !!}
+                            </div>
+                            
+                            <p>
+                                <h3>Https://aeia.capital/suscriptor/<span style="color: #EAB226; font-size: 32px;">{{$codigo}}</span></h3>
+                            </p>
+
+                            <!-- Submit Field -->
+                            <div class="form-group col-sm-12">
+                                {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
+                            </div>
+
+                            {!! Form::close() !!}
+
+                         </div>
+                     </div>
+                  </div>
+             </div>
+         </div>
+    </div>
+@endsection
+
+

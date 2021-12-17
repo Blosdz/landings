@@ -48,15 +48,15 @@
     </a>
 </li>
 
-<li class="nav-item {{ Request::is('users*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('users.index') }}">
+<li class="nav-item {{ Request::is('payments*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('payments.index2') }}">
         <i class="nav-icon icon-cursor"></i>
         <span>Depositar</span>
     </a>
 </li>
 
-<li class="nav-item {{ Request::is('users*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('users.index') }}">
+<li class="nav-item {{ Request::is('invite*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('invite.user') }}">
         <i class="nav-icon icon-cursor"></i>
         <span>Invitar</span>
     </a>

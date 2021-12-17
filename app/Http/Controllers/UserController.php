@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
+use App\Models\User;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use Flash;
 use Response;
 use Hash;
@@ -157,5 +160,30 @@ class UserController extends AppBaseController
         Flash::success('User deleted successfully.');
 
         return redirect(route('users.index'));
+    }
+
+    public function invite(Request $request)
+    {
+        $user = $this->userRepository->find(Auth::user()->id);
+
+        return view('users.invite')->with('user', $user);
+    }
+
+    public function link(Request $request)
+    {
+
+        $input =  $request->all();
+
+        $exist = User::where("link", $input["link"])->first();
+        if ($exist) {
+            Flash::error('El codigo ('.$input["link"].') ya ha sido usado.');
+        } else {
+            $user = $this->userRepository->update($input, Auth::user()->id);
+            if ($user) {
+                Flash::success('Enlace de invitacion guardado correctamente.');
+            }
+        }
+
+        return redirect(route('invite.user'));
     }
 }

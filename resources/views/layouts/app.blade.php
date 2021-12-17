@@ -21,9 +21,9 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="welcome/images/logo.png" width="80" height="80"
+        <img class="navbar-brand-full" src="{{ asset('welcome/images/logo.png') }}" width="80" height="80"
              alt="InfyOm Logo">
-        <img class="navbar-brand-minimized" src="welcome/images/logo.png" width="30"
+        <img class="navbar-brand-minimized" src="{{ asset('welcome/images/logo.png') }}" width="30"
              height="30" alt="InfyOm Logo">
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
