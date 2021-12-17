@@ -41,8 +41,8 @@
     </a>
 </li>
 
-<li class="nav-item {{ Request::is('users*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('users.index') }}">
+<li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('profiles.user') }}">
         <i class="nav-icon icon-cursor"></i>
         <span>Verificacion</span>
     </a>
@@ -70,3 +70,4 @@
 @php
   }
 @endphp
+

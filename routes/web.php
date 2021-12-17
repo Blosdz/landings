@@ -30,3 +30,8 @@ Route::post('/mail/sendmail', [App\Http\Controllers\HomeController::class, 'send
 
 //Route::resource('users', 'UserController')->middleware('auth');
 Route::resource('users', App\Http\Controllers\UserController::class);
+
+
+Route::resource('profiles', App\Http\Controllers\ProfileController::class);
+
+Route::get('/profiles/user/data', [App\Http\Controllers\ProfileController::class, 'edit2'])->name('profiles.user');

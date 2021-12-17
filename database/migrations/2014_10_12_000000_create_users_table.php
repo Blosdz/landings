@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('rol')->default(1);
             $table->integer('validated')->default(0);
+            $table->string('link')->nullable();
 
             $table->rememberToken();
             $table->timestamps();
