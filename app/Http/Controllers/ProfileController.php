@@ -124,12 +124,11 @@ class ProfileController extends AppBaseController
         }
 
         $data = $request->all();
-        $data["verified"] = 1;
         $profile = $this->profileRepository->update($request->all(), $id);
 
         Flash::success('Verificacion de informacion guardado correctamente.');
 
-        return redirect(route('profiles.user'));
+        return redirect(route('profiles.index'));
     }
 
     /**
@@ -170,5 +169,24 @@ class ProfileController extends AppBaseController
         }
 
         return view('profiles.edit2')->with('profile', $profile);
+    }
+
+    public function update2($id, UpdateProfileRequest $request)
+    {
+        $profile = $this->profileRepository->find($id);
+
+        if (empty($profile)) {
+            Flash::error('Profile not found');
+
+            return redirect(route('profiles.index'));
+        }
+
+        $data = $request->all();
+        $data["verified"] = 1;
+        $profile = $this->profileRepository->update($request->all(), $id);
+
+        Flash::success('Verificacion de informacion guardado correctamente.');
+
+        return redirect(route('profiles.user'));
     }
 }

@@ -35,6 +35,7 @@ Route::resource('users', App\Http\Controllers\UserController::class);
 Route::resource('profiles', App\Http\Controllers\ProfileController::class);
 
 Route::get('/profiles/user/data', [App\Http\Controllers\ProfileController::class, 'edit2'])->name('profiles.user');
+Route::post('/profiles/user/data/{id}', [App\Http\Controllers\ProfileController::class, 'update2'])->name('profiles.update2');
 
 Route::resource('payments', App\Http\Controllers\PaymentController::class);
 Route::get('/payments/user/data', [App\Http\Controllers\PaymentController::class, 'index2'])->name('payments.index2');

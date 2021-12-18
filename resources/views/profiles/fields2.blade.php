@@ -74,19 +74,8 @@
     {!! Form::label('job', 'Ocupación o profesión:') !!}
     {!! Form::text('job', null, ['class' => 'form-control']) !!}
 </div>
-
-<div class="form-group col-sm-6">
-    {!! Form::label('verified', 'Estado de la Verificacion:') !!}
-    <select name="verified" id="verified" class="form-control">
-        <option value="1">En validacion</option>
-        <option value="2">Informacion enviada</option>
-        <option value="3">Validado</option>
-        <option value="4">Rechazado</option>
-    </select>
-</div>
-
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Guardar verificacion', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Enviar a revision', ['class' => 'btn btn-primary']) !!}
 </div>
 

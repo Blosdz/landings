@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
 use App\Repositories\PaymentRepository;
+use App\Models\Payment;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -167,6 +168,7 @@ class PaymentController extends AppBaseController
     public function index2(Request $request)
     {
         $payments = $this->paymentRepository->all();
+        $payments = Payment::where("user_id", Auth::user()->id)->get();
 
         return view('payments.index2')
             ->with('payments', $payments);
@@ -176,6 +178,7 @@ class PaymentController extends AppBaseController
     {
         $input = $request->all();
 
+        $input["user_id"] = Auth::user()->id;
         $input["month"] = "Diciembre";
         $input["total"] = 1000.00;
         $input["date_transaction"] = Carbon::parse()->format('Y-m-d');

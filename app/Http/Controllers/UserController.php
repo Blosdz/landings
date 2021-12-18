@@ -33,7 +33,8 @@ class UserController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $users = $this->userRepository->all();
+        $users = User::whereIn("rol", [2,3])->get();
+        //$users = $this->userRepository->all();
 
         return view('users.index')->with('users', $users);
     }

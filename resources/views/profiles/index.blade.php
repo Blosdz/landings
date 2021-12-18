@@ -2,7 +2,7 @@
 
 @section('content')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">Profiles</li>
+        <li class="breadcrumb-item">Perfiles</li>
     </ol>
     <div class="container-fluid">
         <div class="animated fadeIn">
@@ -12,8 +12,7 @@
                      <div class="card">
                          <div class="card-header">
                              <i class="fa fa-align-justify"></i>
-                             Profiles
-                             <a class="pull-right" href="{{ route('profiles.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
+                             Perfiles a verificar
                          </div>
                          <div class="card-body">
                              @include('profiles.table')

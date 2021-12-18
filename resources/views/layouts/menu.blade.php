@@ -25,7 +25,21 @@
 <li class="nav-item {{ Request::is('users*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('users.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Documentos Generales</span>
+        <span>Suscriptores y clientes</span>
+    </a>
+</li>
+
+<li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('profiles.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Perfiles a verificar</span>
+    </a>
+</li>
+
+<li class="nav-item {{ Request::is('payments*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('payments.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Depositos</span>
     </a>
 </li>
 
@@ -66,7 +80,12 @@
   }
   if( $user->rol == 3 ) {
 @endphp
-
+<li class="nav-item {{ Request::is('payments*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('payments.index2') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Depositar</span>
+    </a>
+</li>
 @php
   }
 @endphp

@@ -6,6 +6,9 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use App\Models\User;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 /**
  * Class Profile
  * @package App\Models
@@ -107,6 +110,11 @@ class Profile extends Model
     public static $rules = [
        
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     
 }

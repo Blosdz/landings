@@ -19,9 +19,9 @@
                               <strong>Verifica tu informacion</strong>
                           </div>
                           <div class="card-body">
-                              {!! Form::model($profile, ['route' => ['profiles.update', $profile->id], 'method' => 'patch']) !!}
+                              {!! Form::model($profile, ['route' => ['profiles.update2', $profile->id], 'method' => 'post']) !!}
 
-                              @include('profiles.fields')
+                              @include('profiles.fields2')
 
                               {!! Form::close() !!}
                             </div>

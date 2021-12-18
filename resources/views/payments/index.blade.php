@@ -2,7 +2,7 @@
 
 @section('content')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">Payments</li>
+        <li class="breadcrumb-item">Depositos</li>
     </ol>
     <div class="container-fluid">
         <div class="animated fadeIn">
@@ -12,8 +12,7 @@
                      <div class="card">
                          <div class="card-header">
                              <i class="fa fa-align-justify"></i>
-                             Payments
-                             <a class="pull-right" href="{{ route('payments.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
+                             Depositos
                          </div>
                          <div class="card-body">
                              @include('payments.table')

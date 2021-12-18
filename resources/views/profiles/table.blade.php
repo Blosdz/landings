@@ -3,8 +3,8 @@
         <thead>
             <tr>
                 <th>Dni</th>
-        <th>First Name</th>
-        <th>Lastname</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
         <th>Country Document</th>
         <th>Type Document</th>
         <th>Birthdate</th>
@@ -25,13 +25,9 @@
             <td>{{ $profile->nacionality }}</td>
             <td>{{ $profile->city }}</td>
                 <td>
-                    {!! Form::open(['route' => ['profiles.destroy', $profile->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('profiles.show', [$profile->id]) }}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
                         <a href="{{ route('profiles.edit', [$profile->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
-                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
-                    {!! Form::close() !!}
                 </td>
             </tr>
         @endforeach
