@@ -1,7 +1,7 @@
 <!-- Dni Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('dni', 'Dni:') !!}
-    {!! Form::text('dni', null, ['class' => 'form-control']) !!}
+    <p>{!! Form::file('file', ['required'=>'required']) !!}</p>
 </div>
 
 <!-- First Name Field -->

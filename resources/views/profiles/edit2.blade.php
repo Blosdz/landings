@@ -19,7 +19,7 @@
                               <strong>Verifica tu informacion</strong>
                           </div>
                           <div class="card-body">
-                              {!! Form::model($profile, ['route' => ['profiles.update2', $profile->id], 'method' => 'post']) !!}
+                              {!! Form::model($profile, ['route' => ['profiles.update2', $profile->id], 'method' => 'post', 'files' => true]) !!}
 
                               @include('profiles.fields2')
 

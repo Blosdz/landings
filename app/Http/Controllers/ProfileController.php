@@ -12,6 +12,8 @@ use Flash;
 use Response;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Storage;
+
 class ProfileController extends AppBaseController
 {
     /** @var  ProfileRepository */
@@ -182,6 +184,25 @@ class ProfileController extends AppBaseController
         }
 
         $data = $request->all();
+
+        //dd($data);
+
+        $path = 'profile/';  
+  
+        if($request->hasFile('file')){
+            if ( ! Storage::exists($path)) {
+                Storage::makeDirectory('public/'.$path, 0777, true);
+            }
+        
+            $file = $request->file('file');
+            $extantion = $file->getClientOriginalExtension();
+            $prefix = "profile_";
+            $dealer_name = $prefix.'-'.uniqid();
+
+            $filename = $dealer_name.'.'.$extantion;
+            $file->storeAs('public/'.$path, $filename);
+        }
+
         $data["verified"] = 1;
         $profile = $this->profileRepository->update($request->all(), $id);
 
