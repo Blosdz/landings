@@ -64,7 +64,7 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('address', 'Dirección de recidencia:') !!}
-    {!! Form::text('nacionality', null, ['class' => 'form-control']) !!}
+    {!! Form::text('address', null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group col-sm-6">
     {!! Form::label('phone', 'Número de celular:') !!}
