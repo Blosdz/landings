@@ -274,7 +274,7 @@
 								</section>
 							</div>
 							<ul class="actions">
-								<li><a href="#" class="button">Iniciar ahora</a></li>
+								<li><a href="/register" class="button">Iniciar ahora</a></li>
 							</ul>
 						</div>
 					</section>
@@ -302,7 +302,7 @@
 								</section>
 							</div>
 							<ul class="actions">
-								<li><a href="#" class="button">Iniciar ahora</a></li>
+								<li><a href="/register" class="button">Iniciar ahora</a></li>
 							</ul>
 						</div>
 					</section>
