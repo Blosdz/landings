@@ -3,7 +3,10 @@
 @section('content')
 
 @php
-    $codigo = explode("@", $user->email)[0]
+    $codigo = explode("@", $user->email)[0];
+    if($user->link != ''){
+        $codigo = $user->link;
+    }
 @endphp
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Invitar</li>
@@ -30,8 +33,8 @@
                                 {!! Form::text('link', $codigo, ['class' => 'form-control']) !!}
                             </div>
                             
-                            <p>
-                                <h3>Https://aeia.capital/suscriptor/<span style="color: #EAB226; font-size: 32px;">{{$codigo}}</span></h3>
+                            <p id="url_shared">
+                                <h3>{{ env('APP_URL') }}/suscriptor/<span style="color: #EAB226; font-size: 32px;">{{$codigo}}</span></h3>
                             </p>
 
                             <!-- Submit Field -->

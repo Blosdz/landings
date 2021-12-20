@@ -78,4 +78,20 @@
 <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@2.1.16/dist/js/coreui.min.js"></script>
 @stack('scripts')
 
+<script>
+    $( document ).ready(function() {
+        
+        function copy(selector){
+            var $temp = $("<div>");
+            $("body").append($temp);
+            $temp.attr("contenteditable", true)
+                .html($(selector).html()).select()
+                .on("focus", function() { document.execCommand('selectAll',false,null); })
+                .focus();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+        
+    });
+</script>
 </html>

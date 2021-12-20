@@ -45,4 +45,6 @@ Route::get('/invite/user/link', [App\Http\Controllers\UserController::class, 'in
 
 Route::post('/invite/link/store', [App\Http\Controllers\UserController::class, 'link'])->name('users.link');
 
+Route::get('/suscriptor/{invite_link}', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('users.register.susp');
+
 

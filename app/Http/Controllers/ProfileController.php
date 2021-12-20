@@ -187,7 +187,7 @@ class ProfileController extends AppBaseController
 
         //dd($data);
 
-        $path = 'profile/';  
+        $path = 'profile/';
   
         if($request->hasFile('file')){
             if ( ! Storage::exists($path)) {
@@ -200,11 +200,14 @@ class ProfileController extends AppBaseController
             $dealer_name = $prefix.'-'.uniqid();
 
             $filename = $dealer_name.'.'.$extantion;
-            $file->storeAs('public/'.$path, $filename);
+            $path = 'public/'.$path;
+            $file->storeAs($path, $filename);
         }
 
         $data["verified"] = 1;
-        $profile = $this->profileRepository->update($request->all(), $id);
+        $data["dni"] = $path.$filename;
+        //dd($data);
+        $profile = $this->profileRepository->update($data, $id);
 
         Flash::success('Verificacion de informacion guardado correctamente.');
 

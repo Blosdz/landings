@@ -87,7 +87,7 @@
                             </select>
                         </div>
 
-                        
+                        aa
                         <button type="submit" class="btn btn-primary btn-block btn-flat">Registrarme</button>
 
                         <br>
@@ -104,5 +104,17 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@2.1.16/dist/js/coreui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.js"></script>
+<script>
+    $( document ).ready(function() {
+        $path = document.location.pathname.split('/');
+        if($path[1] == 'suscriptor'){
+            $rol = $('#rol').val();
+            $("#rol").html('<option value="3">Cliente</option>');
+            
+            //alert($rol);
+        }
+        
+    });
+</script>
 </body>
 </html>
