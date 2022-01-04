@@ -48,7 +48,7 @@
 @endphp
 <!-- Type Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('verified', 'Tipo de Documento:') !!}
+    {!! Form::label('verified', 'Estado de la Verificacion:') !!}
     {!! Form::select('verified', $verified_list, null, ['class' => 'form-control','empty'=>'Seleccionar una Opcion']) !!}
 </div>
 
