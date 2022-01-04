@@ -40,7 +40,7 @@
                             <!-- Submit Field -->
                             <div class="form-group col-sm-12">
                             @php
-                                if($user->link != ''){
+                                if(!$user->link){
                             @endphp
                                     {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!} 
                             @php        

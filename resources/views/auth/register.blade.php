@@ -87,7 +87,6 @@
                             </select>
                         </div>
 
-                        aa
                         <button type="submit" class="btn btn-primary btn-block btn-flat">Registrarme</button>
 
                         <br>
