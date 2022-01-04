@@ -1,10 +1,14 @@
 @php
     $user = Auth::user();
+    //dd($user);
 
     $badge = '<span class="badge badge-success" style="float: left;">Validado</span>';
     if( $user->rol == 2 ) {
         if($user->validated == 0) {
             $badge = '<span class="badge badge-warning" style="float: left;">En Validacion</span>';
+        }
+        else if($user->validated == 2) {
+            $badge = '<span class="badge badge-danger" style="float: left;">Rechazado</span>';
         }
     }
 @endphp

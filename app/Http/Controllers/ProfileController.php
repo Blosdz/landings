@@ -6,6 +6,7 @@ use App\Http\Requests\CreateProfileRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Repositories\ProfileRepository;
 use App\Models\Profile;
+use App\Models\User;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -118,6 +119,7 @@ class ProfileController extends AppBaseController
     public function update($id, UpdateProfileRequest $request)
     {
         $profile = $this->profileRepository->find($id);
+        //dd($profile);
 
         if (empty($profile)) {
             Flash::error('Profile not found');
@@ -127,6 +129,15 @@ class ProfileController extends AppBaseController
 
         $data = $request->all();
         $profile = $this->profileRepository->update($request->all(), $id);
+        $user = User::where("id", $profile->user_id);
+        if ($profile->verified == 3) {
+            $user->update(['validated' => 1]);
+
+        } elseif ($profile->verified == 4) {
+            $user->update(['validated' => 2]);
+
+        }
+        //dd($user);
 
         Flash::success('Verificacion de informacion guardado correctamente.');
 
