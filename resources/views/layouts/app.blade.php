@@ -1,3 +1,20 @@
+@php
+    $user = Auth::user();
+    //dd($user);
+
+    $badge = '<span class="badge badge-success" style="float: left;">Validado</span>';
+    $session_validate = 2;
+    if( $user->rol == 2 ) {
+        if($user->validated == 0) {
+            $badge = '<span class="badge badge-warning" style="float: left;">En Validacion</span>';
+            $session_validate = 0;
+        }
+        else if($user->validated == 3) {
+            $badge = '<span class="badge badge-danger" style="float: left;">Rechazado</span>';
+            $session_validate = 2;
+        }
+    }
+@endphp
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,6 +72,27 @@
 <div class="app-body">
     @include('layouts.sidebar')
     <main class="main">
+    @php
+        if( $session_validate == 0) {
+    @endphp
+        <div class="alert alert-danger" role="alert">
+            Complete su informacion de perfil para continuar operando! &nbsp;
+            <a class="btn btn-danger" href="{{ route('profiles.user') }}">
+                <span>Verificacion</span>
+            </a>
+        </div>
+    @php
+        } elseif( $session_validate == 5) {
+    @endphp
+        <div class="alert alert-danger" role="alert">
+            Complete su informacion de perfil para continuar operando! &nbsp;
+            <a class="btn btn-danger" href="{{ route('profiles.user') }}">
+                <span>Verificacion</span>
+            </a>
+        </div>
+    @php
+        }
+    @endphp
         @yield('content')
     </main>
 </div>

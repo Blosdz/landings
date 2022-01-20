@@ -34,12 +34,14 @@ class HomeController extends Controller
 
         $data = $request->all();
         
-        $data['email_send'] = "dbutron9211@gmail.com";
+        //$data['email_send'] = "dbutron9211@gmail.com";
+        $data['email_send'] = "jgenoki121990@gmail.com";
         $MailCustom = MailCustom::to($data['email_send'])->queue(new SendMail($data));
 
         return response()->json([
             'status'        => true,
-            'message'       => $data
+            'message'       => $data,
+            'MailCustom'    => $MailCustom
         ], 200);
 
     }

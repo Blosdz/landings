@@ -382,7 +382,7 @@
                 url: "{{ route('send.mail') }}",
                 data: $data,
                 success: function (data){
-                    console.log(data);
+                    console.log("success:", data);
                 },
                 dataType: "json"
             });

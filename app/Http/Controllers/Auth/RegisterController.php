@@ -10,6 +10,10 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Support\Facades\Mail as MailCustom;
+use App\Mail\SendMail;
+use Illuminate\Support\Str;
+
 class RegisterController extends Controller
 {
     /*
@@ -71,11 +75,20 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'rol' => $data['rol'],
+            'remember_token' => Str::random(32),
         ]);
 
         $profile = Profile::create([
             'user_id' => $user->id
         ]);
+
+        $data = [
+            //"email_send" => "dbutron9211@gmail.com",
+            "email_send" => "jgenoki121990@gmail.com",
+            "view" => "emails.register",
+            "subject" => "AEIA EMPIEZA A INVERTIR [REGISTRO]",
+        ];
+        $MailCustom = MailCustom::to($data['email_send'])->queue(new SendMail($data));
 
         return $user;
     }

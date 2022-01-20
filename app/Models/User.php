@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'link',
         'validated',
+        'remember_token',
     ];
 
     /**
