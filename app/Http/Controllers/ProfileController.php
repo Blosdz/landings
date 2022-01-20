@@ -130,11 +130,11 @@ class ProfileController extends AppBaseController
         $data = $request->all();
         $profile = $this->profileRepository->update($request->all(), $id);
         $user = User::where("id", $profile->user_id);
-        if ($profile->verified == 3) {
+        if ($profile->verified == 2) {
             $user->update(['validated' => 1]);
 
-        } elseif ($profile->verified == 4) {
-            $user->update(['validated' => 2]);
+        } else {
+            $user->update(['validated' => 0]);
 
         }
         //dd($user);

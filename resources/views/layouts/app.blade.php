@@ -1,18 +1,18 @@
 @php
     $user = Auth::user();
-    //dd($user);
+    $profile = Auth::user()->with('profile')->first(); 
+    $profile = $profile->profile->where('user_id', $user->id)->first();
+    //dd($user, $profile);
+    //dd($user->rol);
 
     $badge = '<span class="badge badge-success" style="float: left;">Validado</span>';
-    $session_validate = 2;
+    
+    $session_validate = 5;
     if( $user->rol == 2 ) {
         if($user->validated == 0) {
             $badge = '<span class="badge badge-warning" style="float: left;">En Validacion</span>';
-            $session_validate = 0;
         }
-        else if($user->validated == 3) {
-            $badge = '<span class="badge badge-danger" style="float: left;">Rechazado</span>';
-            $session_validate = 2;
-        }
+        $session_validate = $profile->verified;
     }
 @endphp
 <!DOCTYPE html>
@@ -93,10 +93,16 @@
             </a>
         </div>
     @php
-        } elseif( $session_validate == 5) {
+        } elseif( $session_validate == 1) {
+    @endphp
+        <div class="alert alert-warning" role="alert">
+            Su informacion ha sido recibida y esta siendo validad.
+        </div>
+    @php
+        } elseif( $session_validate == 3) {
     @endphp
         <div class="alert alert-danger" role="alert">
-            Complete su informacion de perfil para continuar operando! &nbsp;
+            Su informacion ha sido rechazada, actualizar su perfil.
             <a class="btn btn-danger" href="{{ route('profiles.user') }}">
                 <span>Verificacion</span>
             </a>

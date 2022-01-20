@@ -44,7 +44,7 @@
 </div>
 <br>
 @php
-    $verified_list = [1=>'En validacion', 2=>'Informacion enviada', 3=>'Validado', 4=>'Rechazado'];
+    $verified_list = [0=>'En validacion', 1=>'Informacion enviada', 2=>'Validado', 3=>'Rechazado'];
 @endphp
 <!-- Type Field -->
 <div class="form-group col-sm-6">

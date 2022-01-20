@@ -1,7 +1,7 @@
 @php
     $roles = [2=>"Suscriptor", 3=>"Cliente"];
-    //$validates = ["Sin Validar", "Validado"];
-    $validates = [0 =>"Sin Validar", 1=>'En validacion', 2=>'Informacion enviada', 3=>'Validado', 4=>'Rechazado']
+    $validates = ["Sin Validar", "Validado"];
+    //$validates = [0 =>"Sin Validar", 1=>'En validacion', 2=>'Informacion enviada', 3=>'Validado', 4=>'Rechazado']
 @endphp
 
 <div class="table-responsive-sm">

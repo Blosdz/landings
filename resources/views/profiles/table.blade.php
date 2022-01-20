@@ -1,3 +1,6 @@
+@php
+    $verified_list = [0=>'En validacion', 1=>'Informacion enviada', 2=>'Validado', 3=>'Rechazado'];
+@endphp
 <div class="table-responsive-sm">
     <table class="table table-striped" id="profiles-table">
         <thead>
@@ -8,6 +11,7 @@
         <th>Tipo de documento</th>
         <th>Fecha Nacimiento</th>
         <th>Nacionalidad</th>
+        <th>Estado</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -20,6 +24,7 @@
             <td>{{ $profile->type_document }}</td>
             <td>{{ $profile->birthdate }}</td>
             <td>{{ $profile->nacionality }}</td>
+            <td>{{ $verified_list[$profile->verified] }}</td>
                 <td>
                     <div class='btn-group'>
                         <a href="{{ route('profiles.edit', [$profile->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
