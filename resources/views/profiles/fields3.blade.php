@@ -5,7 +5,7 @@
 </div>
 <div class="form-group col-sm-6">
     {!! Form::label('dni', 'Dni Reverso:') !!}
-    <p>{!! Form::file('file2_r') !!}</p>
+    <p>{!! Form::file('file2_r', ['accept'=>'image/*']) !!}</p>
 </div>
 
 <!-- First Name Field -->

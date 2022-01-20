@@ -96,10 +96,10 @@ var countries = {
             "id" : 10,
             "name" : "Bermudas"
         },
-        {
+        /*{
             "id" : 7,
             "name" : "Bielorrusia"
-        },
+        },*/
         {
             "id" : 123,
             "name" : "Bolivia"
@@ -176,14 +176,14 @@ var countries = {
             "id" : 164,
             "name" : "Comores"
         },
-        {
+        /*{
             "id" : 112,
             "name" : "Congo (Brazzaville)"
         },
         {
             "id" : 165,
             "name" : "Congo (Kinshasa)"
-        },
+        },*/
         {
             "id" : 166,
             "name" : "Cook, Islas"

@@ -26,7 +26,7 @@
                             Donec rutrum congue leo eget malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta. Cras ultricies ligula sed magna dictum porta. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
                             </p>
 
-                            {!! Form::model($user, ['route' => ['users.link'], 'method' => 'post']) !!}
+                            {!! Form::model($user, ['route' => ['users.link'], 'method' => 'post', 'onsubmit'=>"return confirm('Una vez confirmado no podra cambiar su codigo de invitacion');"]) !!}
 
                             <div class="form-group col-sm-6">
                                 {!! Form::label('link', 'Tu codigo:') !!}
