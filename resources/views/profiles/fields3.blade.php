@@ -1,7 +1,7 @@
 <!-- Dni Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('dni', 'Dni Frontol:') !!}
-    <p>{!! Form::file('file2') !!}</p>
+    <p>{!! Form::file('file2', ['accept'=>'image/*']) !!}</p>
 </div>
 <div class="form-group col-sm-6">
     {!! Form::label('dni', 'Dni Reverso:') !!}

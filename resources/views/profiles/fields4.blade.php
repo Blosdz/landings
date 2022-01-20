@@ -1,11 +1,11 @@
 <!-- Dni Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('dni', 'Dni Frontal:') !!}
-    <p>{!! Form::file('file3') !!}</p>
+    <p>{!! Form::file('file3', ['accept'=>'image/*']) !!}</p>
 </div>
 <div class="form-group col-sm-6">
     {!! Form::label('dni', 'Dni Reverso:') !!}
-    <p>{!! Form::file('file3_r') !!}</p>
+    <p>{!! Form::file('file3_r', ['accept'=>'image/*']) !!}</p>
 </div>
 
 <!-- First Name Field -->

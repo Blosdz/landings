@@ -1,12 +1,12 @@
 <!-- Dni Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('dni', 'Dni Frontal:') !!}a
-    <p>{!! Form::file('file', ['required'=>'required']) !!}</p>
+    {!! Form::label('dni', 'Dni Frontal:') !!}
+    <p>{!! Form::file('file', ['required'=>'required', 'accept'=>'image/*']) !!}</p>
 </div>
 
 <div class="form-group col-sm-6">
     {!! Form::label('dni_r', 'Dni Reverso:') !!}
-    <p>{!! Form::file('file_r', ['required'=>'required']) !!}</p>
+    <p>{!! Form::file('file_r', ['required'=>'required', 'accept'=>'image/*']) !!}</p>
 </div>
 
 <!-- First Name Field -->
