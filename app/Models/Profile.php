@@ -38,6 +38,7 @@ class Profile extends Model
 
     public $fillable = [
         'dni',
+        'dni_r',
         'first_name',
         'lastname',
         'country_document',
@@ -54,6 +55,7 @@ class Profile extends Model
         'obs',
 
         'dni2',
+        'dni2_r',
         'first_name2',
         'lastname2',
         'country_document2',
@@ -67,8 +69,10 @@ class Profile extends Model
         'phone2',
         'job2',
         'verified2',
+        'obs2',
 
         'dni3',
+        'dni3_r',
         'first_name3',
         'lastname3',
         'country_document3',
@@ -82,6 +86,7 @@ class Profile extends Model
         'phone3',
         'job3',
         'verified3',
+        'obs3',
 
         'user_id',
     ];

@@ -1,7 +1,12 @@
 <!-- Dni Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('dni', 'Dni:') !!}
+    {!! Form::label('dni', 'Dni Frontal:') !!}
     <p>{!! Form::file('file', ['required'=>'required']) !!}</p>
+</div>
+
+<div class="form-group col-sm-6">
+    {!! Form::label('dni_r', 'Dni Reverso:') !!}
+    <p>{!! Form::file('file_r', ['required'=>'required']) !!}</p>
 </div>
 
 <!-- First Name Field -->
@@ -19,19 +24,19 @@
 <!-- Country Document Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('country_document', 'País emisor del documento de identidad:') !!}
-    {!! Form::text('country_document', null, ['class' => 'form-control']) !!}
+    {!! Form::select('country_document', [], null, ['class' => 'form-control','empty'=>'Seleccionar']) !!}
 </div>
 
 <!-- Type Document Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('type_document', 'Tipo de documento de identidad:') !!}
-    {!! Form::text('type_document', null, ['class' => 'form-control']) !!}
+    {!! Form::select('type_document', $document_types, null, ['class' => 'form-control','empty'=>'Seleccionar']) !!}
 </div>
 
 <!-- Birthdate Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('birthdate', 'Fecha de nacimiento:') !!}
-    {!! Form::text('birthdate', null, ['class' => 'form-control']) !!}
+    {!! Form::date('birthdate', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Nacionality Field -->
@@ -49,7 +54,7 @@
 <!-- City Field -->
     <div class="form-group col-sm-2">
         {!! Form::label('country', 'Pais:') !!}
-        {!! Form::text('country', null, ['class' => 'form-control']) !!}
+        {!! Form::select('country', [], null, ['class' => 'form-control', 'style' => 'width: 180px; ','empty'=>'Seleccionar']) !!}
     </div>
 
     <div class="form-group col-sm-2">

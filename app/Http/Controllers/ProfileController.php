@@ -215,8 +215,24 @@ class ProfileController extends AppBaseController
             $file->storeAs($path, $filename);
         }
 
+        if($request->hasFile('file_r')){
+            if ( ! Storage::exists($path)) {
+                Storage::makeDirectory('public/'.$path, 0777, true);
+            }
+        
+            $file = $request->file('file_r');
+            $extantion = $file->getClientOriginalExtension();
+            $prefix = "profile_";
+            $dealer_name = $prefix.'-'.uniqid();
+
+            $filename2 = $dealer_name.'.'.$extantion;
+            $path = 'public/'.$path;
+            $file->storeAs($path, $filename2);
+        }
+
         $data["verified"] = 1;
         $data["dni"] = $path.$filename;
+        $data["dni_r"] = $path.$filename2;
         //dd($data);
         $profile = $this->profileRepository->update($data, $id);
 

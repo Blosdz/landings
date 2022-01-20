@@ -84,7 +84,7 @@ class RegisterController extends Controller
 
         $data = [
             //"email_send" => "dbutron9211@gmail.com",
-            "email_send" => "jgenoki121990@gmail.com",
+            "email_send" => $data['email'],
             "view" => "emails.register",
             "subject" => "AEIA EMPIEZA A INVERTIR [REGISTRO]",
         ];

@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+@php
+    $document_types = ["DNI"=>"DNI", "Pasaporte"=>"Pasaporte", "Carnet de extranjería"=>"Carnet de extranjería"];
+@endphp
     <ol class="breadcrumb">
           <li class="breadcrumb-item">
              <a href="{!! route('profiles.index') !!}">Perfil</a>
