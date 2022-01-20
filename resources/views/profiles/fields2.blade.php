@@ -1,6 +1,6 @@
 <!-- Dni Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('dni', 'Dni Frontal:') !!}
+    {!! Form::label('dni', 'Dni Frontal:') !!}a
     <p>{!! Form::file('file', ['required'=>'required']) !!}</p>
 </div>
 

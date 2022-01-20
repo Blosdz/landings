@@ -207,7 +207,7 @@ class ProfileController extends AppBaseController
         
             $file = $request->file('file');
             $extantion = $file->getClientOriginalExtension();
-            $prefix = "profile_";
+            $prefix = "profile";
             $dealer_name = $prefix.'-'.uniqid();
 
             $filename = $dealer_name.'.'.$extantion;
@@ -215,6 +215,7 @@ class ProfileController extends AppBaseController
             $file->storeAs($path, $filename);
         }
 
+        $path = 'profile/';
         if($request->hasFile('file_r')){
             if ( ! Storage::exists($path)) {
                 Storage::makeDirectory('public/'.$path, 0777, true);
@@ -222,7 +223,7 @@ class ProfileController extends AppBaseController
         
             $file = $request->file('file_r');
             $extantion = $file->getClientOriginalExtension();
-            $prefix = "profile_";
+            $prefix = "profile";
             $dealer_name = $prefix.'-'.uniqid();
 
             $filename2 = $dealer_name.'.'.$extantion;
@@ -231,8 +232,8 @@ class ProfileController extends AppBaseController
         }
 
         $data["verified"] = 1;
-        $data["dni"] = $path.$filename;
-        $data["dni_r"] = $path.$filename2;
+        $data["dni"] = substr($path.$filename, 7);
+        $data["dni_r"] = substr($path.$filename2, 7);
         //dd($data);
         $profile = $this->profileRepository->update($data, $id);
 

@@ -1,7 +1,7 @@
 <!-- Dni Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('dni', 'Dni:') !!}
-    {!! Form::text('dni', null, ['class' => 'form-control']) !!}
+    <img src="{{ url('/storage', $profile->dni) }}" width="300px"/>
+    <img src="{{ url('/storage', $profile->dni_r) }}" width="300px"/>
 </div>
 
 <!-- First Name Field -->
