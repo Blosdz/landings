@@ -24,7 +24,7 @@
                          <div class="card-body">
                         
                         @php
-                            if($user->validate) {
+                            if($user->validated) {
                         @endphp
 
                             <p>

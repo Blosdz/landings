@@ -29,7 +29,7 @@
                          </div>
                          <div class="card-body">
                          @php
-                            if($user->validate) {
+                            if($user->validated) {
                         @endphp
                              @include('payments.table2')
 
