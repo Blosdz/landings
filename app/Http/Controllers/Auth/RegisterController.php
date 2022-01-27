@@ -96,8 +96,12 @@ class RegisterController extends Controller
 
     public function showRegistrationSuscriptor($invite_link)
     {
-        $dataUser = User::where('link', $invite_link)->get()->first();
-        //dd($dataUser);
+        $dataUser = User::where('link', $invite_link)->with('profile')->get()->first();
+
+        //dd($dataUser->profile);
+        $profile = Profile::where('user_id', $dataUser->id)->get()->first();
+        //dd($profile);
+        $dataUser->profile = $profile;
         return view('auth.register')->with('dataUser', $dataUser);
     }
 }

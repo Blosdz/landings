@@ -22,6 +22,11 @@
                              Invita a clientes
                          </div>
                          <div class="card-body">
+                        
+                        @php
+                            if($user->validate) {
+                        @endphp
+
                             <p>
                             Donec rutrum congue leo eget malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta. Cras ultricies ligula sed magna dictum porta. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
                             </p>
@@ -52,11 +57,23 @@
                             {!! Form::close() !!}
 
                          </div>
+
+                        @php
+                            } else {
+                        @endphp
+                            <div class="alert alert-danger" role="alert">
+                                No tiene habilitado esta accion hatsa que su cuenta se validada
+                            </div>
+                        @php
+                            }
+                        @endphp
                      </div>
                   </div>
              </div>
          </div>
     </div>
+
+
 @endsection
 
 

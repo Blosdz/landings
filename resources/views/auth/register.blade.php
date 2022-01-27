@@ -35,10 +35,10 @@
                         <p class="text-muted">Registro para AEIA</p>
                         
                         @php
-        if($dataUser) {
+        if(isset($dataUser)) {
     @endphp
         <div class="alert alert-info" role="alert">
-            {{$dataUser->email}}
+            Te estas registrando con el codigo de {{$dataUser->profile->first_name}} {{$dataUser->profile->last_name}}
         </div>
     @php
 }

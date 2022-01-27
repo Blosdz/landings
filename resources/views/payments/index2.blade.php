@@ -1,3 +1,7 @@
+@php
+    $user = Auth::user();
+@endphp
+
 @extends('layouts.app')
 
 <style>
@@ -24,14 +28,26 @@
                              Depositos
                          </div>
                          <div class="card-body">
+                         @php
+                            if($user->validate) {
+                        @endphp
                              @include('payments.table2')
 
                               <img src="{{ asset('welcome/images/pago.png') }}" alt="" data-position="center center" class="center-img"/>
+
+                              <a href="{{ route('payments.pay') }}" class="btn btn-primary lg-12">Hacer deposito</a>
+
+                        @php
+                            } else {
+                        @endphp
+                            <div class="alert alert-danger" role="alert">
+                                No tiene habilitado esta accion hatsa que su cuenta se validada
+                            </div>
+                        @php
+                            }
+                        @endphp
                          </div>
-                         
-                         
-                         
-                         <a href="{{ route('payments.pay') }}" class="btn btn-primary">Hacer deposito</a>
+
                      </div>
                   </div>
              </div>
