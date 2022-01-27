@@ -38,7 +38,7 @@
         if(isset($dataUser)) {
     @endphp
         <div class="alert alert-info" role="alert">
-            Te estas registrando con el codigo de {{$dataUser->profile->first_name}} {{$dataUser->profile->last_name}}
+            Te estas registrando con el codigo de {{$dataUser->profile->first_name}} {{$dataUser->profile->lastname}}
         </div>
     @php
 }
