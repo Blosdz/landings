@@ -93,4 +93,11 @@ class RegisterController extends Controller
 
         return $user;
     }
+
+    public function showRegistrationSuscriptor($invite_link)
+    {
+        $dataUser = User::where('link', $invite_link)->get()->first();
+        //dd($dataUser);
+        return view('auth.register')->with('dataUser', $dataUser);
+    }
 }
