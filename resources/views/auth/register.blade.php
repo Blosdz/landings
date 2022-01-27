@@ -34,6 +34,16 @@
                         <h1>Registro</h1>
                         <p class="text-muted">Registro para AEIA</p>
                         
+                        @php
+        if($dataUser) {
+    @endphp
+        <div class="alert alert-info" role="alert">
+            {{$dataUser->email}}
+        </div>
+    @php
+}
+    @endphp
+
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">@</span>
