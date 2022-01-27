@@ -28,6 +28,7 @@ class User extends Authenticatable
         'link',
         'validated',
         'remember_token',
+        'email_verified_at'
     ];
 
     /**

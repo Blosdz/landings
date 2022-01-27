@@ -51,4 +51,6 @@ Route::post('/invite/link/store', [App\Http\Controllers\UserController::class, '
 
 Route::get('/suscriptor/{invite_link}', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('users.register.susp');
 
+Route::get('/confirmation-email/{token}', [App\Http\Controllers\UserController::class, 'confirmationEmail'])->name('user.confirmationEmail');
+
 

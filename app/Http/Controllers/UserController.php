@@ -9,6 +9,9 @@ use App\Models\User;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail as MailCustom;
+use App\Mail\SendMail;
 
 use Flash;
 use Response;
@@ -186,5 +189,28 @@ class UserController extends AppBaseController
         }
 
         return redirect(route('invite.user'));
+    }
+
+    public function confirmationEmail($token, Request $request)
+    {
+
+        $user = User::where("remember_token", $token)->get()->first();
+        //dd($user);
+        if(!$user->email_verified_at){
+            $data = [
+                'email_verified_at' => Carbon::now()
+            ];
+            //dd($data);
+            $user = $this->userRepository->update($data, $user->id);
+
+            $data = [
+                "email_send" => $user->email,
+                "view" => "emails.welcome",
+                "subject" => "AEIA EMPIEZA A INVERTIR [Bienvenido]",
+            ];
+            $MailCustom = MailCustom::to($data['email_send'])->queue(new SendMail($data));
+        }
+
+        return redirect(route('login'));
     }
 }

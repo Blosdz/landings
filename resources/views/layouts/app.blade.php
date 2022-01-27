@@ -84,6 +84,16 @@
     @include('layouts.sidebar')
     <main class="main">
     @php
+        if( !$user->email_verified_at) {
+    @endphp
+        <div class="alert alert-info" role="alert">
+            Confirme su correo electronico en el correo de registro enviado
+        </div>
+    @php
+        }
+    @endphp
+
+    @php
         if( $session_validate == 0) {
     @endphp
         <div class="alert alert-danger" role="alert">
@@ -96,7 +106,7 @@
         } elseif( $session_validate == 1) {
     @endphp
         <div class="alert alert-warning" role="alert">
-            Su informacion ha sido recibida y esta siendo validad.
+            Su informacion ha sido recibida y esta siendo validada.
         </div>
     @php
         } elseif( $session_validate == 3) {
