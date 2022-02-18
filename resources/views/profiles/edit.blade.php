@@ -52,6 +52,11 @@
     {!! Form::select('verified', $verified_list, null, ['class' => 'form-control','empty'=>'Seleccionar una Opcion']) !!}
 </div>
 
+<div class="form-group col-sm-3">
+      {!! Form::label('obs', 'Observación:') !!}
+      {!! Form::textarea('obs', null, ['class' => 'form-control','rows'=>3, 'style'=>'width: 550px;']) !!}
+  </div>
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Guardar verificacion', ['class' => 'btn btn-primary']) !!}

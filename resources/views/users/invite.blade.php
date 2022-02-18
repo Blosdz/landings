@@ -62,7 +62,7 @@
                             } else {
                         @endphp
                             <div class="alert alert-danger" role="alert">
-                                No tiene habilitado esta accion hatsa que su cuenta se validada
+                                No tiene habilitado esta accion hasta que su cuenta se validada
                             </div>
                         @php
                             }

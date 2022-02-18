@@ -54,3 +54,6 @@ Route::get('/suscriptor/{invite_link}', [App\Http\Controllers\Auth\RegisterContr
 Route::get('/confirmation-email/{token}', [App\Http\Controllers\UserController::class, 'confirmationEmail'])->name('user.confirmationEmail');
 
 
+
+
+Route::resource('notifications', App\Http\Controllers\NotificationController::class);

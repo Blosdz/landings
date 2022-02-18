@@ -80,3 +80,9 @@
   }
 @endphp
 
+<li class="nav-item {{ Request::is('notifications*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('notifications.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Notifications</span>
+    </a>
+</li>

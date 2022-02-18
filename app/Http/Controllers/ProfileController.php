@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProfileRequest;
 use App\Repositories\ProfileRepository;
 use App\Models\Profile;
 use App\Models\User;
+use App\Models\Notification;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -128,12 +129,25 @@ class ProfileController extends AppBaseController
         }
 
         $data = $request->all();
+        //dd($data);
         $profile = $this->profileRepository->update($request->all(), $id);
         $user = User::where("id", $profile->user_id);
         if ($profile->verified == 2) {
             $user->update(['validated' => 1]);
-
+            $notification = Notification::create([
+                'title' => "Validación de información",
+                'body' => "Su informacion ha sido validado Correctamente",
+                'user_id' => $profile->user_id,
+            ]);
         } else {
+
+            if ($profile->verified == 3) {
+                $notification = Notification::create([
+                    'title' => "Validación de información",
+                    'body' => $data["obs"],
+                    'user_id' => $profile->user_id,
+                ]);
+            }
             $user->update(['validated' => 0]);
 
         }
