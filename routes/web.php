@@ -61,3 +61,8 @@ Route::get('/confirmation-email/{token}', [App\Http\Controllers\UserController::
 
 
 Route::resource('notifications', App\Http\Controllers\NotificationController::class);
+
+
+
+
+Route::resource('events', App\Http\Controllers\EventController::class);
