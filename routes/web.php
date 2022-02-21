@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/test1', function () {
+    return view('auth.test1');
+})->name('test');
+
 Route::get('/welcome_default2', function () {
     return view('welcome_default2');
 })->name('welcome_default2');
