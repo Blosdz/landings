@@ -1,7 +1,7 @@
 @php
     $user = Auth::user();
     $profile = Auth::user()->with('profile')->first(); 
-    $profile = $profile->profile->where('user_id', $user->id)->first();
+    //$profile = $profile->profile->where('user_id', $user->id)->first();
     //dd($user, $profile);
     //dd($user->rol);
 
@@ -12,7 +12,7 @@
         if($user->validated == 0) {
             $badge = '<span class="badge badge-warning" style="float: left;">En Validacion</span>';
         }
-        $session_validate = $profile->verified;
+        //$session_validate = $profile->verified;
     }
 @endphp
 <!DOCTYPE html>
