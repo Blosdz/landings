@@ -86,3 +86,10 @@
         <span>Notifications</span>
     </a>
 </li>
+
+<li class="nav-item {{ Request::is('events*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('events.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Eventos</span>
+    </a>
+</li>
