@@ -28,8 +28,6 @@ class UserSeeder extends Seeder
 
          Profile::create([
           'first_name'         => 'admin',
-          'lastname'           => 'admin',
-          'country_document'   => 'peru',
           'type_document'      => 'dni',
           'country'            => 'peru',
           'user_id'                => '1',
