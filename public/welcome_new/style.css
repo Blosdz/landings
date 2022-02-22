@@ -2956,13 +2956,7 @@ background: linear-gradient(to right, rgba(57,100,208,1) 0%, rgba(45,193,201,1) 
   right: 50px;
   top: 0;
   bottom: 0;
-  background: rgba(57,100,208,1);
-background: -moz-linear-gradient(left, rgba(57,100,208,1) 0%, rgba(45,193,201,1) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(57,100,208,1)), color-stop(100%, rgba(45,193,201,1)));
-background: -webkit-linear-gradient(left, rgba(57,100,208,1) 0%, rgba(45,193,201,1) 100%);
-background: -o-linear-gradient(left, rgba(57,100,208,1) 0%, rgba(45,193,201,1) 100%);
-background: -ms-linear-gradient(left, rgba(57,100,208,1) 0%, rgba(45,193,201,1) 100%);
-background: linear-gradient(to right, rgba(57,100,208,1) 0%, rgba(45,193,201,1) 100%);
+  background: #EAB226;
   border-radius: 10px;
   z-index: 9999;
 }
