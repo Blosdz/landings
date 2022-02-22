@@ -1,18 +1,18 @@
 <!-- Title Field -->
 <div class="form-group">
-    {!! Form::label('title', 'Title:') !!}
+    {!! Form::label('title', 'Título:') !!}
     <p>{{ $event->title }}</p>
 </div>
 
 <!-- Date Field -->
 <div class="form-group">
-    {!! Form::label('date', 'Date:') !!}
+    {!! Form::label('date', 'Fecha:') !!}
     <p>{{ $event->date }}</p>
 </div>
 
 <!-- Description Field -->
 <div class="form-group">
-    {!! Form::label('description', 'Description:') !!}
+    {!! Form::label('description', 'Descripción:') !!}
     <p>{{ $event->description }}</p>
 </div>
 
@@ -31,7 +31,7 @@
 
 <!-- Link Recording Field -->
 <div class="form-group">
-    {!! Form::label('link_recording', 'Link Recording:') !!}
+    {!! Form::label('link_recording', 'Link Grabación:') !!}
     <p>{{ $event->link_recording }}</p>
 </div>
 
@@ -43,7 +43,7 @@
 
 <!-- Status Field -->
 <div class="form-group">
-    {!! Form::label('status', 'Status:') !!}
+    {!! Form::label('status', 'Estado:') !!}
     @if($event->status == '1')
         <p>{{ "publicado" }}</p>
     @else
