@@ -176,15 +176,19 @@ class EventController extends AppBaseController
     {
         $user = User::join('rejection_history', 'users.id', '=', 'rejection_history.user_id')
                ->where('rejection_history.user_id', $user_id)
-               ->get(['users.*', 'rejection_history.comment','rejection_history.date']);
+               ->get(['users.name', 'rejection_history.comment','rejection_history.date', 'rejection_history.id']);
 
         return view('profiles.reject_history_table')->with('user', $user);
     }
-    public function DeleteRejectionHistory($user_id)
+    public function DeleteRejectionHistory($id)
     {
-        DB::table('rejection_history')->where('user_id', '=', $user_id)->delete();
+         $user = User::join('rejection_history', 'users.id', '=', 'rejection_history.user_id')
+               ->where('rejection_history.id', $id)
+               ->get(['rejection_history.user_id']);
+
+        DB::table('rejection_history')->where('id', '=', $id)->delete();
         Flash::success('Event deleted successfully.');
-        return redirect(route('rejectionHistory',$user_id));
+        return redirect(route('rejectionHistory',$user[0]->user_id));
     }
 
 }
