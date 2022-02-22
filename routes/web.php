@@ -67,4 +67,4 @@ Route::resource('notifications', App\Http\Controllers\NotificationController::cl
 
 Route::resource('events', App\Http\Controllers\EventController::class);
 Route::get('/rejection-history/{user_id}',[App\Http\Controllers\EventController::class,'rejectionHistory'])->name('rejectionHistory');
-Route::delete('/rejection-history/{user_id}',[App\Http\Controllers\EventController::class,'DeleteRejectionHistory'])->name('DeleteRejectionHistory');
+Route::delete('/rejection-history/{id}',[App\Http\Controllers\EventController::class,'DeleteRejectionHistory'])->name('DeleteRejectionHistory');
