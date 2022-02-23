@@ -172,6 +172,8 @@ class EventController extends AppBaseController
 
         return redirect(route('events.index'));
     }
+
+    /*
     public function rejectionHistory($user_id)
     {
         $user = User::join('rejection_history', 'users.id', '=', 'rejection_history.user_id')
@@ -180,15 +182,7 @@ class EventController extends AppBaseController
 
         return view('profiles.reject_history_table')->with('user', $user);
     }
-    public function DeleteRejectionHistory($id)
-    {
-         $user = User::join('rejection_history', 'users.id', '=', 'rejection_history.user_id')
-               ->where('rejection_history.id', $id)
-               ->get(['rejection_history.user_id']);
-
-        DB::table('rejection_history')->where('id', '=', $id)->delete();
-        Flash::success('Event deleted successfully.');
-        return redirect(route('rejectionHistory',$user[0]->user_id));
-    }
+     
+    */
 
 }
