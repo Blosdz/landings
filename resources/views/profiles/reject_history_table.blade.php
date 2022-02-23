@@ -36,20 +36,22 @@
                                         <tbody>
 
                                         @if( !empty($user))
-                                            @foreach($user as $u)
+                                            @foreach($user[0]->get_rejection_history as $u)
                                                 <tr>
-                                                <td>{{ $u->name }}</td>
+                                                <td>{{ $user[0]->name }}</td>
                                                 <td>{{ $u->comment }}</td>
                                                 <td>{{ $u->date }}</td>
-
-                                                <td>
+                                                 
+                                                
+                                                {{-- <td>
                                                     {!! Form::open(['route' => ['DeleteRejectionHistory', $u->id], 'method' => 'delete']) !!}
                                                     <div class='btn-group'>
                                                         {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Estas seguro?')"]) !!}
                                                     </div>
                                                     {!! Form::close() !!}
-                                                </td>
-
+                                                </td>  --}}
+                                                
+                                                
                                                 </tr>
                                             @endforeach
                                         @endif
