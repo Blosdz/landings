@@ -86,8 +86,7 @@ class RejectionHistoryController extends AppBaseController
     public function rejectionHistory($user_id)
     {
         $user = User::find($user_id)->with('rejection_histories')->get();
-        $user = json_decode($user);
-
+        
         return view('profiles.reject_history_table')->with('user', $user);
     }
      
