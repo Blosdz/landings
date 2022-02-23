@@ -36,7 +36,7 @@
                                         <tbody>
 
                                         @if( !empty($user))
-                                            @foreach($user[0]->get_rejection_history as $u)
+                                            @foreach($user[0]->rejection_histories as $u)
                                                 <tr>
                                                 <td>{{ $user[0]->name }}</td>
                                                 <td>{{ $u->comment }}</td>

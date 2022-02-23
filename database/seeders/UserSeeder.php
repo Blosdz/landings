@@ -18,19 +18,19 @@ class UserSeeder extends Seeder
     {
         User::truncate();
 
-        User::create([
+        $user = User::create([
           'name'      => 'Apselom',
           'email'     => 'administrador@yopmail.com',
           'password'  => Hash::make('12345678'),
           'rol'      => 1,
         ]);
         Profile::truncate();
-
+        
          Profile::create([
           'first_name'         => 'admin',
           'type_document'      => 'dni',
           'country'            => 'peru',
-          'user_id'                => '1',
+          'user_id'                => $user->id,
         ]);
     }
 }

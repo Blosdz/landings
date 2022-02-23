@@ -173,16 +173,4 @@ class EventController extends AppBaseController
         return redirect(route('events.index'));
     }
 
-    /*
-    public function rejectionHistory($user_id)
-    {
-        $user = User::join('rejection_history', 'users.id', '=', 'rejection_history.user_id')
-               ->where('rejection_history.user_id', $user_id)
-               ->get(['users.name', 'rejection_history.comment','rejection_history.date', 'rejection_history.id']);
-
-        return view('profiles.reject_history_table')->with('user', $user);
-    }
-     
-    */
-
 }

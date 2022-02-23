@@ -41,20 +41,4 @@ class RejectionHistoryRepository extends BaseRepository
         return RejectionHistory::class;
     }
 
-    public function getRejectionHistory($user_id)
-    {
-
-      $rejectionHistory = User::with(['getRejectionHistory' => function($query)
-      {
-        $query->select('comment','date','user_id','id');
-      }])->select('id','name')
-      ->where('id', $user_id)
-      ->get();
-        $rejectionHistory = json_decode($rejectionHistory);
-         
-
-      return  $rejectionHistory;
-
-    }
-
 }

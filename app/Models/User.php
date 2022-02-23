@@ -57,11 +57,6 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class, 'id');
     }
 
-    public function getRejectionHistory()
-    {
-        return $this->hasMany('App\Models\RejectionHistory', 'user_id');
-    }
-
     public function rejection_histories(): HasMany
     {
         return $this->hasMany(RejectionHistory::class);
