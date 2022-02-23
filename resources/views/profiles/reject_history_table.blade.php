@@ -29,7 +29,7 @@
                                         <th>Nombre</th>
                                         <th>Comentario</th>
                                         <th>Fecha</th>
-                                                        <th colspan="3">Action</th>
+                                                         
 
                                             </tr>
                                         </thead>
@@ -41,16 +41,6 @@
                                                 <td>{{ $user[0]->name }}</td>
                                                 <td>{{ $u->comment }}</td>
                                                 <td>{{ $u->date }}</td>
-                                                 
-                                                
-                                                {{-- <td>
-                                                    {!! Form::open(['route' => ['DeleteRejectionHistory', $u->id], 'method' => 'delete']) !!}
-                                                    <div class='btn-group'>
-                                                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Estas seguro?')"]) !!}
-                                                    </div>
-                                                    {!! Form::close() !!}
-                                                </td>  --}}
-                                                
                                                 
                                                 </tr>
                                             @endforeach
