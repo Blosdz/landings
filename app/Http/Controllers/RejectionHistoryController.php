@@ -76,15 +76,17 @@ class RejectionHistoryController extends AppBaseController
     }
 
     /**
-     * Show the form for editing the specified Event.
+     * Show the rejectionHistory of one User.
      *
-     * @param int $id
+     * @param int $user_id
      *
      * @return Response
      */
      
     public function rejectionHistory($user_id)
     {
+        $user = User::where("id", $user_id)->with('rejection_histories')->first();
+        $user = User::find($user_id)->with('rejection_histories');
         $user = $this->rejectionHistoryRepository->getRejectionHistory($user_id);
 
        
