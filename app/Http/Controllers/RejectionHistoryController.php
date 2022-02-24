@@ -10,6 +10,8 @@ use Flash;
 use Response;
 use App\Traits\MakeFile;
 use App\Models\User;
+use App\Models\RejectionHistory;
+
 use DB;
 
 class RejectionHistoryController extends AppBaseController
@@ -64,15 +66,10 @@ class RejectionHistoryController extends AppBaseController
      */
     public function show($id)
     {
-        $rejectionHistory = $this->rejectionHistoryRepository->find($id);
+         
+        $rejectionHistory = RejectionHistory::find($id);
 
-        if (empty($rejectionHistoryRepository)) {
-            Flash::error('rejectionHistory not found');
-
-            return redirect(route('events.index'));
-        }
-
-        return view('events.show')->with('rejectionHistory', $rejectionHistory);
+        return view('reject_history.show')->with('rejectionHistory', $rejectionHistory);
     }
 
     /**
@@ -87,7 +84,7 @@ class RejectionHistoryController extends AppBaseController
     {
         $user = User::find($user_id)->with('rejection_histories')->get();
 
-        return view('profiles.reject_history_table')->with('user', $user);
+        return view('reject_history.reject_history_table')->with('user', $user);
     }
      
 
