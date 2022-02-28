@@ -2094,7 +2094,7 @@ div#clockdiv .smalltext {
 .blog-area .blog {
   display: block;
   position: relative;
-  background: #45487d;
+  background: #1a1c35;
   overflow: hidden;
   vertical-align: middle;
   border-radius: 22px;
@@ -2109,6 +2109,7 @@ div#clockdiv .smalltext {
   width: 100%;
   display: block;
   transition: all 1.5s;
+  border-radius: 22px;
 }
 .blog-area .blog:hover figure img {
   transform: scale(1.2, 1.2);
@@ -2144,7 +2145,7 @@ div#clockdiv .smalltext {
   color: #3297cc;
 }
 .blog-area .blog .content .blog-btn {
-  color: #3297cc;
+  color: #EAB226;
   font-size: 14px;
   font-weight: 900;
   text-transform: uppercase;
