@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 use App\Traits\MakeFile;
+use App\Models\User;
+use DB;
 
 
 class EventController extends AppBaseController
@@ -170,4 +172,5 @@ class EventController extends AppBaseController
 
         return redirect(route('events.index'));
     }
+
 }

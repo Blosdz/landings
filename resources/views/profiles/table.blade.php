@@ -28,6 +28,8 @@
                 <td>
                     <div class='btn-group'>
                         <a href="{{ route('profiles.edit', [$profile->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
+                        <a href="{{ route('rejectionHistory', [$profile->user_id]) }}" class='btn btn-ghost-info'><i class="fa fa-file"></i></a>
+
                     </div>
                 </td>
             </tr>
