@@ -529,7 +529,7 @@
                               <span><i class="fa  fa-calendar-o"></i>January 29, 2021</span>
                               <h4><a href="#">¿El proceso de inversión en criptos es seguro?</a></h4>
                               <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
-                              <a href="#" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
+                              <a href="{{ route('registration') }}" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
                            </div>
                         </div>
                      </div>
@@ -540,7 +540,7 @@
                               <span><i class="fa  fa-calendar-o"></i>January 29, 2021</span>
                               <h4><a href="#">¿El proceso de inversión en criptos es seguro?</a></h4>
                               <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
-                              <a href="#" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
+                              <a href="{{ route('registration') }}" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
                            </div>
                         </div>
                      </div>
@@ -551,7 +551,7 @@
                               <span><i class="fa  fa-calendar-o"></i>January 29, 2021</span>
                               <h4><a href="#">¿El proceso de inversión en criptos es seguro?</a></h4>
                               <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
-                              <a href="#" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
+                              <a href="{{ route('registration') }}" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
                            </div>
                         </div>
                      </div>
