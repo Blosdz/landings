@@ -126,9 +126,9 @@
         }else if(event_id) {
             let type_user = searchParams.get('type_user');
             if (type_user==2) {
-                $("#rol").html('<option value="2">Cliente</option>');
+                $("#rol").html('<option value="2">Suscriptor</option>');
             } else if (type_user==3){
-                $("#rol").html('<option value="3">Suscriptor</option>');
+                $("#rol").html('<option value="3">Cliente</option>');
             } else if (type_user==4){
                 $("#rol").html('<option value="4">Business</option>');
             }
