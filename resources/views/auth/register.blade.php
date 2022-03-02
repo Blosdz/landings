@@ -34,14 +34,14 @@
                         <h1>Registro</h1>
                         <p class="text-muted">Registro para AEIA</p>
                         
-                        @php
+    @php
         if(isset($dataUser)) {
     @endphp
         <div class="alert alert-info" role="alert">
             Te estas registrando con el codigo de {{$dataUser->profile->first_name}} {{$dataUser->profile->lastname}}
         </div>
     @php
-}
+        }
     @endphp
 
                         <div class="input-group mb-3">
@@ -94,9 +94,10 @@
                             <select name="rol" id="rol" class="form-control" readonly="readonly">
                                 <option value="2">Suscriptor</option>
                                 <option value="3">Cliente</option>
+                                <option value="4">Business</option>
                             </select>
                         </div>
-
+                        <input type="hidden" value="0" name="event_id" id="event_id">
                         <button type="submit" class="btn btn-primary btn-block btn-flat">Registrarme</button>
 
                         <br>
@@ -116,11 +117,23 @@
 <script>
     $( document ).ready(function() {
         $path = document.location.pathname.split('/');
+        let url = new URL(document.location.href);
+        let searchParams = new URLSearchParams(url.search);
+        let event_id = searchParams.get('event_id');
         if($path[1] == 'suscriptor'){
             $rol = $('#rol').val();
             $("#rol").html('<option value="3">Cliente</option>');
+        }else if(event_id) {
+            let type_user = searchParams.get('type_user');
+            if (type_user==2) {
+                $("#rol").html('<option value="2">Suscriptor</option>');
+            } else if (type_user==3){
+                $("#rol").html('<option value="3">Cliente</option>');
+            } else if (type_user==4){
+                $("#rol").html('<option value="4">Business</option>');
+            }
             
-            //alert($rol);
+            $("#event_id").val(event_id);
         }
         
     });

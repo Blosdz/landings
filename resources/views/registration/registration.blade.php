@@ -58,7 +58,7 @@
                               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut laoreet ante et nibh tempus ornare. Duis blandit, ligula vitae auctor suscipit, mi felis sollicitudin ante, eget euismod diam velit et est. </p>
                               <p>Proin sit amet libero lobortis, tempus turpis in, congue magna. Suspendisse ut nunc massa. Sed a quam a turpis elementum efficitur sed in lectus. Donec auctor vitae nisl eu volutpat. </p>
                               <div class="buttons pd-t50">
-                                 <a href="/register" class="btn1">REGISTRARSE</a>
+                              <button class="btn1" data-type_user="3">REGISTRARSE</button>
                               </div>
                            </div>
                         </div>
@@ -71,7 +71,7 @@
                               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut laoreet ante et nibh tempus ornare. Duis blandit, ligula vitae auctor suscipit, mi felis sollicitudin ante, eget euismod diam velit et est. </p>
                               <p>Proin sit amet libero lobortis, tempus turpis in, congue magna. Suspendisse ut nunc massa. Sed a quam a turpis elementum efficitur sed in lectus. Donec auctor vitae nisl eu volutpat. </p>
                               <div class="buttons pd-t50">
-                                <a href="/register" class="btn1">REGISTRARSE</a>
+                                <button class="btn1" data-type_user="2">REGISTRARSE</button>
                               </div>
                            </div>
                         </div>
@@ -84,7 +84,7 @@
                               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut laoreet ante et nibh tempus ornare. Duis blandit, ligula vitae auctor suscipit, mi felis sollicitudin ante, eget euismod diam velit et est. </p>
                               <p>Proin sit amet libero lobortis, tempus turpis in, congue magna. Suspendisse ut nunc massa. Sed a quam a turpis elementum efficitur sed in lectus. Donec auctor vitae nisl eu volutpat. </p>
                               <div class="buttons pd-t50">
-                                <a href="/register" class="btn1">REGISTRARSE</a>
+                                 <button class="btn1" data-type_user="4">REGISTRARSE</button>
                               </div>
                            </div>
                         </div>
@@ -127,5 +127,19 @@
       <script src="welcome_new/js/Youtube.min.js"></script>
       <!-- main js -->
       <script src="welcome_new/js/main.js"></script>
+
+      <script>
+         $( document ).ready(function() {
+            $path = document.location.pathname.split('/');
+            //alert(1);
+            $( ".btn1" ).click(function() {
+               let url = new URL(document.location.href);
+               let data = $(this).data();
+               let searchParams = new URLSearchParams(url.search);
+               let event_id = searchParams.get('event_id');
+               window.location.href='register?event_id='+event_id+'&type_user='+data.type_user;
+            });
+         });
+      </script>
    </body>
 </html>
