@@ -1,95 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <base href="./">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Login | CoreUI | {{ config('app.name') }}</title>
-    <meta name="description" content="CoreUI Template - InfyOm Laravel Generator">
-    <meta name="keyword" content="CoreUI,Bootstrap,Admin,Template,InfyOm,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <!-- Bootstrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@coreui/coreui@2.1.16/dist/css/coreui.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@icon/coreui-icons-free@1.0.1-alpha.1/coreui-icons-free.css">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"
-          rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.min.css">
+@extends('layouts.app')
 
-    <style>
-        body {
-        background-color: #09114A;
-    }
-    </style>
-</head>
-<body class="app flex-row align-items-center">
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card-group">
+@section('content')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+<script src="{{ asset('welcome_new/js/carousel.js') }}"></script> 
 
-                <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%; background-color: #1b253e !important;">
-                    <div class="card-body text-center">
-                        <div>
-                        <img src="welcome/images/logo.png" alt="" data-position="center center" />
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Notificaciones</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+             @include('flash::message')
+             <div class="row">
+                 <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                             <i class="fa fa-align-justify"></i>
+                             Slider
                         </div>
-                    </div>
-                </div>
+                        <div class="card-body">  
+                            <h4>Mis Eventos</h4>
+                            <div class="owl-carousel owl-theme mt-4">
+                                @for ($i = 0; $i < 6; $i++) 
+                                    <div class="item">
+                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                            <div class="blog">
+                                                <figure><img src="welcome_new/images/blog/1.jpg" alt=""/></figure>
+                                                <div class="content">
+                                                    <span><i class="fa  fa-calendar-o"></i>Febrero 15, 2022</span>
+                                                    <h5>¿El proceso de inversión en criptos es seguro?</h5>
+                                                    <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
+                                                    <a href="#" class="blog-btn">LINK: https://meet.google.com/vrr-pioe-xbf </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endfor 
+                            </div>
+                        </div>
 
-                <div class="card p-4">
-                    <div class="card-body">
-                        <form method="post" action="{{ url('/login') }}">
-                            @csrf
-                            <h1>Iniciar Session</h1>
-                            <p class="text-muted">TEST DE DASHBOARD</p>
-                            <br>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">@</span>
-                                </div>
-                                <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'' }}" name="email" value="{{ old('email') }}"
-                                       placeholder="Correo">
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                        <div class="card-body">  
+                            <h4>Próximos Eventos</h4>
+                            <div class="owl-carousel owl-theme mt-4">
+                                @for ($i = 0; $i < 6; $i++) 
+                                    <div class="item">
+                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                            <div class="blog">
+                                                <figure><img src="welcome_new/images/blog/1.jpg" alt=""/></figure>
+                                                <div class="content">
+                                                    <span><i class="fa  fa-calendar-o"></i>Febrero 15, 2022</span>
+                                                    <h5>¿El proceso de inversión en criptos es seguro?</h5>
+                                                    <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
+                                                    <a href="#" class="blog-btn">ASISTIR </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endfor 
                             </div>
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                      <i class="icon-lock"></i>
-                                    </span>
-                                </div>
-                                <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':'' }}" name="password"
-                                        placeholder="Contraseña">
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                       <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+                        </div>
+
+                        <div class="card-body">  
+                            <h4>Eventos Pasados</h4>
+                            <div class="owl-carousel owl-theme mt-4">
+                                @for ($i = 0; $i < 6; $i++) 
+                                    <div class="item">
+                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                            <div class="blog">
+                                                <figure><img src="welcome_new/images/blog/1.jpg" alt=""/></figure>
+                                                <div class="content">
+                                                    <span><i class="fa  fa-calendar-o"></i>Febrero 15, 2022</span>
+                                                    <h5>¿El proceso de inversión en criptos es seguro?</h5>
+                                                    <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
+                                                    <a href="#" class="blog-btn">LINK: https://meet.google.com/vrr-pioe-xbf </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endfor 
                             </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <button class="btn btn-primary px-4" type="submit">Iniciar Session</button>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
+
                     </div>
-                </div>
-                
-            </div>
-        </div>
+                  </div>
+             </div>
+         </div>
     </div>
-</div>
-<!-- CoreUI and necessary plugins-->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@2.1.16/dist/js/coreui.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.js"></script>
-</body>
-</html>
+@endsection
+
