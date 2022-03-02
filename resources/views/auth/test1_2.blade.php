@@ -18,17 +18,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="welcome_new/css/bootstrap.min.css">
-      <link rel="stylesheet" href="welcome_new/css/animate.css">
-      <link rel="stylesheet" href="welcome_new/css/jquery-ui.min.css">
-      <link rel="stylesheet" href="welcome_new/css/meanmenu.min.css">
-      <link rel="stylesheet" href="welcome_new/css/owl.carousel.min.css">
-      <link rel="stylesheet" href="welcome_new/css/flaticon.css">
-      <link rel="stylesheet" href="welcome_new/css/font-awesome.min.css">
-      <link href="welcome_new/css/video-js.css" rel="stylesheet">
-      <link rel="stylesheet" href="welcome_new/events.css">
-      <link rel="stylesheet" href="welcome_new/css/responsive.css">
-      <script src="welcome_new/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
     <section class="registration">
@@ -118,24 +107,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@2.1.16/dist/js/coreui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.js"></script>
-<script src="welcome_new/js/vendor/jquery-3.2.1.min.js"></script>
-      <script src="welcome_new/js/tether.min.js"></script>
-      <script src="welcome_new/js/bootstrap.min.js"></script>
-      <script src="welcome_new/js/owl.carousel.min.js"></script>
-      <script src="welcome_new/js/jquery.meanmenu.js"></script>
-      <script src="welcome_new/js/jquery-ui.min.js"></script>
-      <script src="welcome_new/js/jquery.easypiechart.min.js"></script>
-      <script src="welcome_new/js/wow.min.js"></script>
-      <script src="welcome_new/js/smooth-scroll.min.js"></script>
-	  <script src="welcome_new/js/app.js"></script>
-	  <script src="welcome_new/js/particles.min.js"></script>
-      <script src="welcome_new/js/plugins.js"></script>
-      <script src="welcome_new/js/echarts-en.min.js"></script>
-      <script src="welcome_new/js/echarts-liquidfill.min.js"></script>
-      <script src="welcome_new/js/vc_round_chart.min.js"></script>
-      <script src="welcome_new/js/videojs-ie8.min.js"></script>
-      <script src="welcome_new/js/video.js"></script>
-      <script src="welcome_new/js/Youtube.min.js"></script>
-      <script src="welcome_new/js/main.js"></script>
 </body>
 </html>
