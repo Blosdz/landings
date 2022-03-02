@@ -12,7 +12,7 @@
                      <div class="card">
                          <div class="card-header">
                              <i class="fa fa-align-justify"></i>
-                             SUSCRIPTORES Y CLIENTES
+                             SUSCRIPTORES, CLIENTES y BUSINESS
                          </div>
                          <div class="card-body">
                              @include('users.table')

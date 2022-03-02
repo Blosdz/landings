@@ -33,6 +33,13 @@
     </a>
 </li>
 
+<li class="nav-item {{ Request::is('events*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('events.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Eventos</span>
+    </a>
+</li>
+
 @php
   }
   if( $user->rol == 2 ) {
@@ -70,12 +77,33 @@
   }
   if( $user->rol == 3 ) {
 @endphp
+
 <li class="nav-item {{ Request::is('payments*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('payments.index2') }}">
         <i class="nav-icon icon-cursor"></i>
         <span>Depositar</span>
     </a>
 </li>
+
+<li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('profiles.user') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Verificacion</span>
+    </a>
+</li>
+
+@php
+  }
+  if( $user->rol == 4 ) {
+@endphp
+
+<li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('profiles.user') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Verificacion</span>
+    </a>
+</li>
+
 @php
   }
 @endphp
@@ -83,13 +111,13 @@
 <li class="nav-item {{ Request::is('notifications*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('notifications.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Notifications</span>
+        <span>Notificaciones</span>
     </a>
 </li>
 
-<li class="nav-item {{ Request::is('events*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('events.index') }}">
+<li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Eventos</span>
+        <span>dashboard</span>
     </a>
 </li>

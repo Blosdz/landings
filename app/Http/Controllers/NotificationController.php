@@ -11,6 +11,8 @@ use App\Models\Notification;
 use Flash;
 use Response;
 
+use Illuminate\Support\Facades\Auth;
+
 class NotificationController extends AppBaseController
 {
     /** @var  NotificationRepository */
@@ -31,7 +33,11 @@ class NotificationController extends AppBaseController
     public function index(Request $request)
     {
         //$notifications = $this->notificationRepository->all();
-        $notifications = Notification::orderBy('id', 'DESC')->paginate(15);
+        $notifications = Notification::orderBy('id', 'DESC');
+        if(Auth::user()->rol != 1){
+            $notifications = $notifications->where('user_id', Auth::user()->id);
+        }
+        $notifications = $notifications->paginate(30);
 
         return view('notifications.index')
             ->with('notifications', $notifications);

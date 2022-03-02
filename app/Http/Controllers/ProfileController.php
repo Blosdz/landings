@@ -8,6 +8,7 @@ use App\Repositories\ProfileRepository;
 use App\Models\Profile;
 use App\Models\User;
 use App\Models\Notification;
+use App\Models\RejectionHistory;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -15,6 +16,7 @@ use Response;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class ProfileController extends AppBaseController
 {
@@ -146,6 +148,11 @@ class ProfileController extends AppBaseController
                     'title' => "Validación de información",
                     'body' => $data["obs"],
                     'user_id' => $profile->user_id,
+                ]);
+                RejectionHistory::create([
+                    'user_id'   => $profile->user_id,
+                    'comment'   => $data["obs"],
+                    'date'      => Carbon::now()
                 ]);
             }
             $user->update(['validated' => 0]);

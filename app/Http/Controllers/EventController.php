@@ -12,7 +12,10 @@ use Response;
 use App\Traits\MakeFile;
 use App\Models\User;
 use App\Models\UserEvent;
+use App\Models\Event;
 use DB;
+use Auth;
+use DateTime;
 
 
 class EventController extends AppBaseController
@@ -177,6 +180,22 @@ class EventController extends AppBaseController
         Flash::success('Event deleted successfully.');
 
         return redirect(route('events.index'));
+    }
+
+    public function allEvents()
+    {
+        $user_id = auth()->user()->id;
+        $dt = new DateTime();
+
+        $myEvents = Event::join('user_events', 'events.id', '=', 'user_events.event_id')
+                ->where('user_events.user_id', $user_id)
+                ->get(['events.*', 'user_events.id']);
+
+
+        $futureEvents = Event::where('date', '>',$dt)->get();
+        $pastEvents = Event::where('date', '<',$dt)->get();
+
+     return view('dashboard.index')->with(compact('myEvents','futureEvents','pastEvents'));
     }
 
 }

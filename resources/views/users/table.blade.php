@@ -1,5 +1,5 @@
 @php
-    $roles = [2=>"Suscriptor", 3=>"Cliente"];
+    $roles = [2=>"Suscriptor", 3=>"Cliente", 4=>"Business"];
     $validates = ["Sin Validar", "Validado"];
     //$validates = [0 =>"Sin Validar", 1=>'En validacion', 2=>'Informacion enviada', 3=>'Validado', 4=>'Rechazado']
 @endphp
