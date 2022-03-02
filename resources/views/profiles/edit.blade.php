@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
+@php
+    $sex_list = ['Hombre'=>'Hombre', 'Mujer'=>'Mujer'];
+    $document_types = ["DNI"=>"DNI", "Pasaporte"=>"Pasaporte", "Carnet de extranjería"=>"Carnet de extranjería"];
+@endphp
     <ol class="breadcrumb">
           <li class="breadcrumb-item">
              <a href="{!! route('profiles.index') !!}">Perfiles</a>
@@ -20,6 +25,9 @@
                           <div class="card-body">
                               {!! Form::model($profile, ['route' => ['profiles.update', $profile->id], 'method' => 'patch']) !!}
 
+@php
+  if ($profile->user->rol==2) {
+@endphp
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Principal</a>
@@ -42,6 +50,37 @@
   @include('profiles.fields_3')
   </div>
 </div>
+@php
+  } else if ($profile->user->rol==3) {
+@endphp
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Principal</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  @include('profiles.fields2_rol3_2')
+  </div>
+</div>
+@php
+  } else if ($profile->user->rol==4) {
+@endphp
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Principal</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  @include('profiles.fields2_rol4_4')
+  </div>
+</div>
+@php
+  }
+@endphp
+
+
 <br>
 @php
     $verified_list = [0=>'En validacion', 1=>'Informacion enviada', 2=>'Validado', 3=>'Rechazado'];

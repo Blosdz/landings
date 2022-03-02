@@ -3,6 +3,9 @@
 @section('content')
 
 @php
+    $user_session = Auth::user();
+    $sex_list = ['Hombre'=>'Hombre', 'Mujer'=>'Mujer'];
+    //dd($user_session);
     $document_types = ["DNI"=>"DNI", "Pasaporte"=>"Pasaporte", "Carnet de extranjería"=>"Carnet de extranjería"];
 @endphp
     <ol class="breadcrumb">
@@ -24,6 +27,11 @@
                           </div>
                           <div class="card-body">
                               {!! Form::model($profile, ['route' => ['profiles.update2', $profile->id], 'method' => 'post', 'files' => true]) !!}
+
+                              
+@php
+  if ($user_session->rol==2) {
+@endphp
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Principal</a>
@@ -46,6 +54,36 @@
   @include('profiles.fields4')
   </div>
 </div>
+@php
+  } else if ($user_session->rol==3) {
+@endphp
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Principal</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  @include('profiles.fields2_rol3')
+  </div>
+</div>
+@php
+  } else if ($user_session->rol==4) {
+@endphp
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Principal</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  @include('profiles.fields2_rol4')
+  </div>
+</div>
+@php
+  }
+@endphp
+
 
                               {!! Form::close() !!}
                             </div>
