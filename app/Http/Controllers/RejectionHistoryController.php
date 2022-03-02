@@ -82,7 +82,7 @@ class RejectionHistoryController extends AppBaseController
      
     public function rejectionHistory($user_id)
     {
-        $user = User::find($user_id)->with('rejection_histories')->get();
+        $user = User::where('id', $user_id)->with('rejection_histories')->get();
 
         return view('reject_history.reject_history_table')->with('user', $user);
     }
