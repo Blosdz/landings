@@ -37,15 +37,6 @@
     {!! Form::text('link_recording', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Total Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('total', 'Total:') !!}
-    {!! Form::number('total', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Status Field -->
- 
-
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}

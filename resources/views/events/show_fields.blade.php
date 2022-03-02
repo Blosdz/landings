@@ -37,7 +37,7 @@
 
 <!-- Total Field -->
 <div class="form-group">
-    {!! Form::label('total', 'Total:') !!}
+    {!! Form::label('total', 'Total asistentes:') !!}
     <p>{{ $event->total }}</p>
 </div>
 
