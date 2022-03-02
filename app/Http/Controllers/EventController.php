@@ -11,6 +11,7 @@ use Flash;
 use Response;
 use App\Traits\MakeFile;
 use App\Models\User;
+use App\Models\UserEvent;
 use DB;
 
 
@@ -60,6 +61,7 @@ class EventController extends AppBaseController
     public function store(CreateEventRequest $request)
     {
         $input = $request->all();
+        $input["total"] = 0;
 
         $file = 'image';
         if ($request->hasFile($file)) {
@@ -84,6 +86,10 @@ class EventController extends AppBaseController
     public function show($id)
     {
         $event = $this->eventRepository->find($id);
+        $user_events = UserEvent::where('event_id', $id)
+        ->with('user.profile:id,first_name,lastname')
+        ->with('user:id,email,rol')
+        ->get();
 
         if (empty($event)) {
             Flash::error('Event not found');
@@ -91,7 +97,7 @@ class EventController extends AppBaseController
             return redirect(route('events.index'));
         }
 
-        return view('events.show')->with('event', $event);
+        return view('events.show')->with('event', $event)->with('user_events', $user_events);
     }
 
     /**

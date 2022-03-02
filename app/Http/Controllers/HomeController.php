@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Mail as MailCustom;
 use App\Mail\SendMail;
+use App\Models\Event;
 
 class HomeController extends Controller
 {
@@ -16,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['sendmail']]);
+        $this->middleware('auth', ['except' => ['sendmail', 'welcome']]);
     }
 
     /**
@@ -27,6 +28,13 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function welcome()
+    {
+        $events = Event::orderBy('date', 'DESC')->get();
+        //dd($events);
+        return view('welcome')->with('events', $events);
     }
 
     public function sendmail(Request $request)

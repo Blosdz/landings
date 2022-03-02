@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\UserEvent;
+use App\Models\Event;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail as MailCustom;
 use App\Mail\SendMail;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -68,7 +71,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        
+     
+        //dd($data);
         $data['name'] = explode("@", $data['email'])[0];
         $user = User::create([
             'name' => $data['name'],
@@ -82,8 +86,16 @@ class RegisterController extends Controller
             'user_id' => $user->id
         ]);
 
+        UserEvent::create([
+            'user_id' => $user->id,
+            'event_id' => $data['event_id'],
+            'inscription_date' => Carbon::parse()->format('Y-m-d')
+        ]);
+        $event = Event::find($data['event_id']);
+        $event->total = $event->total + 1;
+        $event->save();
+
         $data = [
-            //"email_send" => "dbutron9211@gmail.com",
             "email_send" => $data['email'],
             "token" => $user->remember_token,
             "view" => "emails.register",
