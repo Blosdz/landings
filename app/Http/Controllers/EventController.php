@@ -60,6 +60,7 @@ class EventController extends AppBaseController
     public function store(CreateEventRequest $request)
     {
         $input = $request->all();
+        $input["total"] = 0;
 
         $file = 'image';
         if ($request->hasFile($file)) {

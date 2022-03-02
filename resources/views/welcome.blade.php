@@ -522,39 +522,21 @@
                </div>
                <div class="row">
                   <div class="blog-slider">
+
+                  @foreach($events as $event)
                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="blog">
-                           <figure><img src="welcome_new/images/blog/1.jpg" alt=""/></figure>
+                           <figure><img src="{{ asset('storage/'.$event->image) }}" alt=""/></figure>
                            <div class="content">
-                              <span><i class="fa  fa-calendar-o"></i>January 29, 2021</span>
-                              <h4><a href="#">¿El proceso de inversión en criptos es seguro?</a></h4>
-                              <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
-                              <a href="{{ route('registration') }}" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
+                              <span><i class="fa  fa-calendar-o"></i>{{ $event->date }}</span>
+                              <h4><a>{{$event->title}}</a></h4>
+                              <p>{{ $event->description }}</p>
+                              <a href="{{ route('registration', ['event_id'=>$event->id]) }}" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
                            </div>
                         </div>
                      </div>
-                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="blog">
-                           <figure><img src="welcome_new/images/blog/2.jpg" alt=""/></figure>
-                           <div class="content">
-                              <span><i class="fa  fa-calendar-o"></i>January 29, 2021</span>
-                              <h4><a href="#">¿El proceso de inversión en criptos es seguro?</a></h4>
-                              <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
-                              <a href="{{ route('registration') }}" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="blog">
-                           <figure><img src="welcome_new/images/blog/3.jpg" alt=""/></figure>
-                           <div class="content">
-                              <span><i class="fa  fa-calendar-o"></i>January 29, 2021</span>
-                              <h4><a href="#">¿El proceso de inversión en criptos es seguro?</a></h4>
-                              <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
-                              <a href="{{ route('registration') }}" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
-                           </div>
-                        </div>
-                     </div>
+                  @endforeach
+
                </div>
             </div>
          </section>
