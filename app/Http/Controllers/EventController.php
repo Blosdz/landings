@@ -195,7 +195,7 @@ class EventController extends AppBaseController
         $futureEvents = Event::where('date', '>',$dt)->get();
         $pastEvents = Event::where('date', '<',$dt)->get();
 
-     return view('dashboard.index')->with(compact('myEvents','futureEvents','pastEvents'));
+     return view('dashboard.table_test')->with(compact('myEvents','futureEvents','pastEvents'));
     }
 
 }
