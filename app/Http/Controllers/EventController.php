@@ -179,4 +179,11 @@ class EventController extends AppBaseController
         return redirect(route('events.index'));
     }
 
+    public function allEvents()
+    {
+        $events = $this->eventRepository->all();
+
+        return view('dashboard.index')->with('events', $events);
+    }
+
 }
