@@ -100,7 +100,8 @@ class ProfileController extends AppBaseController
      */
     public function edit($id)
     {
-        $profile = $this->profileRepository->find($id);
+        //$profile = $this->profileRepository->find($id);
+        $profile = Profile::where('id', $id)->with('user')->first();
 
         if (empty($profile)) {
             Flash::error('Profile not found');
