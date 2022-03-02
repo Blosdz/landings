@@ -66,7 +66,7 @@
                               <li> Protección de datos personales y financieros.</li>
                               </ul>
                               <div class="buttons pd-t50">
-                                 <a href="/register" class="btn1">REGISTRARSE</a>
+                              <button class="btn1" data-type_user="3">REGISTRARSE</button>
                               </div>
                            </div>
                         </div>
@@ -88,7 +88,7 @@
                                  <li>Protección de datos empresariales personales y financieros.</li>
                               </ul>
                               <div class="buttons pd-t50">
-                                <a href="/register" class="btn1">REGISTRARSE</a>
+                                <button class="btn1" data-type_user="2">REGISTRARSE</button>
                               </div>
                            </div>
                         </div>
@@ -111,7 +111,7 @@
                                  <li>Retiros directo a su Wallet.</li>
                               </ul>
                               <div class="buttons pd-t50">
-                                <a href="/register" class="btn1">REGISTRARSE</a>
+                                 <button class="btn1" data-type_user="4">REGISTRARSE</button>
                               </div>
                            </div>
                         </div>
@@ -154,5 +154,19 @@
       <script src="welcome_new/js/Youtube.min.js"></script>
       <!-- main js -->
       <script src="welcome_new/js/main.js"></script>
+
+      <script>
+         $( document ).ready(function() {
+            $path = document.location.pathname.split('/');
+            //alert(1);
+            $( ".btn1" ).click(function() {
+               let url = new URL(document.location.href);
+               let data = $(this).data();
+               let searchParams = new URLSearchParams(url.search);
+               let event_id = searchParams.get('event_id');
+               window.location.href='register?event_id='+event_id+'&type_user='+data.type_user;
+            });
+         });
+      </script>
    </body>
 </html>

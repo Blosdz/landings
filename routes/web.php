@@ -17,9 +17,14 @@ Route::get('/welcome_default', function () {
     return view('welcome_default');
 });
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-})->name('welcome');
+})->name('welcome');*/
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
+
+Route::get('/test1', function () {
+    return view('auth.test1');
+})->name('test');
 
 Route::get('/welcome_default2', function () {
     return view('welcome_default2');
@@ -61,3 +66,10 @@ Route::get('/confirmation-email/{token}', [App\Http\Controllers\UserController::
 
 
 Route::resource('notifications', App\Http\Controllers\NotificationController::class);
+
+
+
+
+Route::resource('events', App\Http\Controllers\EventController::class);
+Route::get('/rejection-history/{user_id}',[App\Http\Controllers\RejectionHistoryController::class,'rejectionHistory'])->name('rejectionHistory');
+Route::get('/rejection-history-show/{id}',[App\Http\Controllers\RejectionHistoryController::class,'show'])->name('rejectionHistory.show');

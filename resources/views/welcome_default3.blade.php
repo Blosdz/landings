@@ -7,7 +7,6 @@
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="apple-touch-icon" href="apple-touch-icon.png">
-      
       <!-- Place favicon.ico in the root directory -->
       <!-- all css here -->
       <!-- bootstrap v3.3.6 css -->
@@ -64,7 +63,7 @@
                         </nav>
                         
                         <div class="login-btn">
-                           <a href="#" class="btn1"><i class="fa fa-user"></i><span>INGRESAR</span></a>
+                           <a href="/login" class="btn1"><i class="fa fa-user"></i><span>INGRESAR</span></a>
                         </div>
                      </div>
                      <!-- mobile menu area start -->
@@ -142,8 +141,8 @@
                                        </ul>
                                        <h2 data-animation="animated bounceInLeft">Ecosistema de integración de servicios financieros</h2>
                                        <div class="buttons">
-                                          <a href="#" class="btn1" data-animation="animated bounceInUp">CLIENTES</a>
-                                          <a href="#" class="btn2" data-animation="animated bounceInUp">SUSCRIPTORES</a>
+                                          <a href="/register" class="btn1" data-animation="animated bounceInUp">CLIENTES</a>
+                                          <a href="/register" class="btn2" data-animation="animated bounceInUp">SUSCRIPTORES</a>
                                        </div>
                                     </div>
                                  </div>
@@ -292,7 +291,7 @@
                         <p>Para ser suscriptor se debe abonar un monto de $2000 por una licencia anual, que es registrada a través de un contrato legal con la empresa.</p>
                         
                         <div class="buttons">
-                           <a href="#" class="btn1">REGISTRARSE</a>
+                           <a href="/register" class="btn1">REGISTRARSE</a>
                         </div>
                      </div>
                   </div>
@@ -305,7 +304,21 @@
             </div>
          </section>
          <!--About area end here-->
-         
+         <div class="sud">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               viewBox="0 0 1920 181.1" style="enable-background:new 0 0 1920 181.1;" xml:space="preserve">
+               <style type="text/css">
+                  .st0{fill-rule:evenodd;clip-rule:evenodd;fill:#2C2E53;}
+               </style>
+               <g>
+                  <path class="st0" d="M0,80c0,0,28.9-4.2,43-13c14.3-9,71-35.7,137,5c17.3,7.7,33.3,13,48,11c17.3,0.3,50.3,4.7,66,23
+                     c20.3,9.7,68,40.3,134-12c24-11,59-16.3,104,2c21,7.3,85,27.7,117-14c24-30.7,62.7-55,141-12c26,10.3,72,14.7,110-14
+                     c37.7-19,89.7-29,122,53c23,32.7,47.7,66.3,97,26c24-22.7,51-78.3,137-38c0,0,28.3,15.7,52,15c23.7-0.7,50.7,4.3,76,41
+                     c19.7,19.7,71,36.7,121-2c0,0,22.3-16,55-12c0,0,32.7,6.7,56-71c23.3-76,79-92,122-29c9.3,13.7,25,42,62,43c37,1,51.7,25.3,67,48
+                     c15.3,22.7,51,22.7,53,23v28.1H0V80z"/>
+               </g>
+            </svg>
+         </div>
       </div>
       <div section-scroll='2' class="wd_scroll_wrap">
          <section class="features-area section">
@@ -327,7 +340,7 @@
                                     <div class="contents-l mr-b30">
                                        <h3>Seguridad/Protección de datos</h3>
                                        <p>Unique platform for lending and investment with a safety fund <br>and cooperation with world-wide arbitration.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                                  <div class="col-sm-6 pd-0">
@@ -339,7 +352,7 @@
                                     <div class="contents-l mr-b30">
                                        <h3>Seguridad/Protección de datos</h3>
                                        <p>Unique platform for lending and investment with a safety fund <br>and cooperation with world-wide arbitration.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                               </li>
@@ -348,7 +361,7 @@
                                     <div class="contents-r">
                                        <h3>Política de transparencia</h3>
                                        <p>Exchange between all popular currencies with a couple of clicks.<br>Instant send from one currency to another.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                                  <div class="col-sm-6 pd-0">
@@ -360,7 +373,7 @@
                                     <div class="contents-r">
                                        <h3>Política de transparencia</h3>
                                        <p>Exchange between all popular currencies with a couple of clicks.<br>Instant send from one currency to another.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                               </li>
@@ -369,7 +382,7 @@
                                     <div class="contents-l mr-b30">
                                        <h3>Gestión de riesgo y estrategias <br>de inversión</h3>
                                        <p>Improved system of borrower's verification. Providing <br>verification services for other services.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                                  <div class="col-sm-6 pd-0">
@@ -381,7 +394,7 @@
                                     <div class="contents-l mr-b30">
                                        <h3>Gestión de riesgo y estrategias de inversión</h3>
                                        <p>Improved system of borrower's verification. Providing <br>verification services for other services.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                               </li>
@@ -390,7 +403,7 @@
                                     <div class="contents-r">
                                        <h3>Depósitos en dólares o en cripto</h3>
                                        <p>Keep your money, exchange your money, invest your money, pay<br>services and make purchases.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                                  <div class="col-sm-6 pd-0">
@@ -402,7 +415,7 @@
                                     <div class="contents-r">
                                        <h3>Depósitos en dólares o en cripto</h3>
                                        <p>Keep your money, exchange your money, invest your money, pay<br>services and make purchases.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                               </li>
@@ -411,7 +424,7 @@
                                     <div class="contents-l mr-b30">
                                        <h3>Disponibilidad del efectivo</h3>
                                        <p>Unique platform for lending and investment with a safety fund <br>and cooperation with world-wide arbitration.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                                  <div class="col-sm-6 pd-0">
@@ -423,7 +436,7 @@
                                     <div class="contents-l mr-b30">
                                        <h3>Disponibilidad del efectivo</h3>
                                        <p>Unique platform for lending and investment with a safety fund <br>and cooperation with world-wide arbitration.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                               </li>
@@ -508,7 +521,21 @@
                </div>
             </div>
          </section>
-         
+         <div class="sud">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               viewBox="0 0 1920 181.1" style="enable-background:new 0 0 1920 181.1;" xml:space="preserve">
+               <style type="text/css">
+                  .st0{fill-rule:evenodd;clip-rule:evenodd;fill:#2C2E53;}
+               </style>
+               <g>
+                  <path class="st0" d="M0,80c0,0,28.9-4.2,43-13c14.3-9,71-35.7,137,5c17.3,7.7,33.3,13,48,11c17.3,0.3,50.3,4.7,66,23
+                     c20.3,9.7,68,40.3,134-12c24-11,59-16.3,104,2c21,7.3,85,27.7,117-14c24-30.7,62.7-55,141-12c26,10.3,72,14.7,110-14
+                     c37.7-19,89.7-29,122,53c23,32.7,47.7,66.3,97,26c24-22.7,51-78.3,137-38c0,0,28.3,15.7,52,15c23.7-0.7,50.7,4.3,76,41
+                     c19.7,19.7,71,36.7,121-2c0,0,22.3-16,55-12c0,0,32.7,6.7,56-71c23.3-76,79-92,122-29c9.3,13.7,25,42,62,43c37,1,51.7,25.3,67,48
+                     c15.3,22.7,51,22.7,53,23v28.1H0V80z"/>
+               </g>
+            </svg>
+         </div>
       </div>
       <div section-scroll='4' class="wd_scroll_wrap">
          <section class="blog-area section">
@@ -522,21 +549,39 @@
                </div>
                <div class="row">
                   <div class="blog-slider">
-
-                  @foreach($events as $event)
                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="blog">
-                           <figure><img src="{{ asset('storage/'.$event->image) }}" alt=""/></figure>
+                           <figure><img src="welcome_new/images/blog/1.jpg" alt=""/></figure>
                            <div class="content">
-                              <span><i class="fa  fa-calendar-o"></i>{{ $event->date }}</span>
-                              <h4><a>{{$event->title}}</a></h4>
-                              <p>{{ $event->description }}</p>
-                              <a href="{{ route('registration', ['event_id'=>$event->id]) }}" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
+                              <span><i class="fa  fa-calendar-o"></i>January 29, 2021</span>
+                              <h4><a href="#">¿El proceso de inversión en criptos es seguro?</a></h4>
+                              <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
+                              <a href="#" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
                            </div>
                         </div>
                      </div>
-                  @endforeach
-
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="blog">
+                           <figure><img src="welcome_new/images/blog/2.jpg" alt=""/></figure>
+                           <div class="content">
+                              <span><i class="fa  fa-calendar-o"></i>January 29, 2021</span>
+                              <h4><a href="#">¿El proceso de inversión en criptos es seguro?</a></h4>
+                              <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
+                              <a href="#" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="blog">
+                           <figure><img src="welcome_new/images/blog/3.jpg" alt=""/></figure>
+                           <div class="content">
+                              <span><i class="fa  fa-calendar-o"></i>January 29, 2021</span>
+                              <h4><a href="#">¿El proceso de inversión en criptos es seguro?</a></h4>
+                              <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
+                              <a href="#" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
+                           </div>
+                        </div>
+                     </div>
                </div>
             </div>
          </section>
