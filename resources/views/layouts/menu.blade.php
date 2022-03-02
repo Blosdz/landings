@@ -93,9 +93,12 @@
         <span>Eventos</span>
     </a>
 </li>
-<li class="nav-item {{ Request::is('userEvents*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('userEvents.index') }}">
+
+<li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>User Events</span>
+        <span>Dashboard</span>
     </a>
 </li>
+
+
