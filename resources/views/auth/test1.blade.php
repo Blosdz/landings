@@ -18,78 +18,124 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.min.css">
-
-    <style>
-        body {
-        background-color: #09114A;
-    }
-    </style>
+    <link rel="stylesheet" href="welcome_new/css/bootstrap.min.css">
+      <link rel="stylesheet" href="welcome_new/css/animate.css">
+      <link rel="stylesheet" href="welcome_new/css/jquery-ui.min.css">
+      <link rel="stylesheet" href="welcome_new/css/meanmenu.min.css">
+      <link rel="stylesheet" href="welcome_new/css/owl.carousel.min.css">
+      <link rel="stylesheet" href="welcome_new/css/flaticon.css">
+      <link rel="stylesheet" href="welcome_new/css/font-awesome.min.css">
+      <link href="welcome_new/css/video-js.css" rel="stylesheet">
+      <link rel="stylesheet" href="welcome_new/events.css">
+      <link rel="stylesheet" href="welcome_new/css/responsive.css">
+      <script src="welcome_new/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body class="app flex-row align-items-center">
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card-group">
-
-                <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%; background-color: #1b253e !important;">
-                    <div class="card-body text-center">
-                        <div>
-                        <img src="welcome/images/logo.png" alt="" data-position="center center" />
-                        </div>
+<body>
+    <section class="registration">
+        <div class="container pd-b30">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                    <div class="section-heading2">
+                        <h4>Mis Eventos</h4>
                     </div>
                 </div>
-
-                <div class="card p-4">
-                    <div class="card-body">
-                        <form method="post" action="{{ url('/login') }}">
-                            @csrf
-                            <h1>Iniciar Session</h1>
-                            <p class="text-muted">TEST DE DASHBOARD</p>
-                            <br>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">@</span>
-                                </div>
-                                <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'' }}" name="email" value="{{ old('email') }}"
-                                       placeholder="Correo">
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                      <i class="icon-lock"></i>
-                                    </span>
-                                </div>
-                                <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':'' }}" name="password"
-                                        placeholder="Contraseña">
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                       <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <button class="btn btn-primary px-4" type="submit">Iniciar Session</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                
             </div>
-        </div>
-    </div>
-</div>
+            <div class="row">
+                <div class="blog-slider">
+                    @for ($i = 0; $i < 6; $i++)   
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <div class="blog">
+                           <figure><img src="welcome_new/images/blog/1.jpg" alt=""/></figure>
+                           <div class="content">
+                           <span><i class="fa  fa-calendar-o"></i>January 29, 2021</span>
+                              <h4><a href="#">¿El proceso de inversión en criptos es seguro?</a></h4>
+                              <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
+                              <a class="blog-btn">LINK: https://meet.google.com/vrr-pioe-xbf </a>
+                           </div>
+                        </div>
+                     </div>
+                     @endfor
+               </div>
+            </div>
+        </section>
+        <section class="registration">
+        <div class="container pd-b30">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                    <div class="section-heading2">
+                        <h4>Eventos Próximos</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="blog-slider">
+                    @for ($i = 0; $i < 6; $i++)   
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <div class="blog">
+                           <figure><img src="welcome_new/images/blog/1.jpg" alt=""/></figure>
+                           <div class="content">
+                           <span><i class="fa  fa-calendar-o"></i>January 29, 2021</span>
+                              <h4><a href="#">¿El proceso de inversión en criptos es seguro?</a></h4>
+                              <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
+                              <a class="blog-btn">LINK: https://meet.google.com/vrr-pioe-xbf </a>
+                           </div>
+                        </div>
+                     </div>
+                     @endfor
+               </div>
+            </div>
+        </section>
+        <section class="registration">
+        <div class="container pd-b30">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                    <div class="section-heading2">
+                        <h4>Eventos Pasados</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="blog-slider">
+                    @for ($i = 0; $i < 6; $i++)   
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <div class="blog">
+                           <figure><img src="welcome_new/images/blog/1.jpg" alt=""/></figure>
+                           <div class="content">
+                           <span><i class="fa  fa-calendar-o"></i>January 29, 2021</span>
+                              <h4><a href="#">¿El proceso de inversión en criptos es seguro?</a></h4>
+                              <p>Nam nec tellus a odio tincidunt auctor are odio sed non mauris. This is Photoshop's ern  of Lorem Ipsum Proin gravida.</p>
+                              <a class="blog-btn">LINK: https://meet.google.com/vrr-pioe-xbf </a>
+                           </div>
+                        </div>
+                     </div>
+                     @endfor
+               </div>
+            </div>
+        </section>
 <!-- CoreUI and necessary plugins-->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@2.1.16/dist/js/coreui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.js"></script>
+<script src="welcome_new/js/vendor/jquery-3.2.1.min.js"></script>
+      <script src="welcome_new/js/tether.min.js"></script>
+      <script src="welcome_new/js/bootstrap.min.js"></script>
+      <script src="welcome_new/js/owl.carousel.min.js"></script>
+      <script src="welcome_new/js/jquery.meanmenu.js"></script>
+      <script src="welcome_new/js/jquery-ui.min.js"></script>
+      <script src="welcome_new/js/jquery.easypiechart.min.js"></script>
+      <script src="welcome_new/js/wow.min.js"></script>
+      <script src="welcome_new/js/smooth-scroll.min.js"></script>
+	  <script src="welcome_new/js/app.js"></script>
+	  <script src="welcome_new/js/particles.min.js"></script>
+      <script src="welcome_new/js/plugins.js"></script>
+      <script src="welcome_new/js/echarts-en.min.js"></script>
+      <script src="welcome_new/js/echarts-liquidfill.min.js"></script>
+      <script src="welcome_new/js/vc_round_chart.min.js"></script>
+      <script src="welcome_new/js/videojs-ie8.min.js"></script>
+      <script src="welcome_new/js/video.js"></script>
+      <script src="welcome_new/js/Youtube.min.js"></script>
+      <script src="welcome_new/js/main.js"></script>
 </body>
 </html>
