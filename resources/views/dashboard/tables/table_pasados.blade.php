@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($events as $event)
+        @foreach($pastEvents as $event)
             <tr>
                 <td>{{ $event->title }}</td>
             <td>{{ $event->date }}</td>
