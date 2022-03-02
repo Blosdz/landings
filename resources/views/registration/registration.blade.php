@@ -54,9 +54,17 @@
                            <figure><img src="welcome_new/images/blog/1.jpg" alt=""/></figure>
                            <div class="content">
                               <h4><a href="#">CLIENTE</a></h4>
-                              
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut laoreet ante et nibh tempus ornare. Duis blandit, ligula vitae auctor suscipit, mi felis sollicitudin ante, eget euismod diam velit et est. </p>
-                              <p>Proin sit amet libero lobortis, tempus turpis in, congue magna. Suspendisse ut nunc massa. Sed a quam a turpis elementum efficitur sed in lectus. Donec auctor vitae nisl eu volutpat. </p>
+                              <ul style= "list-style-type: disc;">
+                              <li> Persona Natural.</li>
+                              <li> Invierte tu propio capital.</li>
+                              <li> Gestiona tus planes de inversión.</li>
+                              <li> Información de tus inversiones planes y portafolio en tiempo real.</li>
+                              <li> Equipo de Trading profesional y Bots 24/7.</li>
+                              <li> Retiros directo a tu Wallet.</li>
+                              <li> Cursos y capacitaciones.</li>
+                              <li> Contrato individual.</li>
+                              <li> Protección de datos personales y financieros.</li>
+                              </ul>
                               <div class="buttons pd-t50">
                               <button class="btn1" data-type_user="3">REGISTRARSE</button>
                               </div>
@@ -68,8 +76,17 @@
                            <figure><img src="welcome_new/images/blog/1.jpg" alt=""/></figure>
                            <div class="content">
                               <h4><a href="#">SUSCRIPTOR</a></h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut laoreet ante et nibh tempus ornare. Duis blandit, ligula vitae auctor suscipit, mi felis sollicitudin ante, eget euismod diam velit et est. </p>
-                              <p>Proin sit amet libero lobortis, tempus turpis in, congue magna. Suspendisse ut nunc massa. Sed a quam a turpis elementum efficitur sed in lectus. Donec auctor vitae nisl eu volutpat. </p>
+                              <ul style= "list-style-type: disc;"> 
+                                 <li>Persona Jurídica.</li>
+                                 <li>Invierte capital empresarial.</li>
+                                 <li>Gestiona tus planes de inversión.</li>
+                                 <li>Información de tus inversiones planes y portafolio en tiempo real.</li>
+                                 <li>Equipo de Trading profesional y Bots 24/7.</li>
+                                 <li>Retiros directo a tu Wallet.</li>
+                                 <li>Cursos y capacitaciones.</li>
+                                 <li>Contrato empresarial.</li>
+                                 <li>Protección de datos empresariales personales y financieros.</li>
+                              </ul>
                               <div class="buttons pd-t50">
                                 <button class="btn1" data-type_user="2">REGISTRARSE</button>
                               </div>
@@ -81,8 +98,18 @@
                            <figure><img src="welcome_new/images/blog/1.jpg" alt=""/></figure>
                            <div class="content">
                               <h4><a href="#">BUSINESS</a></h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut laoreet ante et nibh tempus ornare. Duis blandit, ligula vitae auctor suscipit, mi felis sollicitudin ante, eget euismod diam velit et est. </p>
-                              <p>Proin sit amet libero lobortis, tempus turpis in, congue magna. Suspendisse ut nunc massa. Sed a quam a turpis elementum efficitur sed in lectus. Donec auctor vitae nisl eu volutpat. </p>
+                              <ul style= "list-style-type: disc;">
+                                 <li>Persona Natural.
+                                 <li>Socio comercial.</li>
+                                 <li>Gestiona la venta de planes de inversión a Clientes y Bussines.</li>
+                                 <li>Recibe comisiones por venta mensual.</li>
+                                 <li>Recibe comisiones sobre la rentabilidad.</li>
+                                 <li>Tiene un código único de suscriptor.</li>
+                                 <li>Contrato de distribución de servicios.</li>
+                                 <li>Paneles de información exclusiva.</li>
+                                 <li>Capacitaciones.</li>
+                                 <li>Retiros directo a su Wallet.</li>
+                              </ul>
                               <div class="buttons pd-t50">
                                  <button class="btn1" data-type_user="4">REGISTRARSE</button>
                               </div>
