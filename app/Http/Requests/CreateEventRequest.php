@@ -48,9 +48,9 @@ class CreateEventRequest extends FormRequest
     {
         $messages = [
             'title.required' => 'El campo titulo es obligatorio',
-            'title.max' => 'texto demasiado largo para el campo de título',
+            'title.max' => 'texto demasiado largo para el campo título',
             'description.required' => 'El campo descripción es obligatorio.',
-            'description.max' => 'texto demasiado largo para el campo de descripción.',
+            'description.max' => 'texto demasiado largo para el campo descripción.',
             'image.required' => 'El campo image es obligatorio.',
 
         ];
