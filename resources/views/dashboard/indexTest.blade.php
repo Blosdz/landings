@@ -15,8 +15,7 @@
       </div>
 @endsection
 
-  
-    <link rel="stylesheet" type="text/css" href="{{ url('test.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ url('test.css') }}"/>
 
     {-- <script type="module" src="testEvent/test.js"></script>--}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

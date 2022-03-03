@@ -16,6 +16,7 @@ use App\Models\Event;
 use DB;
 use Auth;
 use DateTime;
+use Carbon\Carbon;
 
 
 class EventController extends AppBaseController
@@ -185,17 +186,20 @@ class EventController extends AppBaseController
     public function allEvents()
     {
         $user_id = auth()->user()->id;
-        $dt = new DateTime();
+        //$dt = new DateTime();
 
         $myEvents = Event::join('user_events', 'events.id', '=', 'user_events.event_id')
-                ->where('user_events.user_id', $user_id)
-                ->get(['events.*', 'user_events.id']);
+                           ->where('user_events.user_id', $user_id)
+                           ->get(['events.*', 'user_events.id']);
 
+        //$fff = Carbon::now();
+        $yesterday = Carbon::yesterday();
+        $dt = Carbon::today();
 
-        $futureEvents = Event::where('date', '>',$dt)->get();
-        $pastEvents = Event::where('date', '<',$dt)->get();
+        $futureEvents = Event::whereDate('date', '>=',$dt)->get();
+        $pastEvents = Event::whereDate('date', '<=',$yesterday)->get();
 
-     return view('dashboard.table_test')->with(compact('myEvents','futureEvents','pastEvents'));
+        return view('dashboard.index')->with(compact('myEvents','futureEvents','pastEvents'));
     }
 
 }
