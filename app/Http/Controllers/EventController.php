@@ -206,7 +206,7 @@ class EventController extends AppBaseController
            $event_id_list[$key] = $value->event->id;
         }
 
-        $futureEvents = Event::whereDate('date', '>',$dt)
+        $futureEvents = Event::where('date', '>',$dt)
         ->whereNotIn('id',  $event_id_list ) 
         ->get();
 
