@@ -199,7 +199,7 @@ class EventController extends AppBaseController
         //$dt = Carbon::today();
 
         $dt = Carbon::Now();
-        $event_id_list;
+        $event_id_list[0] = "";
 
         foreach ($myEvents as $key => $value) {
 
