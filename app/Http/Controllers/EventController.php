@@ -186,13 +186,11 @@ class EventController extends AppBaseController
     public function allEvents()
     {
         $user_id = auth()->user()->id;
-        //$dt = new DateTime();
 
         $myEvents = Event::join('user_events', 'events.id', '=', 'user_events.event_id')
                            ->where('user_events.user_id', $user_id)
                            ->get(['events.*', 'user_events.id']);
 
-        //$fff = Carbon::now();
         $yesterday = Carbon::yesterday();
         $dt = Carbon::today();
 
