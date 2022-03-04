@@ -83,6 +83,18 @@
     <p>{!! Form::file('photo', ['required'=>'required', 'accept'=>'image/*']) !!}</p>
 </div>
 
+<div class="form-group col-sm-6">
+    {!! Form::label('photo', 'Foto de perfil:') !!}
+    <p>{!! Form::file('photo', ['required'=>'required', 'accept'=>'image/*']) !!}</p>
+</div>
+
+<div class="form-group col-sm-6">
+    <label><input type="checkbox" value="1" name="check1" > Acepto declaración jurada</label>
+</div>
+<div class="form-group col-sm-6">
+    <label><input type="checkbox" value="1" name="check2" > Acepto contrato</label>
+</div>
+
 
 
 

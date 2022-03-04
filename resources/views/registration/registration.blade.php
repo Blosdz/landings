@@ -75,7 +75,7 @@
                         <div class="blog">
                            <figure><img src="welcome_new/images/blog/1.jpg" alt=""/></figure>
                            <div class="content">
-                              <h4><a href="#">SUSCRIPTOR</a></h4>
+                              <h4><a href="#">BUSINESS</a></h4>
                               <ul style= "list-style-type: disc;"> 
                                  <li>Persona Jurídica.</li>
                                  <li>Invierte capital empresarial.</li>
@@ -88,7 +88,7 @@
                                  <li>Protección de datos empresariales personales y financieros.</li>
                               </ul>
                               <div class="buttons pd-t50">
-                                <button class="btn1" data-type_user="2">REGISTRARSE</button>
+                                <button class="btn1" data-type_user="4">REGISTRARSE</button>
                               </div>
                            </div>
                         </div>
@@ -97,7 +97,7 @@
                         <div class="blog">
                            <figure><img src="welcome_new/images/blog/1.jpg" alt=""/></figure>
                            <div class="content">
-                              <h4><a href="#">BUSINESS</a></h4>
+                              <h4><a href="#">SUSCRIPTOR</a></h4>
                               <ul style= "list-style-type: disc;">
                                  <li>Persona Natural.
                                  <li>Socio comercial.</li>
@@ -111,7 +111,7 @@
                                  <li>Retiros directo a su Wallet.</li>
                               </ul>
                               <div class="buttons pd-t50">
-                                 <button class="btn1" data-type_user="4">REGISTRARSE</button>
+                                 <button class="btn1" data-type_user="2">REGISTRARSE</button>
                               </div>
                            </div>
                         </div>
