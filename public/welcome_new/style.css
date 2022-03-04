@@ -2076,7 +2076,8 @@ div#clockdiv .smalltext {
 .blog-area .blog {
   display: block;
   position: relative;
-  background: #1a1c35;
+  height: 600px;
+  background: #1C2A5B;
   overflow: hidden;
   vertical-align: middle;
   border-radius: 22px;
@@ -2088,7 +2089,8 @@ div#clockdiv .smalltext {
   vertical-align: middle;
 }
 .blog-area .blog figure img {
-  width: 100%;
+  width: 390px;
+  height: 218px;
   display: block;
   transition: all 1.5s;
   border-radius: 22px;
@@ -2105,6 +2107,16 @@ div#clockdiv .smalltext {
   background: #1C2A5B;
   padding: 30px 35px;
 }
+.blog-area .blog .content p{
+  height: 138px;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+
 .blog-area .blog .content span {
   display: block;
   font-size: 14px;
@@ -2117,11 +2129,19 @@ div#clockdiv .smalltext {
 }
 .blog-area .blog .content h4 {
   font-weight: 700;
+  height: 43px;
 }
 .blog-area .blog .content h4 a {
   color: rgba(255, 255, 255, 0.61);
   padding-right: 20px;
   display: inline-block;
+  position: absolute;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
 }
 .blog-area .blog .content h4 a:hover {
   color: #3297cc;
