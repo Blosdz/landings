@@ -108,6 +108,21 @@
     {!! Form::text('wallet_account', null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group col-sm-6">
+    <label><input type="checkbox" value="1" name="check1" > Acepto declaración jurada</label>
+</div>
+<div class="form-group col-sm-6">
+    <label><input type="checkbox" value="1" name="check2" > Acepto contrato</label>
+</div>
+<div class="form-group col-sm-6">
+    <label><input type="checkbox" value="1" name="check2" > Declaración OFAQ </label>
+</div>
+<div class="form-group col-sm-6">
+    <label><input type="checkbox" value="1" name="check2" > Declaración de no estar expuesto políticamente </label>
+</div>
+<div class="form-group col-sm-6">
+    <label><input type="checkbox" value="1" name="check2" > Declaración de fondos</label>
+</div>
 
 
 
