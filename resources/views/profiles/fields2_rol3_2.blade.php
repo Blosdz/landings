@@ -78,6 +78,12 @@
     <img src="{{ url('/storage', $profile->id) }}" width="300px"/>
 </div>
 
+<div class="form-group col-sm-6">
+    <label><input type="checkbox" value="1" name="check1" id="check1" checked> Acepto declaración jurada</label>
+</div>
+<div class="form-group col-sm-6">
+    <label><input type="checkbox" value="1" name="check2" id="check2" checked> Acepto contrato</label>
+</div>
 
 
 
