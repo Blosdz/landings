@@ -25,8 +25,20 @@ class UpdateEventRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Event::$rules;
-        
+        $rules = [
+            'title' => 'required|max:255',
+            'description'=> 'required|max:1000',
+        ];
+
         return $rules;
+    }
+    public function messages()
+    {
+        return  [
+            'title.required' => 'El campo titulo es obligatorio',
+            'title.max' => 'texto demasiado largo para el campo título',
+            'description.required' => 'El campo descripción es obligatorio.',
+            'description.max' => 'texto demasiado largo para el campo descripción.',
+        ];
     }
 }

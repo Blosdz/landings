@@ -74,3 +74,5 @@ Route::resource('events', App\Http\Controllers\EventController::class);
 Route::get('/rejection-history/{user_id}',[App\Http\Controllers\RejectionHistoryController::class,'rejectionHistory'])->name('rejectionHistory');
 Route::get('/rejection-history-show/{id}',[App\Http\Controllers\RejectionHistoryController::class,'show'])->name('rejectionHistory.show');
 Route::get('/dashboard',[App\Http\Controllers\EventController::class,'allEvents'])->name('dashboard');
+Route::get('/enroll-event/{id}',[App\Http\Controllers\EventController::class,'enroll'])->name('enroll');
+

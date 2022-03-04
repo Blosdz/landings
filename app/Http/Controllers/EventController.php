@@ -16,6 +16,7 @@ use App\Models\Event;
 use DB;
 use Auth;
 use DateTime;
+use Carbon\Carbon;
 
 
 class EventController extends AppBaseController
@@ -185,17 +186,59 @@ class EventController extends AppBaseController
     public function allEvents()
     {
         $user_id = auth()->user()->id;
-        $dt = new DateTime();
 
-        $myEvents = Event::join('user_events', 'events.id', '=', 'user_events.event_id')
-                ->where('user_events.user_id', $user_id)
-                ->get(['events.*', 'user_events.id']);
+        $myEvents = UserEvent::where('user_id',$user_id)
+        ->with('event')
+        ->get();
 
+        //$myEvents = Event::join('user_events', 'events.id', '=', 'user_events.event_id')
+          //                 ->where('user_events.user_id', $user_id)
+            //               ->get(['events.*', 'user_events.id']);
 
-        $futureEvents = Event::where('date', '>',$dt)->get();
-        $pastEvents = Event::where('date', '<',$dt)->get();
+        //$yesterday = Carbon::yesterday();
+        //$dt = Carbon::today();
 
-     return view('dashboard.index')->with(compact('myEvents','futureEvents','pastEvents'));
+        $dt = Carbon::Now();
+        $event_id_list[0] = "";
+
+        foreach ($myEvents as $key => $value) {
+
+           $event_id_list[$key] = $value->event->id;
+        }
+
+        $futureEvents = Event::where('date', '>',$dt)
+        ->whereNotIn('id',  $event_id_list ) 
+        ->get();
+
+        $pastEvents = Event::where('date', '<',$dt)
+        ->whereNotIn('id',  $event_id_list ) 
+        ->get();
+
+        return view('dashboard.index')->with(compact('myEvents','futureEvents','pastEvents'));
     }
+
+    public function enroll($id)
+    {
+        //$input = $request->all();
+
+        //$userEvent = $this->userEventRepository->create($input);
+
+        $user_id = auth()->user()->id;
+        $dt = Carbon::Now();
+
+        $UserEvent = UserEvent::create([
+        'user_id' => $user_id,
+        'event_id' => $id,
+        'inscription_date' => $dt
+        ]);
+
+        Flash::success('registro de evento exitoso.');
+
+        return redirect(route('dashboard'));
+    }
+
+
+     
+
 
 }
