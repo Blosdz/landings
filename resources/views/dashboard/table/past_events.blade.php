@@ -11,7 +11,7 @@
                             <span><i class="fa  fa-calendar-o"></i>{{ $event->date }}</span>
                             <h5>{{ $event->title }}</h5>
                             <p>{{ $event->description }}</p>
-                            <a href="{{$event->link_meet}}" class="blog-btn">LINK: {{ $event->link_meet }} </a>
+                            <a href="{{$event->link_recording}}" class="blog-btn">LINK: {{ $event->link_recording }} </a>
                         </div>
                     </div>
                 </div>

@@ -73,6 +73,13 @@
     </a>
 </li>
 
+<li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>dashboard</span>
+    </a>
+</li>
+
 @php
   }
   if( $user->rol == 3 ) {
@@ -92,6 +99,14 @@
     </a>
 </li>
 
+<li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>dashboard</span>
+    </a>
+</li>
+
+
 @php
   }
   if( $user->rol == 4 ) {
@@ -101,6 +116,13 @@
     <a class="nav-link" href="{{ route('profiles.user') }}">
         <i class="nav-icon icon-cursor"></i>
         <span>Verificacion</span>
+    </a>
+</li>
+
+<li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>dashboard</span>
     </a>
 </li>
 
@@ -115,9 +137,4 @@
     </a>
 </li>
 
-<li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('dashboard') }}">
-        <i class="nav-icon icon-cursor"></i>
-        <span>dashboard</span>
-    </a>
-</li>
+
