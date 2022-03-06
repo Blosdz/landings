@@ -89,10 +89,10 @@
 </div>
 
 <div class="form-group col-sm-6">
-    <label><input type="checkbox" value="1" name="check1" > Acepto declaración jurada</label>
+    <label><input type="checkbox" value="1" name="check1" id="check1" class="checks"> Acepto declaración jurada</label>
 </div>
 <div class="form-group col-sm-6">
-    <label><input type="checkbox" value="1" name="check2" > Acepto contrato</label>
+    <label><input type="checkbox" value="1" name="check2" id="check2" class="checks"> Acepto contrato</label>
 </div>
 
 
@@ -109,6 +109,17 @@
 </div>
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Enviar a revision', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Enviar a revision', ['class' => 'btn btn-primary', 'id'=>'btn-send', 'disabled'=>'disabled']) !!}
 </div>
 
+<script>
+    $( document ).ready(function() {
+        
+        $('.checks').change(function(){
+            $('#btn-send').prop('disabled', true);
+            if ( $('#check1').is(':checked') && $('#check2').is(':checked') ) {
+                $('#btn-send').prop('disabled', false);
+            }
+        });
+    });
+</script>

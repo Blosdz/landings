@@ -109,19 +109,19 @@
 </div>
 
 <div class="form-group col-sm-6">
-    <label><input type="checkbox" value="1" name="check1" > Acepto declaración jurada</label>
+    <label><input type="checkbox" value="1" name="check1"  id="check1" class="checks"> Acepto declaración jurada</label>
 </div>
 <div class="form-group col-sm-6">
-    <label><input type="checkbox" value="1" name="check2" > Acepto contrato</label>
+    <label><input type="checkbox" value="1" name="check2"  id="check2" class="checks"> Acepto contrato</label>
 </div>
 <div class="form-group col-sm-6">
-    <label><input type="checkbox" value="1" name="check2" > Declaración OFAQ </label>
+    <label><input type="checkbox" value="1" name="check3"  id="check3" class="checks"> Declaración OFAQ </label>
 </div>
 <div class="form-group col-sm-6">
-    <label><input type="checkbox" value="1" name="check2" > Declaración de no estar expuesto políticamente </label>
+    <label><input type="checkbox" value="1" name="check4"  id="check4" class="checks"> Declaración de no estar expuesto políticamente </label>
 </div>
 <div class="form-group col-sm-6">
-    <label><input type="checkbox" value="1" name="check2" > Declaración de fondos</label>
+    <label><input type="checkbox" value="1" name="check5"  id="check5" class="checks"> Declaración de fondos</label>
 </div>
 
 
@@ -136,6 +136,17 @@
 </div>
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Enviar a revision', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Enviar a revision', ['class' => 'btn btn-primary', 'id'=>'btn-send', 'disabled'=>'disabled']) !!}
 </div>
 
+<script>
+    $( document ).ready(function() {
+        
+        $('.checks').change(function(){
+            $('#btn-send').prop('disabled', true);
+            if ( $('#check1').is(':checked') && $('#check2').is(':checked') && $('#check3').is(':checked') && $('#check4').is(':checked') && $('#check5').is(':checked') ) {
+                $('#btn-send').prop('disabled', false);
+            }
+        });
+    });
+</script>
