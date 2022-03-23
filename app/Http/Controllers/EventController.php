@@ -232,7 +232,7 @@ class EventController extends AppBaseController
         'inscription_date' => $dt
         ]);
 
-        Flash::success('registro de evento exitoso.');
+        //Flash::success('registro de evento exitoso.');
 
         return redirect(route('dashboard'));
     }
