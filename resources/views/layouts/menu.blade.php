@@ -76,7 +76,7 @@
 <li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>dashboard</span>
+        <span>Eventos</span>
     </a>
 </li>
 
@@ -102,7 +102,7 @@
 <li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>dashboard</span>
+        <span>Eventos</span>
     </a>
 </li>
 
@@ -121,7 +121,7 @@
 <li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>dashboard</span>
+        <span>Eventos</span>
     </a>
 </li>
 
