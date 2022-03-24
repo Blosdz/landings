@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 use Illuminate\Support\Facades\Auth;
-
+use Monarobase\CountryList\CountryListFacade;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
@@ -109,7 +109,9 @@ class ProfileController extends AppBaseController
             return redirect(route('profiles.index'));
         }
 
-        return view('profiles.edit')->with('profile', $profile);
+        $countries = CountryListFacade::getList('es');
+
+        return view('profiles.edit')->with('profile', $profile)->with('countries', $countries);
     }
 
     /**
@@ -203,13 +205,15 @@ class ProfileController extends AppBaseController
             return redirect(route('profiles.index'));
         }
 
-        return view('profiles.edit2')->with('profile', $profile);
+        $countries = CountryListFacade::getList('es');
+
+        return view('profiles.edit2')->with('profile', $profile)->with('countries', $countries);
     }
 
     public function update2($id, UpdateProfileRequest $request)
     {
         $profile = $this->profileRepository->find($id);
-
+        
         if (empty($profile)) {
             Flash::error('Profile not found');
 
@@ -253,9 +257,27 @@ class ProfileController extends AppBaseController
             $file->storeAs($path, $filename2);
         }
 
+        $path = 'profile/';
+        if($request->hasFile('profile_picture')){
+            if ( ! Storage::exists($path)) {
+                Storage::makeDirectory('public/'.$path, 0777, true);
+            }
+        
+            $file = $request->file('profile_picture');
+            $extantion = $file->getClientOriginalExtension();
+            $prefix = "profile";
+            $dealer_name = $prefix.'-'.uniqid();
+
+            $filename3 = $dealer_name.'.'.$extantion;
+            $path = 'public/'.$path;
+            $file->storeAs($path, $filename3);
+        }
+
         $data["verified"] = 1;
         $data["dni"] = substr($path.$filename, 7);
         $data["dni_r"] = substr($path.$filename2, 7);
+        $data["profile_picture"] = substr($path.$filename3, 7);
+
         //dd($data);
         $profile = $this->profileRepository->update($data, $id);
 
