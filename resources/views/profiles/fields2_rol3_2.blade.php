@@ -33,7 +33,7 @@
 <!-- Country Document Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('country_document', 'País emisor del documento de identidad:') !!}
-    {!! Form::select('country_document', $countries, $profile->country_document, ['class' => 'form-control','autocomplete'=>'off']) !!}
+    {!! Form::text('country_document',null, ['class' => 'form-control','autocomplete'=>'off']) !!}
 </div>
 
 <!-- Sex Field -->
@@ -62,7 +62,7 @@
 <!-- City Field -->
     <div class="form-group col-sm-3">
         {!! Form::label('country', 'País:') !!}
-        {!! Form::select('country', $countries, $profile->country, ['class' => 'form-control', 'style' => 'width: 180px; ','empty'=>'Seleccionar','autocomplete'=>'off']) !!}
+        {!! Form::select('country',[],null, ['class' => 'form-control client_country', 'style' => 'width: 180px; ','empty'=>'Seleccionar','autocomplete'=>'off']) !!}
     </div>
 
     <div class="form-group col-sm-3">

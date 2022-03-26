@@ -109,9 +109,7 @@ class ProfileController extends AppBaseController
             return redirect(route('profiles.index'));
         }
 
-        $countries = CountryListFacade::getList('es');
-
-        return view('profiles.edit')->with('profile', $profile)->with('countries', $countries);
+        return view('profiles.edit')->with('profile', $profile);
     }
 
     /**
@@ -205,9 +203,7 @@ class ProfileController extends AppBaseController
             return redirect(route('profiles.index'));
         }
 
-        $countries = CountryListFacade::getList('es');
-
-        return view('profiles.edit2')->with('profile', $profile)->with('countries', $countries);
+        return view('profiles.edit2')->with('profile', $profile);
     }
 
     public function update2($id, UpdateProfileRequest $request)

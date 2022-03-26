@@ -151,11 +151,11 @@
             $temp.remove();
         }
         
-        if($('#country_document').length){
+        if($('.subscribe_country').length){
             var $html = "";
             for (let index = 0; index < countries.countries.length; index++) {
                 console.log(countries.countries[index].name);
-                $html += '<option value="'+countries.countries[index].name+'">'+countries.countries[index].name+'</option>';
+                $html += '<option value="'+countries.countries[index].name + '" ' + ((countries.countries[index].name == @json($profile->country)) ? "selected" : "" )+'>'+countries.countries[index].name+'</option>';            
             }
             //console.log($html);
             $('#country_document').append($html);
@@ -164,6 +164,15 @@
             $('#country').append($html);
             $('#country2').append($html);
             $('#country3').append($html);
+        }
+        
+        if($('.client_country').length){
+            var $html = "";
+            for (let index = 0; index < countries.countries.length; index++) {
+                console.log(countries.countries[index].name);
+                $html += '<option value="'+countries.countries[index].name + '" ' + ((countries.countries[index].name == @json($profile->country)) ? "selected" : "" )+'>'+countries.countries[index].name+'</option>';
+            }
+            $('#country').append($html);
         }
     });
 </script>

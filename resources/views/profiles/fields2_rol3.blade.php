@@ -36,9 +36,7 @@
 <!-- Country Document Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('country_document', 'País emisor del documento de identidad:') !!}
-    {!! Form::select('country_document', $countries, $profile->country_document, ['class' => 'form-control','autocomplete'=>'off']) !!}
-    <!-- {!! Form::label('number_document', preg_replace('~&([a-z]{1,2})(acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i', '$1', htmlentities(mb_substr($profile->country_document ,0, 2), ENT_QUOTES, 'UTF-8'))) !!}-->
-    <!-- {!! Form::select('country_document', $countries, Str::upper(strtr(utf8_decode(mb_substr($profile->country_document ,0, 2)), utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'),'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY')),['class' => 'form-control','autocomplete'=>'off']) !!}-->
+    {!! Form::text('country_document', null, ['class' => 'form-control','autocomplete'=>'off']) !!}
 </div>
 
 <!-- Sex Field -->
@@ -67,7 +65,7 @@
 <!-- City Field -->
     <div class="form-group col-sm-3">
         {!! Form::label('country', 'País:') !!}
-        {!! Form::select('country', $countries, $profile->country, ['class' => 'form-control', 'style' => 'width: 180px; ','autocomplete'=>'off']) !!}
+        {!! Form::select('country',[], null, ['class' => 'form-control client_country', 'style' => 'width: 180px; ','autocomplete'=>'off']) !!}
     </div>
 
     <div class="form-group col-sm-3">
