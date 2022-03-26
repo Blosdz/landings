@@ -1,12 +1,12 @@
 <!-- Dni Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('dni', 'Dni Frontal:') !!}
-    <p>{!! Form::file('file', ['accept'=>'image/*']) !!}</p>
+    <p>{!! Form::file('file', ['required'=>'required','accept'=>'image/*']) !!}</p>
 </div>
 
 <div class="form-group col-sm-6">
     {!! Form::label('dni_r', 'Dni Reverso:') !!}
-    <p>{!! Form::file('file_r', ['accept'=>'image/*']) !!}</p>
+    <p>{!! Form::file('file_r', ['required'=>'required','accept'=>'image/*']) !!}</p>
 </div>
 
 <!-- First Name Field -->
@@ -95,7 +95,7 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('photo', 'Carga una foto de perfil:') !!}
-    <p>{!! Form::file('profile_picture', ['accept'=>'image/*']) !!}</p>
+    <p>{!! Form::file('profile_picture', ['required'=>'required','accept'=>'image/*']) !!}</p>
 </div>
 
 <div class="form-group col-sm-6">
