@@ -62,7 +62,7 @@
 <!-- City Field -->
     <div class="form-group col-sm-3">
         {!! Form::label('country', 'País:') !!}
-        {!! Form::select('country',[],null, ['class' => 'form-control client_country', 'style' => 'width: 180px; ','empty'=>'Seleccionar','autocomplete'=>'off']) !!}
+        {!! Form::text('country',null, ['class' => 'form-control client_country', 'style' => 'width: 180px; ','empty'=>'Seleccionar','autocomplete'=>'off']) !!}
     </div>
 
     <div class="form-group col-sm-3">
@@ -86,6 +86,11 @@
     {!! Form::label('photo', 'Foto de perfil:') !!}
     <br>
     <img src="{{ url('/storage', $profile->profile_picture) }}" width="300px"/>
+</div>
+
+<div class="form-group col-sm-6">
+    {!! Form::label('address_wallet', 'Dirección Wallet:') !!}
+    {!! Form::text('address_wallet', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group col-sm-6" style="display: none;">
