@@ -1,24 +1,24 @@
 <!-- Dni Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('dni', 'Cargar foto de DNI frontal:') !!}
-    <p>{!! Form::file('file', ['required'=>'required', 'accept'=>'image/*']) !!}</p>
+    <p>{!! Form::file('dni', ['required'=>'required', 'accept'=>'image/*']) !!}</p>
 </div>
 
 <div class="form-group col-sm-6">
     {!! Form::label('dni_r', 'Cargar foto de DNI posterior:') !!}
-    <p>{!! Form::file('file_r', ['required'=>'required', 'accept'=>'image/*']) !!}</p>
+    <p>{!! Form::file('dni_r', ['required'=>'required', 'accept'=>'image/*']) !!}</p>
 </div>
 
 <!-- First Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('first_name', 'Nombres:') !!}
-    {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
+    {!! Form::text('first_name', null, ['class' => 'form-control','maxlength' => '30']) !!}
 </div>
 
 <!-- Lastname Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('lastname', 'Apellidos:') !!}
-    {!! Form::text('lastname', null, ['class' => 'form-control']) !!}
+    {!! Form::text('lastname', null, ['class' => 'form-control','maxlength' => '30']) !!}
 </div>
 
 <!-- Type Document Field -->
@@ -30,13 +30,13 @@
 <!-- Number Document Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('number_document', 'Número de documento de indentidad:') !!}
-    {!! Form::text('identification_number', null, ['class' => 'form-control',  'onkeypress'=>'return isNumber(event)']) !!}
+    {!! Form::text('identification_number', null, ['class' => 'form-control',  'onkeypress'=>'return isNumber(event)','maxlength' => '9']) !!}
 </div>
 
 <!-- Country Document Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('country_document', 'País emisor del documento de identidad:') !!}
-    {!! Form::text('country_document', null, ['class' => 'form-control','autocomplete'=>'off']) !!}
+    {!! Form::select('country_document',[], null, ['class' => 'form-control','autocomplete'=>'off']) !!}
 </div>
 
 <!-- Sex Field -->
@@ -70,11 +70,11 @@
 
     <div class="form-group col-sm-3">
         {!! Form::label('city', 'Región:') !!}
-        {!! Form::text('city', null, ['class' => 'form-control']) !!}
+        {!! Form::text('city', null, ['class' => 'form-control','maxlength' => '20']) !!}
     </div>
     <div class="form-group col-sm-3">
         {!! Form::label('state', 'Cuidad:') !!}
-        {!! Form::text('state', null, ['class' => 'form-control']) !!}
+        {!! Form::text('state', null, ['class' => 'form-control','maxlength' => '20']) !!}
     </div>
 </div>
 
@@ -82,7 +82,7 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('address', 'Dirección de residencia:') !!}
-    {!! Form::text('address', null, ['class' => 'form-control']) !!}
+    {!! Form::text('address', null, ['class' => 'form-control','maxlength' => '50']) !!}
 </div>
 
 <div class="form-group col-sm-6">
@@ -97,7 +97,7 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('address_wallet', 'Dirección de tu Wallet:') !!}
-    {!! Form::text('address_wallet', null, ['class' => 'form-control']) !!}
+    {!! Form::text('address_wallet', null, ['class' => 'form-control','maxlength' => '100']) !!}
 </div>
 
 <div class="form-group col-sm-6" style="display: none;">
