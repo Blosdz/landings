@@ -21,12 +21,12 @@ trait MakeFile
       $file->storeAs('public/'.$filePath, $name);
       return $input;
     }
-    public function updateFile($request,$filePath,$value,$typeFile)
+    public function updateFile($request,$filePath,$value,$typeFile,$input)
     {
       if (!file_exists(storage_path($filePath))) {
          Storage::makeDirectory('public/'.$filePath, 0777, true);
       }
-      $input = $request->all();
+
       $file = $request->file($typeFile);
       $name = uniqid().'.'.$file->getClientOriginalExtension();
       $path = $filePath.$name;

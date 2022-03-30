@@ -8,7 +8,7 @@
                     <div class="blog">
                         <figure><img src="{{ asset('storage/'.$data->event->image) }}" alt=""/></figure>
                         <div class="content">
-                            <span><i class="fa  fa-calendar-o"></i> {{ $data->event->date }}</span>
+                            <span><i class="fa  fa-calendar-o"></i> {{ $data->event->date->toFormattedDateString() }}</span>
                             <h5>{{ $data->event->title }}</h5>
                             <p>{{ $data->event->description }}</p>
                             <a href="{{$data->event->link_meet}}" class="blog-btn">LINK: {{ $data->event->link_meet }} </a>

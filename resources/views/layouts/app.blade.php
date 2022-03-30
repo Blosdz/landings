@@ -166,19 +166,41 @@
             $temp.remove();
         }
         
-        if($('#country_document').length){
-            var $html = "";
+        if($('.subscribe_country').length){
+            var $html_country_document = "";
+            var $html_country_document2 = "";
+            var $html_country_document3 = "";
+            var $html_country = "";
+            var $html_country2 = "";
+            var $html_country3 = "";
+
             for (let index = 0; index < countries.countries.length; index++) {
                 console.log(countries.countries[index].name);
-                $html += '<option value="'+countries.countries[index].name+'">'+countries.countries[index].name+'</option>';
+                $html_country_document += '<option value="'+countries.countries[index].name + '" ' + ((countries.countries[index].name == @json($profile->country_document)) ? "selected" : "" )+'>'+countries.countries[index].name+'</option>';            
+                $html_country_document2 += '<option value="'+countries.countries[index].name + '" ' + ((countries.countries[index].name == @json($profile->country_document2)) ? "selected" : "" )+'>'+countries.countries[index].name+'</option>';            
+                $html_country_document3 += '<option value="'+countries.countries[index].name + '" ' + ((countries.countries[index].name == @json($profile->country_document3)) ? "selected" : "" )+'>'+countries.countries[index].name+'</option>';            
+                $html_country += '<option value="'+countries.countries[index].name + '" ' + ((countries.countries[index].name == @json($profile->country)) ? "selected" : "" )+'>'+countries.countries[index].name+'</option>';
+                $html_country2 += '<option value="'+countries.countries[index].name + '" ' + ((countries.countries[index].name == @json($profile->country2)) ? "selected" : "" )+'>'+countries.countries[index].name+'</option>';            
+                $html_country3 += '<option value="'+countries.countries[index].name + '" ' + ((countries.countries[index].name == @json($profile->country3)) ? "selected" : "" )+'>'+countries.countries[index].name+'</option>';                        
             }
             //console.log($html);
-            $('#country_document').append($html);
-            $('#country_document2').append($html);
-            $('#country_document3').append($html);
-            $('#country').append($html);
-            $('#country2').append($html);
-            $('#country3').append($html);
+            $('#country_document').append($html_country_document);
+            $('#country_document2').append($html_country_document2);
+            $('#country_document3').append($html_country_document3);
+            $('#country').append($html_country);
+            $('#country2').append($html_country2);
+            $('#country3').append($html_country3);
+        }
+        
+        if($('.client_country').length ){
+            var $html_country = "";
+            var $html_country_document = "";
+            for (let index = 0; index < countries.countries.length; index++) {
+                $html_country += '<option value="'+countries.countries[index].name + '" ' + ((countries.countries[index].name == @json($profile->country)) ? "selected" : "" )+'>'+countries.countries[index].name+'</option>';
+                $html_country_document += '<option value="'+countries.countries[index].name + '" ' + ((countries.countries[index].name == @json($profile->country_document)) ? "selected" : "" )+'>'+countries.countries[index].name+'</option>';
+            }
+            $('#country').append($html_country);
+            $('#country_document').append($html_country_document);
         }
     });
 </script>

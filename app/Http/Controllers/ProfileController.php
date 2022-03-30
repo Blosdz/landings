@@ -14,14 +14,16 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 use Illuminate\Support\Facades\Auth;
-
+use Monarobase\CountryList\CountryListFacade;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use App\Traits\MakeFile;
 
 class ProfileController extends AppBaseController
 {
     /** @var  ProfileRepository */
     private $profileRepository;
+    use MakeFile;
 
     public function __construct(ProfileRepository $profileRepo)
     {
@@ -102,7 +104,7 @@ class ProfileController extends AppBaseController
     {
         //$profile = $this->profileRepository->find($id);
         $profile = Profile::where('id', $id)->with('user')->first();
-
+        
         if (empty($profile)) {
             Flash::error('Profile not found');
 
@@ -209,7 +211,7 @@ class ProfileController extends AppBaseController
     public function update2($id, UpdateProfileRequest $request)
     {
         $profile = $this->profileRepository->find($id);
-
+        
         if (empty($profile)) {
             Flash::error('Profile not found');
 
@@ -218,6 +220,7 @@ class ProfileController extends AppBaseController
 
         $data = $request->all();
 
+        /*
         //dd($data);
 
         $path = 'profile/';
@@ -253,10 +256,50 @@ class ProfileController extends AppBaseController
             $file->storeAs($path, $filename2);
         }
 
+        $path = 'profile/';
+        if($request->hasFile('profile_picture')){
+            if ( ! Storage::exists($path)) {
+                Storage::makeDirectory('public/'.$path, 0777, true);
+            }
+        
+            $file = $request->file('profile_picture');
+            $extantion = $file->getClientOriginalExtension();
+            $prefix = "profile";
+            $dealer_name = $prefix.'-'.uniqid();
+
+            $filename3 = $dealer_name.'.'.$extantion;
+            $path = 'public/'.$path;
+            $file->storeAs($path, $filename3);
+        }
+
         $data["verified"] = 1;
         $data["dni"] = substr($path.$filename, 7);
         $data["dni_r"] = substr($path.$filename2, 7);
+        $data["profile_picture"] = substr($path.$filename3, 7);
+
         //dd($data);
+        */
+
+        $file_fields;
+        $file_fields[0] = "dni";
+        $file_fields[1] = "dni_r"; 
+        $file_fields[2] = "profile_picture"; 
+        $file_fields[3] = "dni2";
+        $file_fields[4] = "dni2_r"; 
+        $file_fields[5] = "profile_picture2"; 
+        $file_fields[6] = "dni3";
+        $file_fields[7] = "dni3_r"; 
+        $file_fields[8] = "profile_picture3"; 
+ 
+        for ( $i = 0; $i < sizeof($file_fields); $i++)
+        {
+            if ($request->hasFile($file_fields[$i])) {
+                $filePath = 'profile/';
+                $input = $data;
+                $data = $this->updateFile($request,$filePath,$profile,$file_fields[$i],$input);
+            }
+        }
+
         $profile = $this->profileRepository->update($data, $id);
 
         Flash::success('Verificacion de informacion guardado correctamente.');

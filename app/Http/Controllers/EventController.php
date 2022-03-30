@@ -145,8 +145,8 @@ class EventController extends AppBaseController
 
         $file = 'image';
         if ($request->hasFile($file)) {
-          $filePath = 'image/event/';   
-          $input = $this->updateFile($request,$filePath,$event,$file);
+          $filePath = 'image/event/'; 
+          $input = $this->updateFile($request,$filePath,$event,$file,$input);
         }
         $event = $this->eventRepository->update($input, $id);
 
@@ -232,7 +232,7 @@ class EventController extends AppBaseController
         'inscription_date' => $dt
         ]);
 
-        Flash::success('registro de evento exitoso.');
+        //Flash::success('registro de evento exitoso.');
 
         return redirect(route('dashboard'));
     }
