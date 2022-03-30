@@ -43,6 +43,21 @@
 <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@2.1.16/dist/js/coreui.min.js"></script>
 @stack('scripts')
 
+<style>
+    .sidebar{
+        background: #09114A !important;
+    }
+    .sidebar .nav-link.active {
+        background: #0079BE;
+    }
+    .sidebar-minimized .sidebar .sidebar-minimizer {
+        background-color: #09114A;
+    }
+    .main{
+        background: #F4F6F9;
+    }
+</style>
+
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
 <header class="app-header navbar">
