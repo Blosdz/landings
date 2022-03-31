@@ -290,6 +290,10 @@ class ProfileController extends AppBaseController
         $file_fields[6] = "dni3";
         $file_fields[7] = "dni3_r"; 
         $file_fields[8] = "profile_picture3"; 
+
+        $file_fields[9] = "business_file"; 
+        $file_fields[10] = "power_file"; 
+        $file_fields[11] = "taxes_file"; 
  
         for ( $i = 0; $i < sizeof($file_fields); $i++)
         {

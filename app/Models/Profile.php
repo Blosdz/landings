@@ -104,6 +104,10 @@ class Profile extends Model
         'profile_picture3',
         'address_wallet3',
         'identification_number3',
+
+        'business_file',
+        'power_file',
+        'taxes_file',
     ];
 
     /**
