@@ -68,7 +68,7 @@
 <!-- Country Document Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('country_document', 'País emisor del documento de identidad:') !!}
-    {!! Form::select('country_document',[], null, ['class' => 'form-control','autocomplete'=>'off']) !!}
+    {!! Form::select('country_document',$countries, null, ['class' => 'form-control','autocomplete'=>'off']) !!}
 </div>
 
 <!-- Sex Field -->
@@ -97,7 +97,7 @@
 <!-- City Field -->
     <div class="form-group col-sm-3">
         {!! Form::label('country', 'País:') !!}
-        {!! Form::select('country',[], null, ['class' => 'form-control client_country', 'style' => 'width: 180px; ','autocomplete'=>'off']) !!}
+        {!! Form::select('country',$countries, null, ['class' => 'form-control client_country', 'style' => 'width: 180px; ','autocomplete'=>'off']) !!}
     </div>
 
     <div class="form-group col-sm-3">
@@ -167,11 +167,11 @@
     {!! Form::label('job', 'Ocupación o profesión:') !!}
     {!! Form::text('job', null, ['class' => 'form-control', 'value'=>'-']) !!}
 </div>
-<input type="text" class="d-none" id="csrftoken" value="B2SIxFckWktKWPotziVPaSpwzPLgOQ4K52EhB8lU">
+<input type="text" class="d-none" id="csrftoken" value="DRkTPyJFOmAKia3Eg7gtdunSJvGIaLPvu6bkcu2G">
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Enviar a revision', ['class' => 'btn btn-primary save5', 'id'=>'btn-send']) !!}
+    {!! Form::submit('Enviar a revision', ['class' => 'btn btn-primary save2', 'id'=>'btn-send']) !!}
 </div>
 <script src="{{ asset('upload_file.js') }}"></script>
 <script>
