@@ -105,7 +105,7 @@
     <div class="row" id="dni_fileewew">
         <div class="custom-file col-6 ml-2" id="rrrewewe">
             {!! Form::label('dni', "Select file",array('class' => 'custom-file-label ','for'=>'image','id'=>'file_input_label_business_file')) !!}
-            <input type="file"  class="custom-file-input" name="business_file" id="business_file" oninput="input_filename(event);" tofill="" onclick="check_progress_bar(event)">
+            <input type="file"  accept="application/pdf" class="custom-file-input" name="business_file" id="business_file" oninput="input_filename(event);" tofill="" onclick="check_progress_bar(event)">
             <input type="text" class="d-none" id="hide_business_file"   value = {{ $profile->business_file }}>
         </div>
 
@@ -146,7 +146,7 @@
     <div class="row" id="taxes_file_sw">
         <div class="custom-file col-6 ml-2" id="taxes_file_s2w">
             {!! Form::label('dni', "Select file",array('class' => 'custom-file-label ','for'=>'image','id'=>'file_input_label_taxes_file')) !!}
-            <input type="file"  class="custom-file-input" name="taxes_file" id="taxes_file" oninput="input_filename(event);" tofill="" onclick="check_progress_bar(event)">
+            <input type="file" accept="application/pdf" class="custom-file-input" name="taxes_file" id="taxes_file" oninput="input_filename(event);" tofill="" onclick="check_progress_bar(event)">
             <input type="text" class="d-none" id="hide_taxes_file"   value = {{ $profile->taxes_file }}>
         </div>
 
