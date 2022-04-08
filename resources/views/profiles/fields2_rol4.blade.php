@@ -1,12 +1,44 @@
 <!-- Dni Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col" >
     {!! Form::label('dni', 'Cargar foto de DNI frontal del representante legal:') !!}
-    <p>{!! Form::file('dni', ['required'=>'required', 'accept'=>'image/*']) !!}</p>
+    <div class="row" id="dni_file">
+        <div class="custom-file col-6 ml-2" id="rrr">
+            {!! Form::label('dni', "Select file",array('class' => 'custom-file-label ','for'=>'image','id'=>'file_input_label_dni')) !!}
+            <input type="file" accept="image/*" class="custom-file-input" name="dni" id="dni" oninput="input_filename(event);" tofill="" onclick="check_progress_bar(event)">
+            <input type="text" class="d-none" id="hide_dni"   value = {{ $profile->dni }}>
+        </div>
+
+        <div class="col-5 d-none" id="show_progress_bar_dni">
+            <button class="btn btn-primary" id="loading_btn_dni" type="button" disabled >
+            </button>
+            <button type="button" id="cancel_btn_dni" class="btn btn-secondary "> Cancelar Carga </button>
+        </div>
+
+        <div class="col-5 d-none" id="alert_wrapper_dni">
+        </div>
+    </div>
+
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col">
     {!! Form::label('dni_r', 'Cargar foto de DNI posterior del representante legal:') !!}
-    <p>{!! Form::file('dni_r', ['required'=>'required', 'accept'=>'image/*']) !!}</p>
+    <div class="row" id="dni_file2">
+        <div class="custom-file col-6 ml-2" id="rrr2">
+            {!! Form::label('dni', "Select file",array('class' => 'custom-file-label ','for'=>'image','id'=>'file_input_label_dni_r')) !!}
+            <input type="file" accept="image/*" class="custom-file-input" name="dni_r" id="dni_r" oninput="input_filename(event);" tofill="" onclick="check_progress_bar(event)">
+            <input type="text" class="d-none" id="hide_dni_r"   value = {{ $profile->dni_r }}>    
+        </div>
+
+        <div class="col-5 d-none" id="show_progress_bar_dni_r">
+            <button class="btn btn-primary" id="loading_btn_dni_r" type="button" disabled >
+            </button>
+            <button type="button" id="cancel_btn_dni_r" class="btn btn-secondary "> Cancelar Carga </button>
+        </div>
+
+        <div class="col-4 d-none" id="alert_wrapper_dni_r">
+        </div>
+    </div>
+
 </div>
 
 <!-- First Name Field -->
@@ -36,7 +68,7 @@
 <!-- Country Document Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('country_document', 'País emisor del documento de identidad del representante legal:') !!}
-    {!! Form::select('country_document',[], null, ['class' => 'form-control','autocomplete'=>'off']) !!}
+    {!! Form::select('country_document',$countries, null, ['class' => 'form-control','autocomplete'=>'off']) !!}
 </div>
 
 <!-- Birthdate Field -->
@@ -53,7 +85,7 @@
 <!-- City Field -->
     <div class="form-group col-sm-3">
         {!! Form::label('country', 'País:') !!}
-        {!! Form::select('country',[], null, ['class' => 'form-control client_country', 'style' => 'width: 180px; ','autocomplete'=>'off']) !!}
+        {!! Form::select('country',$countries, null, ['class' => 'form-control client_country', 'style' => 'width: 180px; ','autocomplete'=>'off']) !!}
     </div>
 
     <div class="form-group col-sm-3">
@@ -67,20 +99,69 @@
 </div>
 <br>
 
-<div class="form-group col-sm-6">
+
+<div class="form-group col" >
     {!! Form::label('photo', 'Acta de constitución de la empresa:') !!}
-    <p>{!! Form::file('business_file', ['required'=>'required']) !!}</p>
+    <div class="row" id="dni_fileewew">
+        <div class="custom-file col-6 ml-2" id="rrrewewe">
+            {!! Form::label('dni', "Select file",array('class' => 'custom-file-label ','for'=>'image','id'=>'file_input_label_business_file')) !!}
+            <input type="file"  accept="application/pdf" class="custom-file-input" name="business_file" id="business_file" oninput="input_filename(event);" tofill="" onclick="check_progress_bar(event)">
+            <input type="text" class="d-none" id="hide_business_file"   value = {{ $profile->business_file }}>
+        </div>
+
+        <div class="col-5 d-none" id="show_progress_bar_business_file">
+            <button class="btn btn-primary" id="loading_btn_business_file" type="button" disabled >
+            </button>
+            <button type="button" id="cancel_btn_business_file" class="btn btn-secondary "> Cancelar Carga </button>
+        </div>
+
+        <div class="col-5 d-none" id="alert_wrapper_business_file">
+        </div>
+    </div>
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col" >
     {!! Form::label('photo', 'Vigencia de poderes no mayor a 3 meses:') !!}
-    <p>{!! Form::file('power_file', ['required'=>'required']) !!}</p>
+    <div class="row" id="power_file_sw">
+        <div class="custom-file col-6 ml-2" id="power_file_rrrw">
+            {!! Form::label('dni', "Select file",array('class' => 'custom-file-label ','for'=>'image','id'=>'file_input_label_power_file')) !!}
+            <input type="file" accept="application/pdf" class="custom-file-input" name="power_file" id="power_file" oninput="input_filename(event);" tofill="" onclick="check_progress_bar(event)">
+            <input type="text" class="d-none" id="hide_power_file"   value = {{ $profile->power_file }}>
+        </div>
+
+        <div class="col-5 d-none" id="show_progress_bar_power_file">
+            <button class="btn btn-primary" id="loading_btn_power_file" type="button" disabled >
+            </button>
+            <button type="button" id="cancel_btn_power_file" class="btn btn-secondary "> Cancelar Carga </button>
+        </div>
+
+        <div class="col-5 d-none" id="alert_wrapper_power_file">
+        </div>
+    </div>
+
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col" >
     {!! Form::label('photo', 'Ficha de ruc o ID Taxes:') !!}
-    <p>{!! Form::file('taxes_file', ['required'=>'required']) !!}</p>
+    <div class="row" id="taxes_file_sw">
+        <div class="custom-file col-6 ml-2" id="taxes_file_s2w">
+            {!! Form::label('dni', "Select file",array('class' => 'custom-file-label ','for'=>'image','id'=>'file_input_label_taxes_file')) !!}
+            <input type="file" accept="application/pdf" class="custom-file-input" name="taxes_file" id="taxes_file" oninput="input_filename(event);" tofill="" onclick="check_progress_bar(event)">
+            <input type="text" class="d-none" id="hide_taxes_file"   value = {{ $profile->taxes_file }}>
+        </div>
+
+        <div class="col-5 d-none" id="show_progress_bar_taxes_file">
+            <button class="btn btn-primary" id="loading_btn_taxes_file" type="button" disabled >
+            </button>
+            <button type="button" id="cancel_btn_taxes_file" class="btn btn-secondary "> Cancelar Carga </button>
+        </div>
+
+        <div class="col-5 d-none" id="alert_wrapper_taxes_file">
+        </div>
+    </div>
+
 </div>
+
 
 <div class="form-group col-sm-6">
     {!! Form::label('address_wallet', 'Dirección de tu Wallet:') !!}
@@ -115,7 +196,7 @@
 </div>
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Enviar a revision', ['class' => 'btn btn-primary', 'id'=>'btn-send']) !!}
+    {!! Form::submit('Enviar a revision', ['class' => 'btn btn-primary save_bi', 'id'=>'btn-send']) !!}
 </div>
 
 <script>

@@ -1,11 +1,44 @@
 <!-- Dni Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col" >
     {!! Form::label('dni', 'Cargar foto de DNI frontal:') !!}
-    <p>{!! Form::file('dni3', ['accept'=>'image/*','id'=>'dni3']) !!}</p>
+    <div class="row" id="dni_file3w">
+        <div class="custom-file col-6 ml-2" id="rrr3w">
+            {!! Form::label('dni', "Select file",array('class' => 'custom-file-label ','for'=>'image','id'=>'file_input_label_dni3')) !!}
+            <input type="file" accept="image/*" class="custom-file-input" name="dni3" id="dni3" oninput="input_filename(event);" tofill="" onclick="check_progress_bar(event)">
+            <input type="text" class="d-none" id="hide_dni3"   value = {{ $profile->dni3 }}>
+        </div>
+
+        <div class="col-5 d-none" id="show_progress_bar_dni3">
+            <button class="btn btn-primary" id="loading_btn_dni3" type="button" disabled >
+            </button>
+            <button type="button" id="cancel_btn_dni3" class="btn btn-secondary "> Cancelar Carga </button>
+        </div>
+
+        <div class="col-5 d-none" id="alert_wrapper_dni3">
+        </div>
+    </div>
+
 </div>
-<div class="form-group col-sm-6">
-    {!! Form::label('dni', 'Cargar foto de DNI posterior:') !!}
-    <p>{!! Form::file('dni3_r', ['accept'=>'image/*','id'=>'dni3_r']) !!}</p>
+
+<div class="form-group col">
+    {!! Form::label('dni_r', 'Cargar foto de DNI posterior:') !!}
+    <div class="row" id="dni_file3_r">
+        <div class="custom-file col-6 ml-2" id="rrr3_r">
+            {!! Form::label('dni', "Select file",array('class' => 'custom-file-label ','for'=>'image','id'=>'file_input_label_dni3_r')) !!}
+            <input type="file" accept="image/*" class="custom-file-input" name="dni3_r" id="dni3_r" oninput="input_filename(event);" tofill="" onclick="check_progress_bar(event)">
+            <input type="text" class="d-none" id="hide_dni3_r"   value = {{ $profile->dni3_r }}>    
+        </div>
+
+        <div class="col-5 d-none" id="show_progress_bar_dni3_r">
+            <button class="btn btn-primary" id="loading_btn_dni3_r" type="button" disabled >
+            </button>
+            <button type="button" id="cancel_btn_dni3_r" class="btn btn-secondary "> Cancelar Carga </button>
+        </div>
+
+        <div class="col-4 d-none" id="alert_wrapper_dni3_r">
+        </div>
+    </div>
+
 </div>
 
 <!-- First Name Field -->
@@ -35,7 +68,7 @@
 <!-- Country Document Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('country_document3', 'País emisor del documento de identidad:') !!}
-    {!! Form::select('country_document3', [], null, ['class' => 'form-control','empty'=>'Seleccionar']) !!}
+    {!! Form::select('country_document3',$countries, null, ['class' => 'form-control','empty'=>'Seleccionar']) !!}
 </div>
 
 <!-- Sex Field -->
@@ -65,7 +98,7 @@
 <!-- City Field -->
     <div class="form-group col-sm-2">
         {!! Form::label('country3', 'Pais:') !!}
-        {!! Form::select('country3', [], null, ['class' => 'form-control', 'style' => 'width: 180px; ','empty'=>'Seleccionar']) !!}
+        {!! Form::select('country3',$countries, null, ['class' => 'form-control', 'style' => 'width: 180px; ','empty'=>'Seleccionar']) !!}
     </div>
 
     <div class="form-group col-sm-2">
@@ -91,9 +124,25 @@
     {!! Form::text('job3', null, ['class' => 'form-control']) !!}
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col">
     {!! Form::label('photo', 'Carga una foto de perfil:') !!}
-    <p>{!! Form::file('profile_picture3', ['accept'=>'image/*','id'=>'profile_picture3']) !!}</p>
+    <div class="row" id="file3_profile_picture3">
+        <div class="custom-file col-6 ml-2" id="rrr3_profile_picture3">
+            {!! Form::label('dni', "Select file",array('class' => 'custom-file-label ','for'=>'image','id'=>'file_input_label_profile_picture3')) !!}
+            <input type="file"  accept="image/*"  class="custom-file-input" name="profile_picture3" id="profile_picture3" oninput="input_filename(event);" tofill="" onclick="check_progress_bar(event)">
+            <input type="text" class="d-none" id="hide_profile_picture3"   value = {{ $profile->profile_picture3 }}>    
+        </div>
+
+        <div class="col-5 d-none" id="show_progress_bar_profile_picture3">
+            <button class="btn btn-primary" id="loading_btn_profile_picture3" type="button" disabled >
+            </button>
+            <button type="button" id="cancel_btn_profile_picture3" class="btn btn-secondary "> Cancelar Carga </button>
+        </div>
+
+        <div class="col-4 d-none" id="alert_wrapper_profile_picture3">
+        </div>
+    </div>
+
 </div>
 
 <div class="form-group col-sm-6">
@@ -117,30 +166,5 @@
         return true;
     }
 
-    $("#save4").click(function() {
-
-        var dni3 = document.getElementById("dni3");
-        var dni3_r = document.getElementById("dni3_r");
-        var profile_picture3 = document.getElementById("profile_picture3");
-
-        dni3.setAttribute("required", "required");
-        dni3_r.setAttribute("required", "required");
-        profile_picture3.setAttribute("required", "required");
-
-        var dni2 = document.getElementById("dni2");
-        var dni2_r = document.getElementById("dni2_r");
-        var profile_picture2 = document.getElementById("profile_picture2");
-
-        var dni = document.getElementById("dni");
-        var dni_r = document.getElementById("dni_r");
-        var profile_picture = document.getElementById("profile_picture");
-
-        dni2.removeAttribute("required");
-        dni2_r.removeAttribute("required");
-        profile_picture2.removeAttribute("required");
-
-        dni.removeAttribute("required");
-        dni_r.removeAttribute("required");
-        profile_picture.removeAttribute("required");
-    });
+    
 </script>

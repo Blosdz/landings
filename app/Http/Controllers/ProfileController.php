@@ -280,6 +280,17 @@ class ProfileController extends AppBaseController
         //dd($data);
         */
 
+        $profile = $this->profileRepository->update($data, $id);
+
+        Flash::success('Verificacion de informacion guardado correctamente.');
+
+        return redirect(route('profiles.user'));
+    }
+
+    public function upload_file(Request $request){
+
+        $profile = Profile::where("user_id", Auth::user()->id)->first();
+
         $file_fields;
         $file_fields[0] = "dni";
         $file_fields[1] = "dni_r"; 
@@ -294,20 +305,33 @@ class ProfileController extends AppBaseController
         $file_fields[9] = "business_file"; 
         $file_fields[10] = "power_file"; 
         $file_fields[11] = "taxes_file"; 
- 
+
+        $path;
+        $name;
+
         for ( $i = 0; $i < sizeof($file_fields); $i++)
         {
             if ($request->hasFile($file_fields[$i])) {
                 $filePath = 'profile/';
-                $input = $data;
-                $data = $this->updateFile($request,$filePath,$profile,$file_fields[$i],$input);
+
+                if (!file_exists(storage_path($filePath))) {
+                    Storage::makeDirectory('public/'.$filePath, 0777, true);
+                }
+                $name = uniqid().'.'.$request->file($file_fields[$i])->getClientOriginalExtension();
+                $path = $filePath.$name;
+
+                if (is_file(storage_path('/app/public/'.$profile[$file_fields[$i]]))){   
+                   unlink(storage_path('/app/public/'.$profile[$file_fields[$i]]));
+                }
+                $request->file($file_fields[$i])->storeAs('public/'.$filePath, $name);
+                $profile->update([$file_fields[$i] => $path]);
             }
         }
-
-        $profile = $this->profileRepository->update($data, $id);
-
-        Flash::success('Verificacion de informacion guardado correctamente.');
-
-        return redirect(route('profiles.user'));
+        return response()->json(
+        [
+            'url'=> url('/storage/'.$path),
+            'message'=> $name.' subido',
+            'file_name'=> $name
+        ], 200);
     }
 }

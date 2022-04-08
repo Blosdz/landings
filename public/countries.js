@@ -851,7 +851,7 @@ var countries = {
         {
             "id" : 116,
             "name" : "Zambia"
-        },
+        }
         /*{
             "id" : 96,
             "name" : "Zimbabwe"
