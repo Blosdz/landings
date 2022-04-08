@@ -10,6 +10,9 @@
 
         <div class="col-5 d-none" id="show_progress_bar_dni">
             <button class="btn btn-primary" id="loading_btn_dni" type="button" disabled >
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Cargando...
+                <span id="load_percentage_dni"></span>
             </button>
             <button type="button" id="cancel_btn_dni" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
@@ -31,6 +34,9 @@
 
         <div class="col-5 d-none" id="show_progress_bar_dni_r">
             <button class="btn btn-primary" id="loading_btn_dni_r" type="button" disabled >
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Cargando...
+                <span id="load_percentage_dni_r"></span>
             </button>
             <button type="button" id="cancel_btn_dni_r" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
@@ -135,6 +141,9 @@
 
         <div class="col-5 d-none" id="show_progress_bar_profile_picture">
             <button class="btn btn-primary" id="loading_btn_profile_picture" type="button" disabled >
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Cargando...
+                <span id="load_percentage_profile_picture"></span>
             </button>
             <button type="button" id="cancel_btn_profile_picture" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
@@ -152,7 +161,7 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Enviar a revision', ['class' => 'btn btn-primary','id'=>'save2']) !!}
+    {!! Form::submit('Enviar a revision', ['class' => 'btn btn-primary','id'=>'save-socio-main']) !!}
 </div>
 
 <script>
