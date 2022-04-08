@@ -18,6 +18,7 @@ use Monarobase\CountryList\CountryListFacade;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use App\Traits\MakeFile;
+use App\Traits\BellTrait;
 
 class ProfileController extends AppBaseController
 {
@@ -144,6 +145,7 @@ class ProfileController extends AppBaseController
                 'body' => "Su informacion ha sido validado Correctamente",
                 'user_id' => $profile->user_id,
             ]);
+            BellTrait::verifyNotification($profile->user_id, 'notification', true);
         } else {
 
             if ($profile->verified == 3) {
@@ -157,6 +159,7 @@ class ProfileController extends AppBaseController
                     'comment'   => $data["obs"],
                     'date'      => Carbon::now()
                 ]);
+                BellTrait::verifyNotification($profile->user_id, 'notification', true);
             }
             $user->update(['validated' => 0]);
 

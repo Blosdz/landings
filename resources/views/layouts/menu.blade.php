@@ -132,7 +132,8 @@
 <li class="nav-item {{ Request::is('notifications*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('notifications.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Notificaciones</span>
+        Notificaciones
+        <span class="badge badge-success notification" style="display: none;"><i class="fa fa-bell"></i></span>
     </a>
 </li>
 

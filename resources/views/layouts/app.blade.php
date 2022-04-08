@@ -181,23 +181,33 @@
 
     $( document ).ready(function() {
 
-        $("#hide_dni").val($("#hide_dni").val().substring($("#hide_dni").val().lastIndexOf('/') + 1)) ;
-        $("#hide_dni_r").val($("#hide_dni_r").val().substring($("#hide_dni_r").val().lastIndexOf('/') + 1)) ;
-        $("#hide_profile_picture").val($("#hide_profile_picture").val().substring($("#hide_profile_picture").val().lastIndexOf('/') + 1)) ;
+        if ($("#hide_dni").length)
+            $("#hide_dni").val($("#hide_dni").val().substring($("#hide_dni").val().lastIndexOf('/') + 1)) ;
+        if ($("#hide_dni_r").length)
+            $("#hide_dni_r").val($("#hide_dni_r").val().substring($("#hide_dni_r").val().lastIndexOf('/') + 1)) ;
+        if ($("#hide_profile_picture").length)
+            $("#hide_profile_picture").val($("#hide_profile_picture").val().substring($("#hide_profile_picture").val().lastIndexOf('/') + 1)) ;
 
-        $("#hide_dni2").val($("#hide_dni2").val().substring($("#hide_dni2").val().lastIndexOf('/') + 1)) ;
-        $("#hide_dni2_r").val($("#hide_dni2_r").val().substring($("#hide_dni2_r").val().lastIndexOf('/') + 1)) ;
-        $("#hide_profile_picture2").val($("#hide_profile_picture2").val().substring($("#hide_profile_picture2").val().lastIndexOf('/') + 1)) ;
+        if ($("#hide_dni2").length)
+            $("#hide_dni2").val($("#hide_dni2").val().substring($("#hide_dni2").val().lastIndexOf('/') + 1)) ;
+        if ($("#hide_dni2_r").length)
+            $("#hide_dni2_r").val($("#hide_dni2_r").val().substring($("#hide_dni2_r").val().lastIndexOf('/') + 1)) ;
+        if ($("#hide_profile_picture2").length)
+            $("#hide_profile_picture2").val($("#hide_profile_picture2").val().substring($("#hide_profile_picture2").val().lastIndexOf('/') + 1)) ;
 
-        $("#hide_dni3").val($("#hide_dni3").val().substring($("#hide_dni3").val().lastIndexOf('/') + 1)) ;
-        $("#hide_dni3_r").val($("#hide_dni3_r").val().substring($("#hide_dni3_r").val().lastIndexOf('/') + 1)) ;
-        $("#hide_profile_picture3").val($("#hide_profile_picture3").val().substring($("#hide_profile_picture3").val().lastIndexOf('/') + 1)) ;
+        if ($("#hide_dni3").length)
+            $("#hide_dni3").val($("#hide_dni3").val().substring($("#hide_dni3").val().lastIndexOf('/') + 1)) ;
+        if ($("#hide_dni3_r").length)
+            $("#hide_dni3_r").val($("#hide_dni3_r").val().substring($("#hide_dni3_r").val().lastIndexOf('/') + 1)) ;
+        if ($("#hide_profile_picture3").length)
+            $("#hide_profile_picture3").val($("#hide_profile_picture3").val().substring($("#hide_profile_picture3").val().lastIndexOf('/') + 1)) ;
 
-
-        $("#hide_business_file").val($("#hide_business_file").val().substring($("#hide_business_file").val().lastIndexOf('/') + 1)) ;
-        $("#hide_power_file").val($("#hide_power_file").val().substring($("#hide_power_file").val().lastIndexOf('/') + 1)) ;
-        $("#hide_taxes_file").val($("#hide_taxes_file").val().substring($("#hide_taxes_file").val().lastIndexOf('/') + 1)) ;
-
+        if ($("#hide_business_file").length)
+            $("#hide_business_file").val($("#hide_business_file").val().substring($("#hide_business_file").val().lastIndexOf('/') + 1)) ;
+        if ($("#hide_power_file").length)
+            $("#hide_power_file").val($("#hide_power_file").val().substring($("#hide_power_file").val().lastIndexOf('/') + 1)) ;
+        if ($("#hide_taxes_file").length)
+            $("#hide_taxes_file").val($("#hide_taxes_file").val().substring($("#hide_taxes_file").val().lastIndexOf('/') + 1)) ;
 
     });
 
@@ -628,6 +638,30 @@
             input.disabled = true;
     });
 
+    $(document).ready(function (){
+        $bells_menu = ["notification"];
+        console.log("BELLS");
+        console.log("{{ route('bells.bells') }}");
+        $.ajax({                                      
+            url: "{{ route('bells.bells') }}",
+            type: "get",
+            dataType: 'json',                
+            beforeSend: function() {
+                //$('#current_page').append("loading..");
+            },
+            success: function(data) {
+                console.log(data);
+                if(data.notification){
+                    $.each( $bells_menu, function( key, value ) {
+                        if(data.notification[value] == true){
+                            $element = "."+value;
+                            $( $element ).show();
+                        }
+                    });
+                }
+            },
+        });
+    });
 
 
 </script>

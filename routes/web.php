@@ -76,3 +76,5 @@ Route::get('/rejection-history-show/{id}',[App\Http\Controllers\RejectionHistory
 Route::get('/dashboard',[App\Http\Controllers\EventController::class,'allEvents'])->name('dashboard');
 Route::get('/enroll-event/{id}',[App\Http\Controllers\EventController::class,'enroll'])->name('enroll');
 Route::post('/upload-file',[App\Http\Controllers\ProfileController::class, 'upload_file'])->name('upload_file');
+
+Route::get('bells/bells',        [App\Http\Controllers\BellsController::class, 'bells'])->name('bells.bells');
