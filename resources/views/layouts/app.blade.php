@@ -8,7 +8,7 @@
     $badge = '<span class="badge badge-success" style="float: left;">Validado</span>';
     
     $session_validate = 5;
-    if( $user->rol == 2 ) {
+    if( $user->rol == 2 or $user->rol == 3 or $user->rol == 4 ) {
         if($user->validated == 0) {
             $badge = '<span class="badge badge-warning" style="float: left;">En Validacion</span>';
         }
