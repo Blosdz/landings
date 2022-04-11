@@ -10,6 +10,9 @@
 
         <div class="col-5 d-none" id="show_progress_bar_dni">
             <button class="btn btn-primary" id="loading_btn_dni" type="button" disabled >
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Cargando...
+                <span id="load_percentage_dni"></span>
             </button>
             <button type="button" id="cancel_btn_dni" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
@@ -31,6 +34,9 @@
 
         <div class="col-5 d-none" id="show_progress_bar_dni_r">
             <button class="btn btn-primary" id="loading_btn_dni_r" type="button" disabled >
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Cargando...
+                <span id="load_percentage_dni_r"></span>
             </button>
             <button type="button" id="cancel_btn_dni_r" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
@@ -111,6 +117,9 @@
 
         <div class="col-5 d-none" id="show_progress_bar_business_file">
             <button class="btn btn-primary" id="loading_btn_business_file" type="button" disabled >
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Cargando...
+                <span id="load_percentage_business_file"></span>
             </button>
             <button type="button" id="cancel_btn_business_file" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
@@ -131,6 +140,9 @@
 
         <div class="col-5 d-none" id="show_progress_bar_power_file">
             <button class="btn btn-primary" id="loading_btn_power_file" type="button" disabled >
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Cargando...
+                <span id="load_percentage_power_file"></span>
             </button>
             <button type="button" id="cancel_btn_power_file" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
@@ -152,6 +164,9 @@
 
         <div class="col-5 d-none" id="show_progress_bar_taxes_file">
             <button class="btn btn-primary" id="loading_btn_taxes_file" type="button" disabled >
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Cargando...
+                <span id="load_percentage_taxes_file"></span>
             </button>
             <button type="button" id="cancel_btn_taxes_file" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
@@ -196,7 +211,7 @@
 </div>
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Enviar a revision', ['class' => 'btn btn-primary save_bi', 'id'=>'btn-send']) !!}
+    {!! Form::submit('Enviar a revision', ['class' => 'btn btn-primary save-business', 'id'=>'btn-send']) !!}
 </div>
 
 <script>

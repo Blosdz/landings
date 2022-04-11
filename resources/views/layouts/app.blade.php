@@ -178,7 +178,7 @@
     var hide_file;
     var loading_btn;
     var can_upload_file = true;
-
+    var load_percentage;
     $( document ).ready(function() {
 
         if ($("#hide_dni").length)
@@ -336,9 +336,7 @@
             var loaded = e.loaded;
             var total = e.total
             var percent_complete = (loaded / total) * 100;
-            loading_btn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            Cargando...
-                            ${Math.floor(percent_complete)}%`;
+            load_percentage.innerHTML = Math.floor(percent_complete) + "%";
         })
 
         request.addEventListener("load", function (e) {
@@ -413,7 +411,7 @@
 
         show_progress_bar = document.getElementById(input_grandpa.children[1].id);
         loading_btn = document.getElementById(show_progress_bar.children[0].id);
-
+        load_percentage = document.getElementById(loading_btn.children[1].id);
 
         alert_wrapper = document.getElementById(input_grandpa.children[2].id);
         cancel_btn = document.getElementById(show_progress_bar.children[1].id)
@@ -431,7 +429,7 @@
         can_upload_file = true;
     }
 
-    $(".save5").on('click',function(){
+    $(".save-client").on('click',function(){
 
         var dni = document.getElementById("dni");
         var dni_r = document.getElementById("dni_r");
@@ -457,7 +455,7 @@
         input.disabled = true;
     });
 
-    $("#save2").click(function() {
+    $("#save-socio-main").click(function() {
 
         var dni = document.getElementById("dni");
         var dni_r = document.getElementById("dni_r");
@@ -505,7 +503,7 @@
         profile_picture3.removeAttribute("required");
     });
 
-    $("#save3").click(function() {
+    $("#save-socio-1").click(function() {
 
         var dni2 = document.getElementById("dni2");
         var dni2_r = document.getElementById("dni2_r");
@@ -553,7 +551,7 @@
         profile_picture3.removeAttribute("required");
     });
 
-    $("#save4").click(function() {
+    $("#save-socio-2").click(function() {
 
         var dni3 = document.getElementById("dni3");
         var dni3_r = document.getElementById("dni3_r");
@@ -602,7 +600,7 @@
         profile_picture.removeAttribute("required");
     });
 
-    $(".save_bi").on('click',function(){
+    $(".save-business").click(function() {
 
         var dni = document.getElementById("dni");
         var dni_r = document.getElementById("dni_r");
@@ -634,8 +632,6 @@
             input.setCustomValidity("este campo aún no ha sido completado");
 
         }
-        }).on('mouseup',function(){
-            input.disabled = true;
     });
 
     $(document).ready(function (){
