@@ -140,10 +140,10 @@
                                           <li data-animation="animated bounceInDown" class="slider_social_icon4"><a href="#"><i class="fa fa-telegram"></i></a></li>
                                           <li data-animation="animated bounceInDown" class="slider_social_icon5"><a href="#"><i class="fa fa-envelope"></i></a></li>
                                        </ul>
-                                       <h2 data-animation="animated bounceInLeft">Ecosistema de integración de servicios financieros</h2>
+                                       <h2 data-animation="animated bounceInLeft">INVERSIÓN, TRANSPARENCIA, RENTABILIDAD</h2>
                                        <div class="buttons">
                                           <a href="#" class="btn1" data-animation="animated bounceInUp">CLIENTES</a>
-                                          <a href="#" class="btn2" data-animation="animated bounceInUp">SUSCRIPTORES</a>
+                                          <a href="#" class="btn2" data-animation="animated bounceInUp">CREAR CUENTA</a>
                                        </div>
                                     </div>
                                  </div>
@@ -253,7 +253,7 @@
                      <div class="rete-list bt_title">
                         <div class="content">
                            <div class="con">
-                              <h2><img src="welcome_new/images/icons/oro.png" alt=""><span>PLan Oro</span></h2>
+                              <h2><img src="welcome_new/images/icons/oro.png" alt=""><span>Plan Oro</span></h2>
                               <button class="btn3">INICIAR AHORA</button>
                            </div>
                         </div>
@@ -261,7 +261,7 @@
                      <div class="rete-list bt_title">
                         <div class="content">
                            <div class="con">
-                              <h2><img src="welcome_new/images/icons/platino.png" alt=""><span>PLan Platino</span></h2>
+                              <h2><img src="welcome_new/images/icons/platino.png" alt=""><span>Plan Platino</span></h2>
                               <button class="btn3">INICIAR AHORA</button> 
                            </div>
                         </div>
@@ -287,9 +287,9 @@
                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                      <div class="about-content">
                         <h2 class="f-40 fw-400">¿Quién es un suscriptor?</h2>
-                        <p>Es la persona o grupo de personas (3 max), encargadas de gestiónar la distribución de servicios financieros de la empresa AEIA, realizando procesos de venta y monitoreo con sus clientes.</p>
+                        <p>Es aquella persona que gestiona la venta y distribución de fondos de inversión para personas naturales y empresas.</p>
                         <h2 class="f-40 fw-400">¿Cómo puedo ser un suscriptor?</h2>
-                        <p>Para ser suscriptor se debe abonar un monto de $2000 por una licencia anual, que es registrada a través de un contrato legal con la empresa.</p>
+                        <p>Debes crear una cuenta como suscriptor y realizar la verificacón de tus datos, posteriormente deberás hacer el pago de la licencia de suscripción para ser nuestro socio comercial.</p>
                         
                         <div class="buttons">
                            <a href="#" class="btn1">REGISTRARSE</a>
@@ -314,7 +314,7 @@
                   <div class="row">
                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="section-heading2">
-                           <h2>Características de AEIA</h2>
+                           <h2>Beneficios de AEIA</h2>
                         </div>
                      </div>
                   </div>
@@ -326,7 +326,7 @@
                                  <div class="col-sm-6 pd-0 hidden-xs">
                                     <div class="contents-l mr-b30">
                                        <h3>Seguridad/Protección de datos</h3>
-                                       <p>Unique platform for lending and investment with a safety fund <br>and cooperation with world-wide arbitration.</p>
+                                       <p>Tus datos personales no son revelados a terceros.</p>
                                        <a href="#" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
@@ -338,7 +338,7 @@
                                  <div class="col-sm-6 pd-0 visible-xs">
                                     <div class="contents-l mr-b30">
                                        <h3>Seguridad/Protección de datos</h3>
-                                       <p>Unique platform for lending and investment with a safety fund <br>and cooperation with world-wide arbitration.</p>
+                                       <p>Tus datos personales no son revelados a terceros.</p>
                                        <a href="#" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
@@ -347,7 +347,7 @@
                                  <div class="col-sm-6 pd-0 floatright mr-b30 hidden-xs">
                                     <div class="contents-r">
                                        <h3>Política de transparencia</h3>
-                                       <p>Exchange between all popular currencies with a couple of clicks.<br>Instant send from one currency to another.</p>
+                                       <p>Puedes ver en tiempo real toda la información sobre tus inversiones.</p>
                                        <a href="#" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
@@ -359,7 +359,7 @@
                                  <div class="col-sm-6 pd-0 floatright mr-b30 visible-xs">
                                     <div class="contents-r">
                                        <h3>Política de transparencia</h3>
-                                       <p>Exchange between all popular currencies with a couple of clicks.<br>Instant send from one currency to another.</p>
+                                       <p>Puedes ver en tiempo real toda la información sobre tus inversiones.</p>
                                        <a href="#" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
@@ -368,7 +368,7 @@
                                  <div class="col-sm-6 pd-0 hidden-xs">
                                     <div class="contents-l mr-b30">
                                        <h3>Gestión de riesgo y estrategias <br>de inversión</h3>
-                                       <p>Improved system of borrower's verification. Providing <br>verification services for other services.</p>
+                                       <p>Gestionamos un portafolio de inversión para diversificar el riesgo y asumimos estrategias de rebalanceo de operaciones y activos</p>
                                        <a href="#" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
@@ -380,7 +380,7 @@
                                  <div class="col-sm-6 pd-0 visible-xs">
                                     <div class="contents-l mr-b30">
                                        <h3>Gestión de riesgo y estrategias de inversión</h3>
-                                       <p>Improved system of borrower's verification. Providing <br>verification services for other services.</p>
+                                       <p>Gestionamos un portafolio de inversión para diversificar el riesgo y asumimos estrategias de rebalanceo de operaciones y activos</p>
                                        <a href="#" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
@@ -389,7 +389,7 @@
                                  <div class="col-sm-6 pd-0 floatright mr-b30 hidden-xs">
                                     <div class="contents-r">
                                        <h3>Depósitos en dólares o en cripto</h3>
-                                       <p>Keep your money, exchange your money, invest your money, pay<br>services and make purchases.</p>
+                                       <p>Los depositos se realizaran a travéz de una plataforma de pago que garantiza la seguridad de tus depósitos y retiros que seran a travéz de su propio wallet.</p>
                                        <a href="#" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
@@ -401,7 +401,7 @@
                                  <div class="col-sm-6 pd-0 floatright mr-b30 visible-xs">
                                     <div class="contents-r">
                                        <h3>Depósitos en dólares o en cripto</h3>
-                                       <p>Keep your money, exchange your money, invest your money, pay<br>services and make purchases.</p>
+                                       <p>Los depositos se realizaran a travéz de una plataforma de pago que garantiza la seguridad de tus depósitos y retiros que seran a travéz de su propio wallet.</p>
                                        <a href="#" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
@@ -410,7 +410,7 @@
                                  <div class="col-sm-6 pd-0 hidden-xs">
                                     <div class="contents-l mr-b30">
                                        <h3>Disponibilidad del efectivo</h3>
-                                       <p>Unique platform for lending and investment with a safety fund <br>and cooperation with world-wide arbitration.</p>
+                                       <p>Todos los planes de inversión duran 1 año como minimo luego de ello se puede solicitar el retiro del capital y las ganancias a la cuenta bancaria o el wallet del titular.</p>
                                        <a href="#" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
@@ -422,7 +422,7 @@
                                  <div class="col-sm-6 pd-0 visible-xs">
                                     <div class="contents-l mr-b30">
                                        <h3>Disponibilidad del efectivo</h3>
-                                       <p>Unique platform for lending and investment with a safety fund <br>and cooperation with world-wide arbitration.</p>
+                                       <p>Todos los planes de inversión duran 1 año como minimo luego de ello se puede solicitar el retiro del capital y las ganancias a la cuenta bancaria o el wallet del titular.</p>
                                        <a href="#" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
@@ -462,21 +462,21 @@
                            <li class="l-con">
                               <div class="cont">
                                  <h3>01. Registrarse en la Plataforma</h3>
-                                 <p>Nam in lectus eget nisi aliquam ultrices. Aliquam at efficitur <br>nulla. Cras sodales eu nibh vel scelerisque. </p>
+                                 <p>Crea tu cuenta de acuerdo al perfil que mas te convenga. </p>
                               </div>
                               <span><i class="fa fa-users"></i></span>
                            </li>
                            <li class="r-con">
                               <div class="cont">
                                  <h3>02. Verificar sus datos</h3>
-                                 <p>Nam in lectus eget nisi aliquam ultrices. Aliquam at efficitur <br>nulla. Cras sodales eu nibh vel scelerisque. </p>
+                                 <p>Verfica tus datos y llena los formularios de la plataforma. </p>
                               </div>
                               <span><i class="fa fa-check-square-o"></i></span>
                            </li>
                            <li class="l-con">
                               <div class="cont">
                                  <h3>03. Escoger el Plan de Inversión</h3>
-                                 <p>Nam in lectus eget nisi aliquam ultrices. Aliquam at efficitur <br>nulla. Cras sodales eu nibh vel scelerisque. </p>
+                                 <p>Decide cuanto dinero puedes invertir, no arriesgues más de lo que debes. </p>
                               </div>
                               <span><i class="fa fa-edit "></i></span>
                               <div class="mid-icons"></div>
@@ -484,21 +484,21 @@
                            <li class="r-con">
                               <div class="cont">
                                  <h3>04. Depositar</h3>
-                                 <p>Nam in lectus eget nisi aliquam ultrices. Aliquam at efficitur <br>nulla. Cras sodales eu nibh vel scelerisque. </p>
+                                 <p>Puedes realizar el pago con tu tarjeta de debito / credito o transferencia al wallet. Escoge el método de pago que mas te conviene. </p>
                               </div>
                               <span><i class="fa fa-university"></i></span>
                            </li>
                            <li class="l-con">
                               <div class="cont">
                                  <h3>05. Esperar Proceso Trading de 1 año</h3>
-                                 <p>Nam in lectus eget nisi aliquam ultrices. Aliquam at efficitur <br>nulla. Cras sodales eu nibh vel scelerisque. </p>
+                                 <p>Mientras el proceso de inversión ocurre por periodo de un año, puedes verificar tus inversiones, solicitar reportes, inscribirte a nuestros eventos y aprender a hacer trading. </p>
                               </div>
                               <span><i class="fa fa-bell"></i></span>
                            </li>
                            <li class="r-con">
                               <div class="cont">
                                  <h3>06. Retirar sus Ganancias o Incluir Nuevo Plan</h3>
-                                 <p>Nam in lectus eget nisi aliquam ultrices. Aliquam at efficitur <br>nulla. Cras sodales eu nibh vel scelerisque. </p>
+                                 <p>Después del año de contrato puedes solicitar el retiro de tus fondos a la cuenta bancaria del titular o puedes reinvertar tu capital y ganancias. </p>
                               </div>
                               <span><i class="fa fa-paw"></i></span>
                            </li>
