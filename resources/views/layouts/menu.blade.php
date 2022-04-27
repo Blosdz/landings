@@ -84,7 +84,7 @@
 </li>
 
 <li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('dashboard') }}">
+    <a class="nav-link disabled" href="{{ route('dashboard') }}">
         <i class="nav-icon icon-cursor"></i>
         <span>Eventos</span>
     </a>
