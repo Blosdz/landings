@@ -13,6 +13,8 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Session;
+use PDF;
 use Illuminate\Support\Facades\Auth;
 use Monarobase\CountryList\CountryListFacade;
 use Illuminate\Support\Facades\Storage;
@@ -45,7 +47,10 @@ class ProfileController extends AppBaseController
         return view('profiles.index')
             ->with('profiles', $profiles);
     }
-
+    public function verified()
+    {
+        return view('profiles.verified');
+    }
     /**
      * Show the form for creating a new Profile.
      *
@@ -275,16 +280,16 @@ class ProfileController extends AppBaseController
             $file->storeAs($path, $filename3);
         }
 
-        $data["verified"] = 1;
         $data["dni"] = substr($path.$filename, 7);
         $data["dni_r"] = substr($path.$filename2, 7);
         $data["profile_picture"] = substr($path.$filename3, 7);
-
+        
         //dd($data);
         */
-
+        
+        $data["verified"] = 1;
         $profile = $this->profileRepository->update($data, $id);
-
+        
         Flash::success('Verificacion de informacion guardado correctamente.');
 
         return redirect(route('profiles.user'));

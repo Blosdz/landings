@@ -143,7 +143,7 @@
                                        <h2 data-animation="animated bounceInLeft">INVERSIÓN, TRANSPARENCIA, RENTABILIDAD</h2>
                                        <div class="buttons">
                                           <a href="#" class="btn1" data-animation="animated bounceInUp">CLIENTES</a>
-                                          <a href="#" class="btn2" data-animation="animated bounceInUp">CREAR CUENTA</a>
+                                          <a href="/register" class="btn2" data-animation="animated bounceInUp">CREAR CUENTA</a>
                                        </div>
                                     </div>
                                  </div>
@@ -238,7 +238,7 @@
                         <div class="content">
                            <div class="con">
                               <h2><img src="welcome_new/images/icons/bronce.png" alt=""><span>Plan Bronce</span></h2>
-                              <button class="btn3">INICIAR AHORA</button> 
+                              <a href="/register"> <button class="btn3">COMPRAR PLAN DE INVERSIÓN</button> </a>
                            </div>
                         </div>
                      </div>
@@ -246,7 +246,7 @@
                         <div class="content">
                            <div class="con">
                               <h2><img src="welcome_new/images/icons/plata.png" alt=""><span>Plan Plata</span></h2>
-                              <button class="btn3">INICIAR AHORA</button>
+                              <a href="/register"> <button class="btn3">COMPRAR PLAN DE INVERSIÓN</button></a>
                            </div>
                         </div>
                      </div>
@@ -254,7 +254,7 @@
                         <div class="content">
                            <div class="con">
                               <h2><img src="welcome_new/images/icons/oro.png" alt=""><span>Plan Oro</span></h2>
-                              <button class="btn3">INICIAR AHORA</button>
+                              <a href="/register"> <button class="btn3">COMPRAR PLAN DE INVERSIÓN</button></a>
                            </div>
                         </div>
                      </div>
@@ -262,7 +262,7 @@
                         <div class="content">
                            <div class="con">
                               <h2><img src="welcome_new/images/icons/platino.png" alt=""><span>Plan Platino</span></h2>
-                              <button class="btn3">INICIAR AHORA</button> 
+                              <a href="/register"> <button class="btn3">COMPRAR PLAN DE INVERSIÓN</button> </a>
                            </div>
                         </div>
                      </div>
@@ -270,7 +270,7 @@
                         <div class="content">
                            <div class="con">
                               <h2><img src="welcome_new/images/icons/diamante.png" alt=""><span>Plan Diamante</span></h2>
-                              <button class="btn3">INICIAR AHORA</button>
+                              <a href="/register"> <button class="btn3">COMPRAR PLAN DE INVERSIÓN</button></a>
                            </div>
                         </div>
                      </div>
@@ -292,7 +292,7 @@
                         <p>Debes crear una cuenta como suscriptor y realizar la verificacón de tus datos, posteriormente deberás hacer el pago de la licencia de suscripción para ser nuestro socio comercial.</p>
                         
                         <div class="buttons">
-                           <a href="#" class="btn1">REGISTRARSE</a>
+                           <a href="/register" class="btn1">REGISTRARSE</a>
                         </div>
                      </div>
                   </div>
@@ -327,7 +327,7 @@
                                     <div class="contents-l mr-b30">
                                        <h3>Seguridad/Protección de datos</h3>
                                        <p>Tus datos personales no son revelados a terceros.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                                  <div class="col-sm-6 pd-0">
@@ -339,7 +339,7 @@
                                     <div class="contents-l mr-b30">
                                        <h3>Seguridad/Protección de datos</h3>
                                        <p>Tus datos personales no son revelados a terceros.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                               </li>
@@ -348,7 +348,7 @@
                                     <div class="contents-r">
                                        <h3>Política de transparencia</h3>
                                        <p>Puedes ver en tiempo real toda la información sobre tus inversiones.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                                  <div class="col-sm-6 pd-0">
@@ -360,7 +360,7 @@
                                     <div class="contents-r">
                                        <h3>Política de transparencia</h3>
                                        <p>Puedes ver en tiempo real toda la información sobre tus inversiones.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                               </li>
@@ -369,7 +369,7 @@
                                     <div class="contents-l mr-b30">
                                        <h3>Gestión de riesgo y estrategias <br>de inversión</h3>
                                        <p>Gestionamos un portafolio de inversión para diversificar el riesgo y asumimos estrategias de rebalanceo de operaciones y activos</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                                  <div class="col-sm-6 pd-0">
@@ -381,7 +381,7 @@
                                     <div class="contents-l mr-b30">
                                        <h3>Gestión de riesgo y estrategias de inversión</h3>
                                        <p>Gestionamos un portafolio de inversión para diversificar el riesgo y asumimos estrategias de rebalanceo de operaciones y activos</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                               </li>
@@ -390,7 +390,7 @@
                                     <div class="contents-r">
                                        <h3>Depósitos en dólares o en cripto</h3>
                                        <p>Los depositos se realizaran a travéz de una plataforma de pago que garantiza la seguridad de tus depósitos y retiros que seran a travéz de su propio wallet.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                                  <div class="col-sm-6 pd-0">
@@ -402,7 +402,7 @@
                                     <div class="contents-r">
                                        <h3>Depósitos en dólares o en cripto</h3>
                                        <p>Los depositos se realizaran a travéz de una plataforma de pago que garantiza la seguridad de tus depósitos y retiros que seran a travéz de su propio wallet.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                               </li>
@@ -411,7 +411,7 @@
                                     <div class="contents-l mr-b30">
                                        <h3>Disponibilidad del efectivo</h3>
                                        <p>Todos los planes de inversión duran 1 año como minimo luego de ello se puede solicitar el retiro del capital y las ganancias a la cuenta bancaria o el wallet del titular.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                                  <div class="col-sm-6 pd-0">
@@ -423,7 +423,7 @@
                                     <div class="contents-l mr-b30">
                                        <h3>Disponibilidad del efectivo</h3>
                                        <p>Todos los planes de inversión duran 1 año como minimo luego de ello se puede solicitar el retiro del capital y las ganancias a la cuenta bancaria o el wallet del titular.</p>
-                                       <a href="#" class="btn1">INICIAR AHORA</a>
+                                       <a href="/register" class="btn1">INICIAR AHORA</a>
                                     </div>
                                  </div>
                               </li>

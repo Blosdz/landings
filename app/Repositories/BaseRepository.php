@@ -190,4 +190,34 @@ abstract class BaseRepository
 
         return $model->delete();
     }
+
+    public function moveDoc($path,$file){
+        $name_array = explode('.',$file->getClientOriginalName());
+        $name = '';
+        for ($i=0; $i < count($name_array)-1 ; $i++) { 
+            $name .= $name_array[$i];
+        }
+        $ext = $name_array[count($name_array)-1];
+        
+        $filename = uniqid().$name.'.'.$ext;
+
+        if ( ! Storage::exists($path)) {
+            Storage::makeDirectory('public/'.$path, 0777, true);
+        }
+
+        $file->storeAs('public/'.$path,$filename);
+
+        return $filename;
+    }
+
+    public function deleteDoc($file){
+        if(Storage::disk('public')->exists($file)){
+            Storage::delete('public/'.$file);
+        }
+    }
+
+    public function updateDoc($path,$file,$prev_file){
+        $this->deleteDoc($prev_file);
+        return $this->moveDoc($path,$file);
+    }
 }

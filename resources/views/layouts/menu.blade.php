@@ -1,6 +1,12 @@
 
 <li class="nav-item {{ Request::is('users*') ? 'active' : '' }}">
-    <a class="nav-link" href="#">
+    <a class="nav-link text-center" href="#">
+        @if ($profile->profile_picture)
+            <img src="/storage/{{$profile->profile_picture}}" class="img-fluid" style="width: 60%"/>
+        @else
+            <img src="/images/user-icon.png" class="img-fluid" style="width: 60%">
+        @endif
+        <br>
         {{ $user->name }}
         <br>
         {!! $badge !!}
@@ -53,7 +59,11 @@
 </li>
 
 <li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('profiles.user') }}">
+    @if ($session_validate == 2)
+        <a class="nav-link" href="{{ route('profiles.verified') }}">
+    @else
+        <a class="nav-link" href="{{ route('profiles.user') }}">
+    @endif
         <i class="nav-icon icon-cursor"></i>
         <span>Verificacion</span>
     </a>
@@ -138,3 +148,9 @@
 </li>
 
  
+<li class="nav-item {{ Request::is('contracts*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('contracts.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Contratos</span>
+    </a>
+</li>

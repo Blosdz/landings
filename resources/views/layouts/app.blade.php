@@ -5,14 +5,31 @@
     //dd($user, $profile);
     //dd($user->rol);
 
-    $badge = '<span class="badge badge-success" style="float: left;">Validado</span>';
+    $badge = '<span class="badge badge-success w-100" style="">Validado</span>';
     
     $session_validate = 5;
     if( $user->rol == 2 or $user->rol == 3 or $user->rol == 4 ) {
         if($user->validated == 0) {
-            $badge = '<span class="badge badge-warning" style="float: left;">En Validacion</span>';
+            $badge = '<span class="badge badge-warning w-100" style="">En Validacion</span>';
         }
         $session_validate = $profile->verified;
+    }
+    switch ($session_validate) {
+        case 0:
+            $badge = '<span class="badge badge-info w-100" style="">No validado</span>';
+            break;
+        case 1:
+            $badge = '<span class="badge badge-warning w-100" style="">En Validacion</span>';
+            break;
+        case 2:
+            $badge = '<span class="badge badge-success w-100" style="">Validado</span>';
+            break;
+        case 3:
+            $badge = '<span class="badge badge-danger w-100" style="">Rechazado</span>';
+            break;
+        default:
+            # code...
+            break;
     }
 @endphp
 <!DOCTYPE html>
@@ -316,6 +333,19 @@
         `
     }
 
+    function show_image(message, alert,alert_wrapper) {
+
+        alert_wrapper.innerHTML = `
+            <div id="alert" class="alert-${alert} fade show" >
+            <div class="row">
+                    <div class="col-12 mt-2">
+                        <img src="/storage/profile/${message}" style="max-width: 20vw; max-height: 10vh;"/>
+                    </div>
+            </div>
+            </div>
+            `
+    }
+
     function upload(alert_wrapper,show_progress_bar) {
 
         var data = new FormData();
@@ -343,7 +373,7 @@
 
             if (request.status == 200) {
                 hide_file.value = request.response.file_name;
-                show_alert(`${request.response.message}`, "success",alert_wrapper);
+                show_image(`${request.response.file_name}`, "success",alert_wrapper);
             }
             else {
                 show_alert(`Error al cargar el archivo`+request.status, "danger",alert_wrapper);
@@ -414,9 +444,12 @@
         load_percentage = document.getElementById(loading_btn.children[1].id);
 
         alert_wrapper = document.getElementById(input_grandpa.children[2].id);
+
+        console.log(input_grandpa.children[2]);
         cancel_btn = document.getElementById(show_progress_bar.children[1].id)
 
         can_upload_file = false; //a file begins to upload and with which no more processes will be allowed
+
         upload(alert_wrapper,show_progress_bar);
     }
  

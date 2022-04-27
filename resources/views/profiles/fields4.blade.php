@@ -17,8 +17,19 @@
             <button type="button" id="cancel_btn_dni3" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
 
-        <div class="col-5 d-none" id="alert_wrapper_dni3">
+        @if ($profile->dni3)
+        <div id="alert_wrapper_dni3" class="alert_wrapper_dni3 fade show" >
+            <div class="row">
+                    <div class="col-12 mt-2">
+                        <img src="/storage/{{$profile->dni3}}" style="max-width: 20vw; max-height: 10vh;"/>
+                    </div>
+            </div>
         </div>
+        @else
+            <div class="col-5 d-none" id="alert_wrapper_dni3">
+            </div>
+        @endif
+        
     </div>
 
 </div>
@@ -41,8 +52,18 @@
             <button type="button" id="cancel_btn_dni3_r" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
 
-        <div class="col-4 d-none" id="alert_wrapper_dni3_r">
+        @if ($profile->dni3_r)
+        <div id="alert_wrapper_dni3_r" class="alert_wrapper_dni3_r fade show" >
+            <div class="row">
+                    <div class="col-12 mt-2">
+                        <img src="/storage/{{$profile->dni3_r}}" style="max-width: 20vw; max-height: 10vh;"/>
+                    </div>
+            </div>
         </div>
+        @else
+            <div class="col-5 d-none" id="alert_wrapper_dni3_r">
+            </div>
+        @endif
     </div>
 
 </div>
@@ -147,9 +168,19 @@
             </button>
             <button type="button" id="cancel_btn_profile_picture3" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
-
-        <div class="col-4 d-none" id="alert_wrapper_profile_picture3">
+        @if ($profile->profile_picture3)
+        <div id="alert_wrapper_profile_picture3" class="alert_wrapper_profile_picture3 fade show" >
+            <div class="row">
+                    <div class="col-12 mt-2">
+                        <img src="/storage/{{$profile->profile_picture3}}" style="max-width: 20vw; max-height: 10vh;"/>
+                    </div>
+            </div>
         </div>
+        @else
+            <div class="col-5 d-none" id="alert_wrapper_profile_picture3">
+            </div>
+        @endif
+        
     </div>
 
 </div>

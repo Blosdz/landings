@@ -16,9 +16,19 @@
             </button>
             <button type="button" id="cancel_btn_dni" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
-
-        <div class="col-5 d-none" id="alert_wrapper_dni">
-        </div>
+        
+        @if ($profile->dni)
+            <div id="alert" class="alert_wrapper_dni fade show" >
+                <div class="row">
+                        <div class="col-12 mt-2">
+                            <img src="/storage/{{$profile->dni}}" style="max-width: 20vw; max-height: 10vh;"/>
+                        </div>
+                </div>
+            </div>
+        @else
+            <div class="col-5 d-none" id="alert_wrapper_dni">
+            </div>
+        @endif
     </div>
 
 </div>
@@ -27,9 +37,9 @@
     {!! Form::label('dni_r', 'Cargar foto de DNI posterior:') !!}
     <div class="row" id="dni_file2">
         <div class="custom-file col-6 ml-2" id="rrr2">
-            {!! Form::label('dni', "Select file",array('class' => 'custom-file-label ','for'=>'image','id'=>'file_input_label_dni_r')) !!}
+            {!! Form::label('dni_r', "Select file",array('class' => 'custom-file-label ','for'=>'image','id'=>'file_input_label_dni_r')) !!}
             <input type="file" accept="image/*" class="custom-file-input" name="dni_r" id="dni_r" oninput="input_filename(event);" tofill="" onclick="check_progress_bar(event)">
-            <input type="text" class="d-none" id="hide_dni_r"   value = {{ $profile->dni_r }}>    
+            <input type="text" class="d-none" id="hide_dni_r"  value = {{ $profile->dni_r }}>    
         </div>
 
         <div class="col-5 d-none" id="show_progress_bar_dni_r">
@@ -41,8 +51,19 @@
             <button type="button" id="cancel_btn_dni_r" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
 
-        <div class="col-4 d-none" id="alert_wrapper_dni_r">
-        </div>
+        @if ($profile->dni_r)
+            <div id="alert_wrapper_dni_r" class="alert_wrapper_dni_r fade show" >
+                <div class="row">
+                        <div class="col-12 mt-2">
+                            <img src="/storage/{{$profile->dni_r}}" style="max-width: 20vw; max-height: 10vh;"/>
+                        </div>
+                </div>
+            </div>
+        @else
+            <div class="col-5 d-none" id="alert_wrapper_dni_r">
+            </div>
+        @endif
+        
     </div>
 
 </div>
@@ -148,8 +169,18 @@
             <button type="button" id="cancel_btn_profile_picture" class="btn btn-secondary "> Cancelar Carga </button>
         </div>
 
-        <div class="col-4 d-none" id="alert_wrapper_profile_picture">
+        @if ($profile->profile_picture)
+        <div id="alert_wrapper_profile_picture" class="alert_wrapper_profile_picture fade show" >
+            <div class="row">
+                    <div class="col-12 mt-2">
+                        <img src="/storage/{{$profile->profile_picture}}" style="max-width: 20vw; max-height: 10vh;"/>
+                    </div>
+            </div>
         </div>
+        @else
+            <div class="col-5 d-none" id="alert_wrapper_profile_picture">
+            </div>
+        @endif
     </div>
 
 </div>

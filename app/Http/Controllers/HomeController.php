@@ -31,6 +31,11 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function start()
+    {
+        return view('start');
+    }
+
     public function welcome()
     {
         $dt = Carbon::Now();
