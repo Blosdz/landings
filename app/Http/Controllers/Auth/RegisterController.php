@@ -37,7 +37,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = "/start";
 
     /**
      * Create a new controller instance.
@@ -86,14 +86,17 @@ class RegisterController extends Controller
             'user_id' => $user->id
         ]);
 
-        UserEvent::create([
-            'user_id' => $user->id,
-            'event_id' => $data['event_id'],
-            'inscription_date' => Carbon::parse()->format('Y-m-d')
-        ]);
         $event = Event::find($data['event_id']);
-        $event->total = $event->total + 1;
-        $event->save();
+
+        if (!empty($event)) {
+            UserEvent::create([
+                'user_id' => $user->id,
+                'event_id' => $data['event_id'],
+                'inscription_date' => Carbon::parse()->format('Y-m-d')
+            ]);
+            $event->total = $event->total + 1;
+            $event->save();
+        }
 
         $data = [
             "email_send" => $data['email'],

@@ -6,6 +6,8 @@ use App\Http\Requests\CreatePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
 use App\Repositories\PaymentRepository;
 use App\Models\Payment;
+use App\Models\Profile;
+use App\Models\Contract;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -185,6 +187,23 @@ class PaymentController extends AppBaseController
 
         $payment = $this->paymentRepository->create($input);
 
+        $profile = Profile::where('user_id',$payment->user_id)->first();
+        $contract = [
+            'user_id' => $profile->user_id,
+            'type' => 1,
+            'full_name' => $profile->first_name.' '.$profile->lastname,
+            'country' => $profile->country,
+            'city' => $profile->city,
+            'state' => $profile->state,
+            'address' => $profile->address,
+            'country_document' => $profile->country_document,
+            'type_document' => $profile->type_document,
+            'identification_number' => $profile->identification_number,
+            'code' => uniqid(),
+            'payment_id' => $payment->id
+        ];
+
+        $contract = Contract::create($contract);
         Flash::success('Deposito recibido correctamente.');
 
         return redirect(route('payments.index2'));

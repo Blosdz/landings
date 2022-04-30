@@ -89,6 +89,25 @@ class Profile extends Model
         'obs3',
 
         'user_id',
+
+        'sex',
+        'profile_picture',
+        'address_wallet',
+        'identification_number',
+
+        'sex2',
+        'profile_picture2',
+        'address_wallet2',
+        'identification_number2',
+
+        'sex3',
+        'profile_picture3',
+        'address_wallet3',
+        'identification_number3',
+
+        'business_file',
+        'power_file',
+        'taxes_file',
     ];
 
     /**

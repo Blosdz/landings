@@ -425,6 +425,7 @@ background: linear-gradient(to right, rgba(45,193,201,1) 0%, rgba(57,100,208,1) 
   background: #0079BE;
   padding: 0 20px;
   font-weight: 700;
+  font-size: 13.5px;
   color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
 }

@@ -38,6 +38,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/start', [App\Http\Controllers\HomeController::class, 'start'])->name('start');
+
 Route::post('/mail/sendmail', [App\Http\Controllers\HomeController::class, 'sendmail'])->name('send.mail');
 
 
@@ -49,6 +51,8 @@ Route::resource('profiles', App\Http\Controllers\ProfileController::class);
 
 Route::get('/profiles/user/data', [App\Http\Controllers\ProfileController::class, 'edit2'])->name('profiles.user');
 Route::post('/profiles/user/data/{id}', [App\Http\Controllers\ProfileController::class, 'update2'])->name('profiles.update2');
+Route::get('/profiles/user/verified',[App\Http\Controllers\ProfileController::class,'verified'])->name('profiles.verified');
+
 
 Route::resource('payments', App\Http\Controllers\PaymentController::class);
 Route::get('/payments/user/data', [App\Http\Controllers\PaymentController::class, 'index2'])->name('payments.index2');
@@ -75,4 +79,39 @@ Route::get('/rejection-history/{user_id}',[App\Http\Controllers\RejectionHistory
 Route::get('/rejection-history-show/{id}',[App\Http\Controllers\RejectionHistoryController::class,'show'])->name('rejectionHistory.show');
 Route::get('/dashboard',[App\Http\Controllers\EventController::class,'allEvents'])->name('dashboard');
 Route::get('/enroll-event/{id}',[App\Http\Controllers\EventController::class,'enroll'])->name('enroll');
+Route::post('/upload-file',[App\Http\Controllers\ProfileController::class, 'upload_file'])->name('upload_file');
 
+Route::get('bells/bells',        [App\Http\Controllers\BellsController::class, 'bells'])->name('bells.bells');
+
+Route::get('images/{filename}', function ($filename)
+{
+    $path = storage_path() . '/images/' . $filename;
+    if(!File::exists($path)) abort(404);
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+
+Route::get('images/{filename}', function ($filename)
+{
+    $path = storage_path() . '/images/' . $filename;
+    if(!File::exists($path)) abort(404);
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+
+
+Route::resource('contracts', App\Http\Controllers\ContractController::class);
+
+Route::get('/contract_pdf/{id}',[App\Http\Controllers\ContractController::class,'contract_pdf'])->name('contracts.pdf');

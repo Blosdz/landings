@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail as MailCustom;
 use App\Mail\SendMail;
 use App\Models\Event;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -30,9 +31,16 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function start()
+    {
+        return view('start');
+    }
+
     public function welcome()
     {
-        $events = Event::orderBy('date', 'DESC')->get();
+        $dt = Carbon::Now();
+        $events = Event::orderBy('date', 'DESC')
+            ->where('date', '>',$dt)->get();
         //dd($events);
         return view('welcome')->with('events', $events);
     }

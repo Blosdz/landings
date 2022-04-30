@@ -1,6 +1,12 @@
 
 <li class="nav-item {{ Request::is('users*') ? 'active' : '' }}">
-    <a class="nav-link" href="#">
+    <a class="nav-link text-center" href="#">
+        @if ($profile->profile_picture)
+            <img src="/storage/{{$profile->profile_picture}}" class="img-fluid" style="width: 60%"/>
+        @else
+            <img src="/images/user-icon.png" class="img-fluid" style="width: 60%">
+        @endif
+        <br>
         {{ $user->name }}
         <br>
         {!! $badge !!}
@@ -53,7 +59,11 @@
 </li>
 
 <li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('profiles.user') }}">
+    @if ($session_validate == 2)
+        <a class="nav-link" href="{{ route('profiles.verified') }}">
+    @else
+        <a class="nav-link" href="{{ route('profiles.user') }}">
+    @endif
         <i class="nav-icon icon-cursor"></i>
         <span>Verificacion</span>
     </a>
@@ -70,6 +80,13 @@
     <a class="nav-link" href="{{ route('invite.user') }}">
         <i class="nav-icon icon-cursor"></i>
         <span>Invitar</span>
+    </a>
+</li>
+
+<li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
+    <a class="nav-link disabled" href="{{ route('dashboard') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Eventos</span>
     </a>
 </li>
 
@@ -92,6 +109,13 @@
     </a>
 </li>
 
+<li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Eventos</span>
+    </a>
+</li>
+
 @php
   }
   if( $user->rol == 4 ) {
@@ -104,6 +128,13 @@
     </a>
 </li>
 
+<li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Eventos</span>
+    </a>
+</li>
+
 @php
   }
 @endphp
@@ -111,13 +142,15 @@
 <li class="nav-item {{ Request::is('notifications*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('notifications.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Notificaciones</span>
+        Notificaciones
+        <span class="badge badge-success notification" style="display: none;"><i class="fa fa-bell"></i></span>
     </a>
 </li>
 
-<li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('dashboard') }}">
+ 
+<li class="nav-item {{ Request::is('contracts*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('contracts.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>dashboard</span>
+        <span>Contratos</span>
     </a>
 </li>

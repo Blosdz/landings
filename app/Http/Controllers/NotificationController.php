@@ -12,6 +12,7 @@ use Flash;
 use Response;
 
 use Illuminate\Support\Facades\Auth;
+use App\Traits\BellTrait;
 
 class NotificationController extends AppBaseController
 {
@@ -38,6 +39,8 @@ class NotificationController extends AppBaseController
             $notifications = $notifications->where('user_id', Auth::user()->id);
         }
         $notifications = $notifications->paginate(30);
+
+        BellTrait::verifyNotification(Auth::user()->id, 'notification', false);
 
         return view('notifications.index')
             ->with('notifications', $notifications);

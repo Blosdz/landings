@@ -13,15 +13,20 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Session;
+use PDF;
 use Illuminate\Support\Facades\Auth;
-
+use Monarobase\CountryList\CountryListFacade;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use App\Traits\MakeFile;
+use App\Traits\BellTrait;
 
 class ProfileController extends AppBaseController
 {
     /** @var  ProfileRepository */
     private $profileRepository;
+    use MakeFile;
 
     public function __construct(ProfileRepository $profileRepo)
     {
@@ -42,7 +47,10 @@ class ProfileController extends AppBaseController
         return view('profiles.index')
             ->with('profiles', $profiles);
     }
-
+    public function verified()
+    {
+        return view('profiles.verified');
+    }
     /**
      * Show the form for creating a new Profile.
      *
@@ -102,7 +110,7 @@ class ProfileController extends AppBaseController
     {
         //$profile = $this->profileRepository->find($id);
         $profile = Profile::where('id', $id)->with('user')->first();
-
+        
         if (empty($profile)) {
             Flash::error('Profile not found');
 
@@ -142,6 +150,7 @@ class ProfileController extends AppBaseController
                 'body' => "Su informacion ha sido validado Correctamente",
                 'user_id' => $profile->user_id,
             ]);
+            BellTrait::verifyNotification($profile->user_id, 'notification', true);
         } else {
 
             if ($profile->verified == 3) {
@@ -155,6 +164,7 @@ class ProfileController extends AppBaseController
                     'comment'   => $data["obs"],
                     'date'      => Carbon::now()
                 ]);
+                BellTrait::verifyNotification($profile->user_id, 'notification', true);
             }
             $user->update(['validated' => 0]);
 
@@ -209,7 +219,7 @@ class ProfileController extends AppBaseController
     public function update2($id, UpdateProfileRequest $request)
     {
         $profile = $this->profileRepository->find($id);
-
+        
         if (empty($profile)) {
             Flash::error('Profile not found');
 
@@ -218,6 +228,7 @@ class ProfileController extends AppBaseController
 
         $data = $request->all();
 
+        /*
         //dd($data);
 
         $path = 'profile/';
@@ -253,14 +264,82 @@ class ProfileController extends AppBaseController
             $file->storeAs($path, $filename2);
         }
 
-        $data["verified"] = 1;
+        $path = 'profile/';
+        if($request->hasFile('profile_picture')){
+            if ( ! Storage::exists($path)) {
+                Storage::makeDirectory('public/'.$path, 0777, true);
+            }
+        
+            $file = $request->file('profile_picture');
+            $extantion = $file->getClientOriginalExtension();
+            $prefix = "profile";
+            $dealer_name = $prefix.'-'.uniqid();
+
+            $filename3 = $dealer_name.'.'.$extantion;
+            $path = 'public/'.$path;
+            $file->storeAs($path, $filename3);
+        }
+
         $data["dni"] = substr($path.$filename, 7);
         $data["dni_r"] = substr($path.$filename2, 7);
+        $data["profile_picture"] = substr($path.$filename3, 7);
+        
         //dd($data);
+        */
+        
+        $data["verified"] = 1;
         $profile = $this->profileRepository->update($data, $id);
-
+        
         Flash::success('Verificacion de informacion guardado correctamente.');
 
         return redirect(route('profiles.user'));
+    }
+
+    public function upload_file(Request $request){
+
+        $profile = Profile::where("user_id", Auth::user()->id)->first();
+
+        $file_fields;
+        $file_fields[0] = "dni";
+        $file_fields[1] = "dni_r"; 
+        $file_fields[2] = "profile_picture"; 
+        $file_fields[3] = "dni2";
+        $file_fields[4] = "dni2_r"; 
+        $file_fields[5] = "profile_picture2"; 
+        $file_fields[6] = "dni3";
+        $file_fields[7] = "dni3_r"; 
+        $file_fields[8] = "profile_picture3"; 
+
+        $file_fields[9] = "business_file"; 
+        $file_fields[10] = "power_file"; 
+        $file_fields[11] = "taxes_file"; 
+
+        $path;
+        $name;
+
+        for ( $i = 0; $i < sizeof($file_fields); $i++)
+        {
+            if ($request->hasFile($file_fields[$i])) {
+                $filePath = 'profile/';
+
+                if (!file_exists(storage_path($filePath))) {
+                    Storage::makeDirectory('public/'.$filePath, 0777, true);
+                }
+                $name = uniqid().'.'.$request->file($file_fields[$i])->getClientOriginalExtension();
+                $path = $filePath.$name;
+
+                if (is_file(storage_path('/app/public/'.$profile[$file_fields[$i]]))){   
+                   unlink(storage_path('/app/public/'.$profile[$file_fields[$i]]));
+                }
+                $request->file($file_fields[$i])->storeAs('public/'.$filePath, $name);
+                $profile->update([$file_fields[$i] => $path]);
+            }
+        }
+        return response()->json(
+        [
+            'url'=> url('/storage/'.$path),
+            'message'=> $name.' subido',
+            'file_name'=> $name
+        ], 200);
     }
 }
