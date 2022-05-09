@@ -53,7 +53,7 @@
 
 <li class="nav-item {{ Request::is('home*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('home') }}">
-        <i class="nav-icon icon-cursor"></i>
+        <i class="mdi mdi-24px mdi-view-dashboard"></i>
         <span>Inicio</span>
     </a>
 </li>
@@ -64,28 +64,28 @@
     @else
         <a class="nav-link" href="{{ route('profiles.user') }}">
     @endif
-        <i class="nav-icon icon-cursor"></i>
+        <i class="mdi mdi-24px mdi-account-search"></i>
         <span>Verificacion</span>
     </a>
 </li>
 
 <li class="nav-item {{ Request::is('payments*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('payments.index2') }}">
-        <i class="nav-icon icon-cursor"></i>
+        <i class="mdi mdi-24px mdi-bitcoin"></i>
         <span>Depositar</span>
     </a>
 </li>
 
 <li class="nav-item {{ Request::is('invite*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('invite.user') }}">
-        <i class="nav-icon icon-cursor"></i>
+        <i class="mdi mdi-24px mdi-send"></i>
         <span>Invitar</span>
     </a>
 </li>
 
 <li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
     <a class="nav-link disabled" href="{{ route('dashboard') }}">
-        <i class="nav-icon icon-cursor"></i>
+        <i class="mdi mdi-24px mdi-clock"></i>
         <span>Eventos</span>
     </a>
 </li>
@@ -139,18 +139,18 @@
   }
 @endphp
 
+<li class="nav-item {{ Request::is('contracts*') ? 'active' : '' }}">
+   <a class="nav-link" href="{{ route('contracts.index') }}">
+       <i class="mdi mdi-24px mdi-file-document-outline"></i>
+       <span>Contratos</span>
+   </a>
+</li>
+
 <li class="nav-item {{ Request::is('notifications*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('notifications.index') }}">
-        <i class="nav-icon icon-cursor"></i>
+        <i class="mdi mdi-24px mdi-inbox"></i>
         Notificaciones
         <span class="badge badge-success notification" style="display: none;"><i class="fa fa-bell"></i></span>
     </a>
 </li>
 
- 
-<li class="nav-item {{ Request::is('contracts*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('contracts.index') }}">
-        <i class="nav-icon icon-cursor"></i>
-        <span>Contratos</span>
-    </a>
-</li>
