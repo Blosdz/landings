@@ -170,8 +170,8 @@ class PaymentController extends AppBaseController
     public function index2(Request $request)
     {
         $payments = $this->paymentRepository->all();
-        $payments = Payment::where("user_id", Auth::user()->id)->get();
-
+        $payments = Payment::where("user_id", Auth::user()->id)->with('contract')->get();
+        
         return view('payments.index2')
             ->with('payments', $payments);
     }

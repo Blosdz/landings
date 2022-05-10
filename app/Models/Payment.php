@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use App\Models\User;
+use App\Models\Contract;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -60,5 +61,8 @@ class Payment extends Model
         return $this->belongsTo(User::class);
     }
 
-    
+    public function contract(): BelongsTo
+    {
+        return $this->belongsTo(Contract::class, 'id', 'payment_id');
+    }
 }
