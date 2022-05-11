@@ -66,6 +66,9 @@
 @stack('scripts')
 
 <style>
+    .class-test{
+        background-color: black;
+    }
     .sidebar{
         background: #09114A !important;
     }
