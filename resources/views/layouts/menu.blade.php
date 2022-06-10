@@ -97,21 +97,21 @@
 
 <li class="nav-item {{ Request::is('payments*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('payments.index2') }}">
-        <i class="nav-icon icon-cursor"></i>
+        <i class="mdi mdi-24px mdi-bitcoin"></i>
         <span>Depositar</span>
     </a>
 </li>
 
 <li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('profiles.user') }}">
-        <i class="nav-icon icon-cursor"></i>
+        <i class="mdi mdi-24px mdi-account-search"></i>
         <span>Verificacion</span>
     </a>
 </li>
 
 <li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard') }}">
-        <i class="nav-icon icon-cursor"></i>
+        <i class="mdi mdi-24px mdi-clock"></i>
         <span>Eventos</span>
     </a>
 </li>
