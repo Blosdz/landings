@@ -96,7 +96,7 @@
 @endphp
 
 <li class="nav-item {{ Request::is('payments*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('payments.index2') }}">
+    <a class="nav-link" href="{{ route('clients.index') }}">
         <i class="mdi mdi-24px mdi-bitcoin"></i>
         <span>Depositar</span>
     </a>
@@ -154,3 +154,15 @@
     </a>
 </li>
 
+{{-- <li class="nav-item {{ Request::is('plans*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('plans.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Plans</span>
+    </a>
+</li> --}}
+{{-- <li class="nav-item {{ Request::is('clientPayments*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('clientPayments.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Client Payments</span>
+    </a>
+</li> --}}

@@ -57,6 +57,10 @@ Route::get('/profiles/user/verified',[App\Http\Controllers\ProfileController::cl
 Route::resource('payments', App\Http\Controllers\PaymentController::class);
 Route::get('/payments/user/data', [App\Http\Controllers\PaymentController::class, 'index2'])->name('payments.index2');
 Route::get('/payments/user/pay', [App\Http\Controllers\PaymentController::class, 'pay'])->name('payments.pay');
+Route::get('/payments/client/data', [App\Http\Controllers\PaymentController::class, 'client_index'])->name('clients.index');
+Route::get('/payments/select/plan',[App\Http\Controllers\PaymentController::class,'select_plan'])->name('payment.plan');
+Route::get('/payments/client/pay/{id}',[App\Http\Controllers\PaymentController::class,'plan_detail'])->name('payment.detail');
+Route::post('/payments/client/payment',[App\Http\Controllers\PaymentController::class,'client_pay'])->name('client.payment');
 
 Route::get('/invite/user/link', [App\Http\Controllers\UserController::class, 'invite'])->name('invite.user');
 
@@ -115,3 +119,8 @@ Route::get('images/{filename}', function ($filename)
 Route::resource('contracts', App\Http\Controllers\ContractController::class);
 
 Route::get('/contract_pdf/{id}',[App\Http\Controllers\ContractController::class,'contract_pdf'])->name('contracts.pdf');
+
+Route::resource('plans', App\Http\Controllers\PlanController::class);
+
+
+Route::resource('clientPayments', App\Http\Controllers\ClientPaymentController::class);

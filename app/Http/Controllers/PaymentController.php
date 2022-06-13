@@ -8,6 +8,9 @@ use App\Repositories\PaymentRepository;
 use App\Models\Payment;
 use App\Models\Profile;
 use App\Models\Contract;
+use App\Models\Plan;
+use App\Models\User;
+use App\Models\ClientPayment;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -174,6 +177,101 @@ class PaymentController extends AppBaseController
         
         return view('payments.index2')
             ->with('payments', $payments);
+    }
+
+    public function client_index(Request $request)
+    {
+        $payments = $this->paymentRepository->all();
+        $payments = Payment::where("user_id", Auth::user()->id)->with('contract')->get();
+        $plans = Plan::pluck('name','id')->toArray();
+        
+        return view('payments.clients')
+            ->with(compact('payments', 'plans'));
+    }
+
+    public function select_plan()
+    {
+        $plans = Plan::get();
+        return view('payments.select_plan')->with(compact('plans'));
+    }
+
+    public function plan_detail($id)
+    {
+        $plan = Plan::find($id);
+        return view('payments.detail')->with(compact('plan'));
+    }
+
+    public function client_pay(Request $request)
+    {
+        $input = $request->all();
+        
+        $months = [
+            0 => 'Diciembre',
+            1 => 'Enero',
+            2 => 'Febrero',
+            3 => 'Marzo',
+            4 => 'Abril',
+            5 => 'Mayo',
+            6 => 'Junio',
+            7 => 'Julio',
+            8 => 'Agosto',
+            9 => 'Setiembre',
+            10 => 'Octubre',
+            11 => 'Noviembre',
+            12 => 'Diciembre'
+        ];
+        
+        $input["user_id"] = Auth::user()->id;
+        if((int)Carbon::parse()->format('d') >= 28)
+        {
+            $input["month"] = $months[((int)Carbon::parse()->format('m')+1)%12];
+        } else {
+            $input["month"] = $months[(int)Carbon::parse()->format('m')];
+        }
+        $input["total"] = $input["mount"];
+        $input["date_transaction"] = Carbon::parse()->format('Y-m-d');
+        
+        $payment = $this->paymentRepository->create($input);
+
+        $profile = Profile::where('user_id',$payment->user_id)->first();
+        $contract = [
+            'user_id' => $profile->user_id,
+            'type' => 2,
+            'full_name' => $profile->first_name.' '.$profile->lastname,
+            'country' => $profile->country,
+            'city' => $profile->city,
+            'state' => $profile->state,
+            'address' => $profile->address,
+            'country_document' => $profile->country_document,
+            'type_document' => $profile->type_document,
+            'identification_number' => $profile->identification_number,
+            'code' => uniqid(),
+            'payment_id' => $payment->id
+        ];
+
+        $contract = Contract::create($contract);
+
+        $referred_user = User::where('link',$input['code'])->first();
+        
+        $client_payment = [
+            'user_id' => $profile->user_id,
+            'payment_id' => $payment->id,
+            'referred_code' => $input['code'],
+            'plan_id' => $input['plan_id'],
+            'code' => uniqid()
+        ];
+        
+        if(!empty($referred_user))
+        {
+            $client_payment['referred_user_id'] = $referred_user->id;
+        }
+
+        ClientPayment::create($client_payment);
+
+        Flash::success('Deposito realizado correctamente.');
+
+        return redirect(route('clients.index'));
+        
     }
 
     public function pay(CreatePaymentRequest $request)
