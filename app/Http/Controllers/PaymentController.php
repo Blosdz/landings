@@ -182,11 +182,24 @@ class PaymentController extends AppBaseController
     public function client_index(Request $request)
     {
         $payments = $this->paymentRepository->all();
-        $payments = Payment::where("user_id", Auth::user()->id)->with('contract')->get();
+        $payments = Payment::where("user_id", Auth::user()->id)->with('contract')->with('client_payment')->get();
         $plans = Plan::pluck('name','id')->toArray();
         
         return view('payments.clients')
             ->with(compact('payments', 'plans'));
+    }
+
+    public function client_detail($id)
+    {
+        $payment = $this->paymentRepository->find($id);
+
+        if (empty($payment)) {
+            Flash::error('Payment not found');
+
+            return redirect(route('payments.index'));
+        }
+
+        return view('payments.client_detail')->with('payment', $payment);
     }
 
     public function select_plan()

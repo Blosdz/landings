@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use App\Models\User;
 use App\Models\Contract;
+use App\Models\ClientPayment;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -64,5 +65,10 @@ class Payment extends Model
     public function contract(): BelongsTo
     {
         return $this->belongsTo(Contract::class, 'id', 'payment_id');
+    }
+
+    public function client_payment(): BelongsTo
+    {
+        return $this->belongsTo(ClientPayment::class,'id','payment_id');
     }
 }

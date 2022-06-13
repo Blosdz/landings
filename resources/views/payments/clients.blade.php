@@ -63,7 +63,7 @@
                                     <a href="{{route('payment.plan')}}" class="form-control btn btn-success">Nuevo depósito</a>
                                 </div>
                             </div>
-                             @include('payments.table2')
+                             @include('payments.clients_table')
                         @php
                             } else {
                         @endphp

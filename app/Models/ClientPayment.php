@@ -3,6 +3,11 @@
 namespace App\Models;
 
 use Eloquent as Model;
+
+use App\Models\Plan;
+
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -62,5 +67,13 @@ class ClientPayment extends Model
         'referred_user_id' => 'nullable'
     ];
 
-    
+    public function plan(): BelongsTo
+    {
+        return $this->belongsTo(Plan::class,'plan_id','id');
+    }
+
+    public function referred_user(): BelongsTo
+    {
+        return $this->belongsTo(User::class,'referred_user_id','id');
+    }
 }
