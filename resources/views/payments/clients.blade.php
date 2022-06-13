@@ -1,5 +1,6 @@
 @php
     $user = Auth::user();
+    $months = ['Todos','Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Setiembre','Octubre','Noviembre','Diciembre'];
 @endphp
 
 @extends('layouts.app')
@@ -32,26 +33,18 @@
                             if($user->validated) {
                         @endphp
                             <div class="row col-12">
-                                {!!Form::open(['url'=>'foo/bar','class'=>'col-10 row'])!!}
-                                <div class="form-group col-sm-2">
+                                {!!Form::open(['route'=>'clients.filter','class'=>'col-10 row'])!!}
+                                <div class="form-group col-sm-4">
                                     {!! Form::label('plan', 'Planes:') !!}
                                     {!! Form::select('plan', ["Todos"]+$plans,null, ['class' => 'form-control', 'value'=>'-']) !!}
                                 </div>
-                                <div class="form-group col-sm-4">
+                                <div class="form-group col-sm-3">
                                     {!! Form::label('funds', 'Fondos:') !!}
-                                    <div class="row col-12">
-                                    {!! Form::number('funds-start',null, ['class' => 'form-control col-5','min'=>'0', 'step' => '100']) !!}
-                                    <span class="col-2">&nbsp; A &nbsp;</span>
-                                    {!! Form::number('funds-end',null, ['class' => 'form-control col-5','min'=>'0', 'step' => '100']) !!}
-                                    </div>
+                                    {!! Form::select('funds', $months,null, ['class' => 'form-control', 'value'=>'-']) !!}
                                 </div>
-                                <div class="form-group col-sm-4">
+                                <div class="form-group col-sm-3">
                                     {!! Form::label('year', 'Año:') !!}
-                                    <div class="row col-12">
-                                    {!! Form::number('year-start',null, ['class' => 'form-control col-5','min'=>'0']) !!}
-                                    <span class="col-2">&nbsp; A &nbsp;</span>
-                                    {!! Form::number('year-end',null, ['class' => 'form-control col-5','min'=>'0']) !!}
-                                    </div>
+                                    {!! Form::number('year',null, ['class' => 'form-control','min'=>'0']) !!}
                                 </div>
                                 <div class="form-group col-sm-2">
                                     {!! Form::label('filtrar', '&nbsp;') !!}

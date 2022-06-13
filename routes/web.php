@@ -58,6 +58,7 @@ Route::resource('payments', App\Http\Controllers\PaymentController::class);
 Route::get('/payments/user/data', [App\Http\Controllers\PaymentController::class, 'index2'])->name('payments.index2');
 Route::get('/payments/user/pay', [App\Http\Controllers\PaymentController::class, 'pay'])->name('payments.pay');
 Route::get('/payments/client/data', [App\Http\Controllers\PaymentController::class, 'client_index'])->name('clients.index');
+Route::post('/payments/client/data', [App\Http\Controllers\PaymentController::class, 'client_index'])->name('clients.filter');
 Route::get('/payments/select/plan',[App\Http\Controllers\PaymentController::class,'select_plan'])->name('payment.plan');
 Route::get('/payments/client/pay/{id}',[App\Http\Controllers\PaymentController::class,'plan_detail'])->name('payment.detail');
 Route::post('/payments/client/payment',[App\Http\Controllers\PaymentController::class,'client_pay'])->name('client.payment');
