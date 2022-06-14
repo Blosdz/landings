@@ -6,6 +6,7 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
 use App\Models\User;
+use App\Models\Profile;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -212,5 +213,33 @@ class UserController extends AppBaseController
         }
 
         return redirect(route('login'));
+    }
+
+    public function send_invitation(Request $request)
+    {
+        $emails = explode(',',$request->get('emails'));
+        foreach($emails as $index => $email){
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                unset($emails[$index]);
+            }
+        }
+        if(empty($emails)){
+            Flash::error('No se encontraron emails validos');
+            return redirect(route('invite.user'));
+        }
+        $data = [
+            'email_verified_at' => Carbon::now()
+        ];
+        $profile = Profile::where('user_id',Auth::user()->id)->first();
+        $data = [
+            "view" => "emails.invitation",
+            "subject" => "AEIA EMPIEZA A INVERTIR [Invitación]",
+            "name" => $profile->first_name.' '.$profile->lastname, 
+            "rol" =>  (Auth::user()->rol==2?'suscriptor':'cliente'),
+            "link" => Auth::user()->link
+        ];
+        $MailCustom = MailCustom::to($emails)->queue(new SendMail($data));
+        Flash::success(count($emails).' Correos de invitación enviados.');
+        return redirect(route('invite.user'));
     }
 }

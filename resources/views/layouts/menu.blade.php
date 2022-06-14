@@ -95,6 +95,13 @@
   if( $user->rol == 3 ) {
 @endphp
 
+<li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('profiles.user') }}">
+        <i class="mdi mdi-24px mdi-account-search"></i>
+        <span>Verificacion</span>
+    </a>
+</li>
+
 <li class="nav-item {{ Request::is('payments*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('clients.index') }}">
         <i class="mdi mdi-24px mdi-bitcoin"></i>
@@ -102,10 +109,10 @@
     </a>
 </li>
 
-<li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('profiles.user') }}">
-        <i class="mdi mdi-24px mdi-account-search"></i>
-        <span>Verificacion</span>
+<li class="nav-item {{ Request::is('invite*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('invite.user') }}">
+        <i class="mdi mdi-24px mdi-send"></i>
+        <span>Invitar</span>
     </a>
 </li>
 

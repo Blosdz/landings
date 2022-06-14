@@ -119,4 +119,15 @@ class RegisterController extends Controller
         $dataUser->profile = $profile;
         return view('auth.register')->with('dataUser', $dataUser);
     }
+
+    public function showRegistrationClient($invite_link)
+    {
+        $dataUser = User::where('link', $invite_link)->with('profile')->get()->first();
+
+        //dd($dataUser->profile);
+        $profile = Profile::where('user_id', $dataUser->id)->get()->first();
+        //dd($profile);
+        $dataUser->profile = $profile;
+        return view('auth.register')->with('dataUser', $dataUser);
+    }
 }
