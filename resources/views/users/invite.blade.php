@@ -11,7 +11,25 @@
         margin-right: 2px;
         color: white;
         border-radius: 4px;
+    }
+    .btn-circle.btn-xl {
+        width: 40px;
+        height: 40px;
+        padding: 2px 7.5px;
+        border-radius: 35px;
+        font-size: 20px;
+        line-height: 1.5;
+    }
+    .btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
 }
+
 </style>
 @php
     $codigo = explode("@", $user->email)[0];
@@ -59,9 +77,13 @@
                                 {!!Form::open(['route'=>'invitation','class'=>'row'])!!}
                             @endif
                             <div class="p-2 w-50 text-center mx-auto">
-                                <p id="url_shared">
-                                    <h3>{{ env('APP_URL') }}/{{$user->rol==3?'cliente':'suscriptor'}}/<span style="color: #EAB226; font-size: 32px;">{{$codigo}}</span></h3>
-                                </p>
+                                <div style="display: flex; justify-content: space-around;">
+                                    <button type="button" class="btn btn-circle btn-xl" style="background-color: #09114a; color: white"><i class="mdi mdi-24px mdi-content-copy" onclick="copyToClipboard('#code')"></i></button>
+                                    &nbsp; &nbsp; &nbsp;
+                                    <p id="url_shared">
+                                        <h3 id="code">{{ env('APP_URL') }}/{{$user->rol==3?'cliente':'suscriptor'}}/<span style="color: #EAB226; font-size: 32px;">{{$codigo}}</span></h3>
+                                    </p>
+                                </div>
                             </div>
 
                             <!-- Submit Field -->
@@ -99,6 +121,15 @@
         trimValue: true
     });
     $(".tagsinput").parent().children("div").addClass('col-10')
+
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        alert("El código "+$temp.val()+" ha sido copiado al portapapeles.");
+        $temp.remove();
+    }
 </script>
     
 @endsection
