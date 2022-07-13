@@ -33,12 +33,47 @@
       <!-- modernizr css -->
       <script src="welcome_new/js/vendor/modernizr-2.8.3.min.js"></script>
    </head>
+   <style>
+      .modal{
+         padding: 0px!important;
+         margin: 0px!important;
+      }
+      .modal-dialog {
+         width: 100vh;
+         height: 100vw;
+         margin: 0;
+         padding: 0;
+      }
+
+      .modal-content {
+         height: auto;
+         width: auto;
+         min-height: 100vh;
+         min-width: 100vw;
+         border-radius: 0;
+         background-image: url("/images/modal.png");
+         background-size: contain;
+         background-repeat: no-repeat;
+         background-position: center;
+         background-color: rgba(25, 25, 25, 0.4);
+      }
+   </style>
    <body>
+      <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="homeModalTitle" aria-hidden="true" style="z-index: 1000000">
+         <div class="modal-dialog modal-dialog-centered" role="document">
+           <div class="modal-content">             
+             <div class="modal-body">
+               ...
+             </div>
+           </div>
+         </div>
+      </div>
       <!-- preloader Start -->
       <div id="preloader">
          <div id="status"><img src="welcome_new/images/banner/loader.gif" id="preloader_image" alt="loader">
          </div>
       </div>
+      
       <!--Header area start here-->
       <div section-scroll='0' class="wd_scroll_wrap">
          <header class="gc_main_menu_wrapper">
@@ -575,5 +610,12 @@
       <script src="welcome_new/js/Youtube.min.js"></script>
       <!-- main js -->
       <script src="welcome_new/js/main.js"></script>
+      <script type="text/javascript">
+         $('html').css("overflow-y","hidden");
+         $('#homeModal').css("overflow-y","hidden");
+         $(window).on('load', function() {
+             $('#homeModal').modal('show');
+         });
+     </script>
    </body>
 </html>
