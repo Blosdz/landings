@@ -192,6 +192,7 @@
         <div class="form-group col-sm-8">
             {!! Form::label('address_wallet', 'Dirección de tu Wallet:') !!}
             {!! Form::text('address_wallet', null, ['class' => 'form-control','maxlength' => '100']) !!}
+            <span class="float-right">¿No tienes un wallet? <a href="https://accounts.binance.com/es-LA/register" target="_blank">Regístrate aquí.</a></span>
         </div>
 
         <!-- Submit Field -->

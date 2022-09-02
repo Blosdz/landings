@@ -94,7 +94,9 @@
                                 <div class="row p-2 w-50 mx-auto">
                                     {!! Form::text('emails',null , ['class' => 'tagsinput','data-role'=>'tagsinput']) !!}
                                     {!! Form::submit('Invitar', ['class' => 'btn btn-success col-2']) !!} 
+                                    <span>Ingrese los correos electrónicos para enviar una invitación. Puede separar cada correo electrónico presionando enter o con una coma.</span>
                                 </div>
+                                
                             @endif                                
                             </div>
 

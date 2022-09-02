@@ -237,7 +237,7 @@
     });
 
     // principal 
-    $(document).on("click", "#alert_wrapper_dni", function(event){
+    /*$(document).on("click", "#alert_wrapper_dni", function(event){
 
         var alert_wrapper = document.getElementById("alert_wrapper_dni");
         alert_wrapper.innerHTML = ``;
@@ -304,7 +304,7 @@
         alert_wrapper.innerHTML = ``;
     });
 
-
+    */
 
 
     function check_progress_bar(e){

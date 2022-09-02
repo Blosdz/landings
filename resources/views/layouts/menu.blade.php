@@ -60,17 +60,17 @@
 
 <li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
     @if ($session_validate == 2)
-        <a class="nav-link" href="{{ route('profiles.verified') }}">
+        <a class="nav-link {{ Request::is('profiles*') ? 'active' : '' }}" href="{{ route('profiles.verified') }}">
     @else
-        <a class="nav-link" href="{{ route('profiles.user') }}">
+        <a class="nav-link {{ Request::is('profiles*') ? 'active' : '' }}" href="{{ route('profiles.user') }}">
     @endif
         <i class="mdi mdi-24px mdi-account-search"></i>
-        <span>Verificacion</span>
+        <span>Verificación</span>
     </a>
 </li>
 
 <li class="nav-item {{ Request::is('payments*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('payments.index2') }}">
+    <a class="nav-link {{ Request::is('payments*') ? 'active' : '' }}" href="{{ route('payments.index2') }}">
         <i class="mdi mdi-24px mdi-bitcoin"></i>
         <span>Depositar</span>
     </a>
@@ -154,7 +154,7 @@
 </li>
 
 <li class="nav-item {{ Request::is('notifications*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('notifications.index') }}">
+    <a class="nav-link {{ Request::is('notifications*') ? 'active' : '' }}" href="{{ route('notifications.index') }}">
         <i class="mdi mdi-24px mdi-inbox"></i>
         Notificaciones
         <span class="badge badge-success notification" style="display: none;"><i class="fa fa-bell"></i></span>

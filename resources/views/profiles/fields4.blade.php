@@ -189,10 +189,10 @@
 
         </div>
 
-        <div class="form-group col-sm-8">
+        <!--div class="form-group col-sm-8">
             {!! Form::label('address_wallet', 'Dirección de tu Wallet:') !!}
             {!! Form::text('address_wallet3', null, ['class' => 'form-control','maxlength' => '100']) !!}
-        </div>
+        </div-->
 
         <!-- Submit Field -->
         <div class="form-group col-sm-12">
