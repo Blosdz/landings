@@ -15,7 +15,7 @@
 </li>
 
 @php
-  if( $user->rol == 1 ) {
+  if( $user->rol == 1 ) { //admin
 @endphp
 
 <li class="nav-item {{ Request::is('users*') ? 'active' : '' }}">
@@ -48,7 +48,7 @@
 
 @php
   }
-  if( $user->rol == 2 ) {
+  if( $user->rol == 2 ) { //Suscriptor
 @endphp
 
 <li class="nav-item {{ Request::is('home*') ? 'active' : '' }}">
@@ -92,7 +92,7 @@
 
 @php
   }
-  if( $user->rol == 3 ) {
+  if( $user->rol == 3 ) { Cliente
 @endphp
 
 <li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
@@ -125,7 +125,7 @@
 
 @php
   }
-  if( $user->rol == 4 ) {
+  if( $user->rol == 4 ) { Business
 @endphp
 
 <li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
@@ -143,9 +143,23 @@
 </li>
 
 @php
-  }
+  } if( $user->rol == 5 ) { //Gestor comercial
 @endphp
 
+@php
+  } if( $user->rol == 6 ) { //Verificador
+@endphp
+
+<li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('profiles.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Perfiles a verificar</span>
+    </a>
+</li>
+
+@php
+  }
+@endphp
 <li class="nav-item {{ Request::is('contracts*') ? 'active' : '' }}">
    <a class="nav-link" href="{{ route('contracts.index') }}">
        <i class="mdi mdi-24px mdi-file-document-outline"></i>

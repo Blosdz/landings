@@ -13,8 +13,11 @@ use App\Models\User;
 use App\Models\ClientPayment;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+//use Symfony\Component\HttpFoundation\Response;
+
 
 use Flash;
 use Response;
@@ -174,9 +177,71 @@ class PaymentController extends AppBaseController
     {
         $payments = $this->paymentRepository->all();
         $payments = Payment::where("user_id", Auth::user()->id)->with('contract')->get();
-        
+        $current = null;
         return view('payments.index2')
-            ->with('payments', $payments);
+            ->with(compact('payments', 'current'));
+    }
+
+    public function new_order(Request $request)
+    {
+        try {
+            $timestamp = Carbon::now()->isoFormat('x');
+            $nonce = Str::random(32);
+            $body = json_decode('{
+                "env" : {
+                  "terminalType": "APP"
+                },
+                "merchantTradeNo": "9825382937292",
+                "orderAmount": 25.17,
+                "currency": "BUSD",
+                "goods" : {
+                  "goodsType": "01",
+                  "goodsCategory": "D000",
+                  "referenceGoodsId": "7876763A3B",
+                  "goodsName": "Ice Cream",
+                  "goodsDetail": "Greentea ice cream cone"
+                }
+            }');
+            $body = json_encode($body);
+
+            $secretKey = 'lVbdl6lSzbhKjG61u1GKZ4rS2HCwqQNr0GAi67lpUpzS54mVlLOGFuZpIH9R6MNq';
+            $payload = $timestamp."\n".$nonce."\n".$body."\n";
+            $signature = strtoupper(hash_hmac('sha512',$payload,$secretKey));
+            
+            //FCM api URL
+            $url = 'https://bpay.binanceapi.com/binancepay/openapi/v2/order';
+            /*//api_key available in Firebase Console -> Project Settings -> CLOUD MESSAGING -> Server key
+                $enviroment_firebase = \config('firebase');
+                $server_key = $enviroment_firebase['Server_Key'];
+            */
+            //header with content_type api key
+            $headers = array(
+                'Content-Type:application/json',
+                'BinancePay-Timestamp:'.$timestamp,
+                'BinancePay-Nonce:' . $nonce,
+                'BinancePay-Certificate-SN:BkQZrl690RxHyDC7dBS33Lr5ttcWg1tA1fQhp5gNNm1XiTNpVcATwHJPNuxPfLvp',
+                'BinancePay-Signature:'.$signature
+            );
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            //curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+            $result = curl_exec($ch);
+            if ($result === FALSE) {
+                die('FCM Send Error: ' . curl_error($ch));
+            }
+            curl_close($ch);
+            //debug($result);
+            
+            return $this->sendResponse(json_decode($result),'Test.');
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage(),500);
+        }
     }
 
     public function client_index(Request $request)

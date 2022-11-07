@@ -63,6 +63,7 @@ Route::get('/payments/select/plan',[App\Http\Controllers\PaymentController::clas
 Route::get('/payments/client/pay/{id}',[App\Http\Controllers\PaymentController::class,'plan_detail'])->name('payment.detail');
 Route::post('/payments/client/payment',[App\Http\Controllers\PaymentController::class,'client_pay'])->name('client.payment');
 Route::get('/payments/client/{id}',[App\Http\Controllers\PaymentController::class,'client_detail'])->name('payment.client.detail');
+Route::post('/payments/order', [App\Http\Controllers\PaymentController::class, 'new_order'])->name('payment.order');
 
 Route::get('/invite/user/link', [App\Http\Controllers\UserController::class, 'invite'])->name('invite.user');
 
