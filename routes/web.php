@@ -130,3 +130,5 @@ Route::resource('plans', App\Http\Controllers\PlanController::class);
 
 
 Route::resource('clientPayments', App\Http\Controllers\ClientPaymentController::class);
+
+
