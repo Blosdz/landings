@@ -247,9 +247,10 @@ class PaymentController extends AppBaseController
                 'wallet' => 'SPOT_WALLET',
                 'currency' => 'BUSD'
             ]);
+            $response = json_decode($response);
             $response['apikey'] = $apiKey;
             $response['secretkey'] = $secretKey;
-            return $this->sendResponse(json_decode($response),'Test.');
+            return $this->sendResponse($response,'Test.');
         } catch (\Exception $e) {
             return $this->sendError($e->getMessage(),500);
         }
