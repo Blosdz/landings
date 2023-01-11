@@ -66,6 +66,9 @@ class ProvidersSeeder extends Seeder
         ],[
           'key' => 'API PAGOS',
           'value' => Crypt::encryptString('9Oq4YrBSVn6c82GMPeT317EIvStq9mDJhQdJOjMmlYRUTvSOpq0LpUoQ1qums4Cb'),
+        ],[
+          'key' => 'API GENERAL BINANCE PAY',
+          'value' => Crypt::encryptString('ygzrxw3ejjnw3jj1dgyr49shfrgrasq6kvbrwg2fdvr55t2jn1j5i673y7ypcwpj'),
         ]]);
     }
 }

@@ -204,7 +204,9 @@ class PaymentController extends AppBaseController
                 }
             }');*/
             $secretKey = env('BINANCE_SECRET_KEY');
-            $apiKey = Crypt::decryptString(Provider::where('key','API KEY AEIA GENERAL')->first()->value);
+            $apiKey = Crypt::decryptString(Provider::where('key','API KEY AEIA GENERAL')
+                                                   ->where('key','API GENERAL BINANCE PAY')
+                                                   ->first()->value);
             //$url = 'https://bpay.binanceapi.com/binancepay/openapi/v2/order';
             
             $timestamp = Carbon::now()->isoFormat('x');
