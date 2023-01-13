@@ -203,8 +203,9 @@ class PaymentController extends AppBaseController
                     "goodsDetail": "Greentea ice cream cone"
                 }
             }');*/
-            $secretKey = env('BINANCE_SECRET_KEY');
-            $apiKey = Crypt::decryptString(Provider::where('key','API GENERAL BINANCE PAY')->first()->value);
+            $db_key = Provider::where('key','API GENERAL BINANCE PAY')->first();
+            $apiKey = Crypt::decryptString($db_key->value);
+            $secretKey = Crypt::decryptString($db_key->secret_key);
             //$url = 'https://bpay.binanceapi.com/binancepay/openapi/v2/order';
             
             $timestamp = Carbon::now()->isoFormat('x');
