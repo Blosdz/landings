@@ -210,11 +210,12 @@ class PaymentController extends AppBaseController
             
             $timestamp = Carbon::now()->isoFormat('x');
             $nonce = Str::random(32);
-            $body = '{
-                "wallet": "SPOT_WALLET",
-                "currency": "BUSD"
-            }';
-            $payload = $timestamp."\n".$nonce."\n".$body."\n";
+            $body =[
+                "wallet" => "SPOT_WALLET",
+                "currency" => "BUSD"
+            ];
+
+            $payload = $timestamp."\n".$nonce."\n".json_encode($body)."\n";
             $url = 'https://bpay.binanceapi.com/binancepay/openapi/v2/balance';
             $signature = strtoupper(hash_hmac('sha512',$payload,$secretKey));
             /*$headers = array(
@@ -244,16 +245,9 @@ class PaymentController extends AppBaseController
                 'BinancePay-Certificate-SN'=>$apiKey,
                 'BinancePay-Signature'=>$signature
             ])
-            ->post('https://bpay.binanceapi.com/binancepay/openapi/v2/balance', [
-                'wallet' => 'SPOT_WALLET',
-                'currency' => 'BUSD'
-            ]);
-            $rsp = [];
-            $rsp['payload'] = $payload;
-            $rsp['apikey'] = $apiKey;
-            $rsp['secretkey'] = $secretKey;
-            $rsp['response'] = json_decode($response);
-            return $this->sendResponse($rsp,'Test.');
+            ->post('https://bpay.binanceapi.com/binancepay/openapi/v2/balance', $body);
+            
+            return $this->sendResponse(json_decode($response),'Test.');
         } catch (\Exception $e) {
             return $this->sendError($e->getMessage(),500);
         }
