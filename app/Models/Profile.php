@@ -53,6 +53,7 @@ class Profile extends Model
         'job',
         'verified',
         'obs',
+        'telegram',
 
         'dni2',
         'dni2_r',
