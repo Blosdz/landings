@@ -32,7 +32,7 @@ class SendMail extends Mailable
 
         $view = isset($this->data["view"]) ? $this->data["view"]: 'emails.sendmail';
         $subject = isset($this->data["subject"]) ? $this->data["subject"]: ' AEIA EMPIEZA A INVERTIR [REGISTRO]';
-        return $this->from("aeiainvestments.peru@gmail.com")->subject($subject)->view($view);
+        return $this->from("no-reply@aeia.capital")->subject($subject)->view($view);
 
     }
 }
