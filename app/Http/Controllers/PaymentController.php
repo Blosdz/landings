@@ -204,15 +204,32 @@ class PaymentController extends AppBaseController
                 }
             }');*/
             $db_key = Provider::where('key','API GENERAL BINANCE PAY')->first();
-            $apiKey = Crypt::decryptString($db_key->value);
-            $secretKey = Crypt::decryptString($db_key->secret_key);
+            // $apiKey = Crypt::decryptString($db_key->value);
+            $apiKey = "apgd15ih53aaoikrbipr05v2e8mdewkv2hivtbmr3gsocqgrq6ulmryusjumnl5c";
+            // dd($apiKey);
+            // $secretKey = Crypt::decryptString($db_key->secret_key);
+            $secretKey = "2axiuuqbk9j6toi03xhyzim3mphih8juyz35vwvswdxdrpjwbcythi0mvajl1mf2";
             //$url = 'https://bpay.binanceapi.com/binancepay/openapi/v2/order';
-            
-            $timestamp = Carbon::now()->isoFormat('x');
+
             $nonce = Str::random(32);
-            $body =[
-                "wallet" => "SPOT_WALLET",
-                "currency" => "BUSD"
+
+            $timestamp = Carbon::now()->isoFormat('x');
+            $body = [
+                'env'           => array(
+                                    'terminalType' => "APP",
+                                ),
+                'wallet'        => "SPOT_WALLET",
+                'currency'      => "BUSD",
+                'orderAmount'   => 25.17,
+                'goods'         => array(
+                        "goodsType" => "01",
+                        "goodsCategory" => "D000",
+                        "referenceGoodsId" => "7876763A3B",
+                        "goodsName" => "Ice Cream",
+                        "goodsDetail" => "Greentea ice cream cone"
+                        ),
+                'merchantTradeNo' => Str::random(32),
+
             ];
 
             $payload = $timestamp."\n".$nonce."\n".json_encode($body)."\n";
@@ -228,7 +245,7 @@ class PaymentController extends AppBaseController
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS,$body); 
+            curl_setopt($ch, CURLOPT_POSTFIELDS,$body);
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -245,9 +262,11 @@ class PaymentController extends AppBaseController
                 'BinancePay-Certificate-SN'=>$apiKey,
                 'BinancePay-Signature'=>$signature
             ])
-            ->post('https://bpay.binanceapi.com/binancepay/openapi/v2/balance', $body);
-            
-            return $this->sendResponse(json_decode($response),'Test.');
+            ->post('https://bpay.binanceapi.com/binancepay/openapi/v2/order', $body);
+
+
+
+            dd($this->sendResponse(json_decode($response),'Test.'));
         } catch (\Exception $e) {
             return $this->sendError($e->getMessage(),500);
         }
