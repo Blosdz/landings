@@ -196,8 +196,8 @@ class UserController extends AppBaseController
     {
 
         $user = User::where("remember_token", $token)->get()->first();
-        //dd($user);
-        if(!$user->email_verified_at){
+        // dd($user->email_verified_at);
+        if($user && !$user->email_verified_at){
             $data = [
                 'email_verified_at' => Carbon::now()
             ];
