@@ -396,7 +396,7 @@ class PaymentController extends AppBaseController
                 $payment->status = "PAGADO";
                 $payment->transact_code = $data->transactionId;
 
-                $transactTime = Carbon::createFromTimestamp($data->transactTime)->format("Y-m-d H:i:s");
+                $transactTime = Carbon::createFromTimestamp($data->transactTime/1000)->format("Y-m-d H:i:s");
                 $payment->transact_timestamp = $transactTime;
 
                 $payment->save();
