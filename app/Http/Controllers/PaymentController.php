@@ -13,12 +13,10 @@ use App\Models\User;
 use App\Models\Provider;
 use App\Models\ClientPayment;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Services\BinanceQRGeneratorServiceTest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Crypt;
 //use Symfony\Component\HttpFoundation\Response;
 
 
@@ -179,97 +177,27 @@ class PaymentController extends AppBaseController
     public function index2(Request $request)
     {
         $payments = $this->paymentRepository->all();
+        dump(Auth::user());
         $payments = Payment::where("user_id", Auth::user()->id)->with('contract')->get();
         $current = null;
         return view('payments.index2')
             ->with(compact('payments', 'current'));
     }
 
-    public function new_order(Request $request)
+    public function generateQR($data)
     {
-        try {
-            /*$body = json_decode('{
-                "env" : {
-                    "terminalType": "APP"
-                },
-                "merchantTradeNo": "9825382937292",
-                "orderAmount": 25.17,
-                "currency": "BUSD",
-                "goods" : {
-                    "goodsType": "01",
-                    "goodsCategory": "D000",
-                    "referenceGoodsId": "7876763A3B",
-                    "goodsName": "Ice Cream",
-                    "goodsDetail": "Greentea ice cream cone"
-                }
-            }');*/
-            $db_key = Provider::where('key','API GENERAL BINANCE PAY')->first();
-            // $apiKey = Crypt::decryptString($db_key->value);
-            $apiKey = "apgd15ih53aaoikrbipr05v2e8mdewkv2hivtbmr3gsocqgrq6ulmryusjumnl5c";
-            // dd($apiKey);
-            // $secretKey = Crypt::decryptString($db_key->secret_key);
-            $secretKey = "2axiuuqbk9j6toi03xhyzim3mphih8juyz35vwvswdxdrpjwbcythi0mvajl1mf2";
-            //$url = 'https://bpay.binanceapi.com/binancepay/openapi/v2/order';
+        $env = \config('app.env');
 
-            $nonce = Str::random(32);
-
-            $timestamp = Carbon::now()->isoFormat('x');
-            $body = [
-                'env'           => array(
-                                    'terminalType' => "APP",
-                                ),
-                'wallet'        => "SPOT_WALLET",
-                'currency'      => "BUSD",
-                'orderAmount'   => 25.17,
-                'goods'         => array(
-                        "goodsType" => "01",
-                        "goodsCategory" => "D000",
-                        "referenceGoodsId" => "7876763A3B",
-                        "goodsName" => "Ice Cream",
-                        "goodsDetail" => "Greentea ice cream cone"
-                        ),
-                'merchantTradeNo' => Str::random(32),
-
-            ];
-
-            $payload = $timestamp."\n".$nonce."\n".json_encode($body)."\n";
-            $url = 'https://bpay.binanceapi.com/binancepay/openapi/v2/balance';
-            $signature = strtoupper(hash_hmac('sha512',$payload,$secretKey));
-            /*$headers = array(
-                'Content-Type:application/json',
-                'BinancePay-Timestamp:'.$timestamp,
-                'BinancePay-Nonce:' . $nonce,
-                'BinancePay-Certificate-SN:'.$apiKey,
-                'BinancePay-Signature:'.$signature
-            );
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS,$body);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-            $result = curl_exec($ch);
-            if ($result === FALSE) {
-                die('FCM Send Error: ' . curl_error($ch));
-            }
-            curl_close($ch);*/
-            //debug($result);
-            $response = Http::accept('application/json')
-            ->withHeaders([
-                'BinancePay-Timestamp'=>$timestamp,
-                'BinancePay-Nonce'=>$nonce,
-                'BinancePay-Certificate-SN'=>$apiKey,
-                'BinancePay-Signature'=>$signature
-            ])
-            ->post('https://bpay.binanceapi.com/binancepay/openapi/v2/order', $body);
-
-
-
-            dd($this->sendResponse(json_decode($response),'Test.'));
-        } catch (\Exception $e) {
-            return $this->sendError($e->getMessage(),500);
+        if ($env == 'local') {
+            $binanceQR = new BinanceQRGeneratorServiceTest($data, 'https://458b-2800-200-f410-2319-7285-c2ff-fec8-861f.ngrok-free.app');
+            $binanceQR->generate();
+        } else {
+            $binanceQR = new BinanceQRGeneratorServiceTest($data, env('APP_URL'));
+            $binanceQR->generate();
         }
+
+        // return $this->sendResponse(($binanceQR->getResponse()), 200);
+        return $binanceQR->getResponse();
     }
 
     public function client_index(Request $request)
@@ -410,36 +338,44 @@ class PaymentController extends AppBaseController
         
     }
 
-    public function pay(CreatePaymentRequest $request)
+    public function pay(Request $request)
     {
         $input = $request->all();
+        $qr = $this->generateQR($input);
+        dump($qr->status);
+        if ($qr->status !== "SUCCESS"){
+            return redirect()->back()->withErrors("no se pudo crear codigo QR");
+        }
 
         $input["user_id"] = Auth::user()->id;
-        $input["month"] = "Diciembre";
-        $input["total"] = 1000.00;
         $input["date_transaction"] = Carbon::parse()->format('Y-m-d');
 
-        $payment = $this->paymentRepository->create($input);
+        // $payment = $this->paymentRepository->create($input);
 
-        $profile = Profile::where('user_id',$payment->user_id)->first();
-        $contract = [
-            'user_id' => $profile->user_id,
-            'type' => 1,
-            'full_name' => $profile->first_name.' '.$profile->lastname,
-            'country' => $profile->country,
-            'city' => $profile->city,
-            'state' => $profile->state,
-            'address' => $profile->address,
-            'country_document' => $profile->country_document,
-            'type_document' => $profile->type_document,
-            'identification_number' => $profile->identification_number,
-            'code' => uniqid(),
-            'payment_id' => $payment->id
-        ];
+        // $profile = Profile::where('user_id',$payment->user_id)->first();
+        // $contract = [
+        //     'user_id' => $profile->user_id,
+        //     'type' => 1,
+        //     'full_name' => $profile->first_name.' '.$profile->lastname,
+        //     'country' => $profile->country,
+        //     'city' => $profile->city,
+        //     'state' => $profile->state,
+        //     'address' => $profile->address,
+        //     'country_document' => $profile->country_document,
+        //     'type_document' => $profile->type_document,
+        //     'identification_number' => $profile->identification_number,
+        //     'code' => uniqid(),
+        //     'payment_id' => $payment->id
+        // ];
 
-        $contract = Contract::create($contract);
-        Flash::success('Deposito recibido correctamente.');
+        // $contract = Contract::create($contract);
+        // Flash::success('Deposito recibido correctamente.');
 
         return redirect(route('payments.index2'));
+    }
+
+    public function webhook(Request $request){
+        $input = $request->input();
+        dump($input);
     }
 }
