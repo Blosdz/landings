@@ -189,7 +189,7 @@ class PaymentController extends AppBaseController
         $env = \config('app.env');
 
         if ($env == 'local') {
-            $binanceQR = new BinanceQRGeneratorServiceTest($data, 'https://458b-2800-200-f410-2319-7285-c2ff-fec8-861f.ngrok-free.app');
+            $binanceQR = new BinanceQRGeneratorServiceTest($data, 'https://0153-2800-200-f410-2319-7285-c2ff-fec8-861f.ngrok-free.app');
             $binanceQR->generate();
         } else {
             $binanceQR = new BinanceQRGeneratorServiceTest($data, env('APP_URL'));
@@ -352,7 +352,10 @@ class PaymentController extends AppBaseController
         $input["date_transaction"] = Carbon::parse()->format('Y-m-d');
         // $input["total"] = number_format($input["total"], 7);
         $input["prepay_code"] = $qr->data->prepayId;
-        $input["expire_time"] = $qr->data->expireTime;
+
+        $expireTime = Carbon::createFromTimestamp($qr->data->expireTime / 1000)->format("Y-m-d H:i:s");
+
+        $input["expire_time"] = $expireTime;
 
         $payment = $this->paymentRepository->create($input);
 
@@ -377,7 +380,7 @@ class PaymentController extends AppBaseController
 
         $responseData = [
             'qrcodeLink' => $qr->data->qrcodeLink,
-            'expiration' => $qr->data->expireTime,
+            'expiration' => $expireTime,
         ];
 
         return $this->sendResponse(($responseData), "QR info sent", 200);
@@ -385,20 +388,23 @@ class PaymentController extends AppBaseController
 
     public function webhook(Request $request){
         $input = $request->input(); $data = json_decode($input["data"]);
-        // dump($data);
-        // dump($input);
         try {
             $payment = Payment::where("prepay_code", $input["bizId"])->first();
-            // dump($payment);
+
             if ($input["bizStatus"] == "PAY_SUCCESS" && $payment->status == "PENDIENTE"){
+
                 $payment->status = "PAGADO";
                 $payment->transact_code = $data->transactionId;
-                $payment->transact_timestamp = $data->transactTime;
+
+                $transactTime = Carbon::createFromTimestamp($data->transactTime)->format("Y-m-d H:i:s");
+                $payment->transact_timestamp = $transactTime;
+
                 $payment->save();
-                return redirect()->refresh();
+                return redirect()->route("payments.index2");
+            }
         }
-        }catch(\Exception $e){
-            $this->setResponse($e->getMessage());
+        catch(\Exception $e){
+                return $this->setResponse($e->getMessage());
         }
         return;
 

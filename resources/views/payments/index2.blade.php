@@ -40,7 +40,7 @@
                               <img src="/images/binance-banner.jpg" alt="" data-position="center center" class="center-img py-4" data-toggle="modal" data-target="#exampleModal" id=""/>
 
                               <div class="row d-flex justify-content-center">
-                                  {!! Form::button('test', ['onClick'=> 'send()', 'class' => 'btn btn-outline-primary btn-xl p-2']) !!}
+                                  <!-- {!! Form::button('test', ['onClick'=> 'send()', 'class' => 'btn btn-outline-primary btn-xl p-2']) !!} -->
                                   <button onclick="send()" type="button" class="btn btn-outline-primary btn-xl p-2" data-toggle="modal" data-target="#paymentModal" id="modal-btn">
                                       <h3>Depositar ahora</h3>
                                   </button>
@@ -56,7 +56,8 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                            {!! Form::submit('Ya realicé el pago', ['class'=>'btn btn-success']) !!}
+                                            <button type="button" onclick="history.go(0)" class="btn btn-success" data-dismiss="modal">Ya realicé el pago</button>
+                                            <!-- {!! Form::submit('Ya realicé el pago', ['class'=>'btn btn-success']) !!} -->
                                         </div>
                                         </div>
                                     </div>
