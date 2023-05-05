@@ -37,6 +37,10 @@ class Payment extends Model
         'status',
         'date_transaction',
         'user_id',
+        'prepay_code',
+        'expire_time',
+        'transact_code',
+        'transact_timestamp'
     ];
 
     /**

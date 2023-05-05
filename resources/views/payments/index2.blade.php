@@ -41,7 +41,7 @@
 
                               <div class="row d-flex justify-content-center">
                                   {!! Form::button('test', ['onClick'=> 'send()', 'class' => 'btn btn-outline-primary btn-xl p-2']) !!}
-                                  <button type="button" class="btn btn-outline-primary btn-xl p-2" data-toggle="modal" data-target="#paymentModal" id="modal-btn">
+                                  <button onclick="send()" type="button" class="btn btn-outline-primary btn-xl p-2" data-toggle="modal" data-target="#paymentModal" id="modal-btn">
                                       <h3>Depositar ahora</h3>
                                   </button>
                                 </div>
@@ -50,9 +50,9 @@
                                         <div class="modal-content">
                                         <div class="modal-body">
                                             <p class="text-center">
-                                                Escanea el QR de nuestro Binance Pay y realiza el pago por el monto de: $<span id="amount">0.00</span> USD.
+                                                Escanea el QR de nuestro Binance Pay y realiza el pago por el monto de: $<span id="amount"></span> USD.
                                             </p>
-                                            <img class="w-100" src="/images/BINANCE-PAY.jpeg" alt="Binance pay">
+                                            <img id="qrcode" class="w-100" src="/images/loader.gif" alt="binance-qr">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
@@ -80,19 +80,25 @@
          </div>
     </div>
     <script>
+        let qrCodeLink = ""
+        let amount = 0.0000001;
+
+
+        $("#amount").text(amount);
         function send() {
             $.ajax({
                 type: "POST",
                 url: "{{ route('payments.pay') }}",
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    "total": 0.0000001,
+                    "total": amount.toFixed(7),
                     "month": "Anual Suscription",
                     "name": "Suscription",
                     "details": "Suscription",
                 },
                 success: function(data) {
-                    console.log(data.data)
+                    console.log(data)
+                    $("#qrcode").attr("src", data.data.qrcodeLink)
                 }
             });
         }

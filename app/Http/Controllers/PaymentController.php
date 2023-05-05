@@ -177,7 +177,7 @@ class PaymentController extends AppBaseController
     public function index2(Request $request)
     {
         $payments = $this->paymentRepository->all();
-        dump(Auth::user());
+        // dump(Auth::user());
         $payments = Payment::where("user_id", Auth::user()->id)->with('contract')->get();
         $current = null;
         return view('payments.index2')
@@ -342,40 +342,65 @@ class PaymentController extends AppBaseController
     {
         $input = $request->all();
         $qr = $this->generateQR($input);
-        dump($qr->status);
+        // dump($qr);
         if ($qr->status !== "SUCCESS"){
             return redirect()->back()->withErrors("no se pudo crear codigo QR");
         }
 
+
         $input["user_id"] = Auth::user()->id;
         $input["date_transaction"] = Carbon::parse()->format('Y-m-d');
+        // $input["total"] = number_format($input["total"], 7);
+        $input["prepay_code"] = $qr->data->prepayId;
+        $input["expire_time"] = $qr->data->expireTime;
 
-        // $payment = $this->paymentRepository->create($input);
+        $payment = $this->paymentRepository->create($input);
 
-        // $profile = Profile::where('user_id',$payment->user_id)->first();
-        // $contract = [
-        //     'user_id' => $profile->user_id,
-        //     'type' => 1,
-        //     'full_name' => $profile->first_name.' '.$profile->lastname,
-        //     'country' => $profile->country,
-        //     'city' => $profile->city,
-        //     'state' => $profile->state,
-        //     'address' => $profile->address,
-        //     'country_document' => $profile->country_document,
-        //     'type_document' => $profile->type_document,
-        //     'identification_number' => $profile->identification_number,
-        //     'code' => uniqid(),
-        //     'payment_id' => $payment->id
-        // ];
+        $profile = Profile::where('user_id',$payment->user_id)->first();
+        $contract = [
+            'user_id' => $profile->user_id,
+            'type' => 1,
+            'full_name' => $profile->first_name.' '.$profile->lastname,
+            'country' => $profile->country,
+            'city' => $profile->city,
+            'state' => $profile->state,
+            'address' => $profile->address,
+            'country_document' => $profile->country_document,
+            'type_document' => $profile->type_document,
+            'identification_number' => $profile->identification_number,
+            'code' => uniqid(),
+            'payment_id' => $payment->id
+        ];
 
-        // $contract = Contract::create($contract);
+        $contract = Contract::create($contract);
         // Flash::success('Deposito recibido correctamente.');
 
-        return redirect(route('payments.index2'));
+        $responseData = [
+            'qrcodeLink' => $qr->data->qrcodeLink,
+            'expiration' => $qr->data->expireTime,
+        ];
+
+        return $this->sendResponse(($responseData), "QR info sent", 200);
     }
 
     public function webhook(Request $request){
-        $input = $request->input();
-        dump($input);
+        $input = $request->input(); $data = json_decode($input["data"]);
+        // dump($data);
+        // dump($input);
+        try {
+            $payment = Payment::where("prepay_code", $input["bizId"])->first();
+            // dump($payment);
+            if ($input["bizStatus"] == "PAY_SUCCESS" && $payment->status == "PENDIENTE"){
+                $payment->status = "PAGADO";
+                $payment->transact_code = $data->transactionId;
+                $payment->transact_timestamp = $data->transactTime;
+                $payment->save();
+                return redirect()->refresh();
+        }
+        }catch(\Exception $e){
+            $this->setResponse($e->getMessage());
+        }
+        return;
+
     }
 }
