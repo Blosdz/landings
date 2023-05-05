@@ -62,7 +62,7 @@
                                         </div>
                                     </div>
                                 </div>
-                              <a href="{{ route('payments.pay') }}" class="btn btn-primary lg-12">Hacer deposito</a>
+                                <!-- <a href="{{ route('payments.pay') }}" class="btn btn-primary lg-12">Hacer deposito</a> -->
                             @endif
                         @php
                             } else {
