@@ -58,7 +58,7 @@ class Payment extends Model
      * @var array
      */
     public static $rules = [
-        
+        'prepay_code' => 'required',
     ];
 
     public function user(): BelongsTo
