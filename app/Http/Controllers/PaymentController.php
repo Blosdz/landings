@@ -13,12 +13,10 @@ use App\Models\User;
 use App\Models\Provider;
 use App\Models\ClientPayment;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Services\BinanceQRGeneratorServiceTest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Crypt;
 //use Symfony\Component\HttpFoundation\Response;
 
 
@@ -179,78 +177,27 @@ class PaymentController extends AppBaseController
     public function index2(Request $request)
     {
         $payments = $this->paymentRepository->all();
+        // dump(Auth::user());
         $payments = Payment::where("user_id", Auth::user()->id)->with('contract')->get();
         $current = null;
         return view('payments.index2')
             ->with(compact('payments', 'current'));
     }
 
-    public function new_order(Request $request)
+    public function generateQR($data)
     {
-        try {
-            /*$body = json_decode('{
-                "env" : {
-                    "terminalType": "APP"
-                },
-                "merchantTradeNo": "9825382937292",
-                "orderAmount": 25.17,
-                "currency": "BUSD",
-                "goods" : {
-                    "goodsType": "01",
-                    "goodsCategory": "D000",
-                    "referenceGoodsId": "7876763A3B",
-                    "goodsName": "Ice Cream",
-                    "goodsDetail": "Greentea ice cream cone"
-                }
-            }');*/
-            $db_key = Provider::where('key','API GENERAL BINANCE PAY')->first();
-            $apiKey = Crypt::decryptString($db_key->value);
-            $secretKey = Crypt::decryptString($db_key->secret_key);
-            //$url = 'https://bpay.binanceapi.com/binancepay/openapi/v2/order';
-            
-            $timestamp = Carbon::now()->isoFormat('x');
-            $nonce = Str::random(32);
-            $body =[
-                "wallet" => "SPOT_WALLET",
-                "currency" => "BUSD"
-            ];
+        $env = \config('app.env');
 
-            $payload = $timestamp."\n".$nonce."\n".json_encode($body)."\n";
-            $url = 'https://bpay.binanceapi.com/binancepay/openapi/v2/balance';
-            $signature = strtoupper(hash_hmac('sha512',$payload,$secretKey));
-            /*$headers = array(
-                'Content-Type:application/json',
-                'BinancePay-Timestamp:'.$timestamp,
-                'BinancePay-Nonce:' . $nonce,
-                'BinancePay-Certificate-SN:'.$apiKey,
-                'BinancePay-Signature:'.$signature
-            );
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS,$body); 
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-            $result = curl_exec($ch);
-            if ($result === FALSE) {
-                die('FCM Send Error: ' . curl_error($ch));
-            }
-            curl_close($ch);*/
-            //debug($result);
-            $response = Http::accept('application/json')
-            ->withHeaders([
-                'BinancePay-Timestamp'=>$timestamp,
-                'BinancePay-Nonce'=>$nonce,
-                'BinancePay-Certificate-SN'=>$apiKey,
-                'BinancePay-Signature'=>$signature
-            ])
-            ->post('https://bpay.binanceapi.com/binancepay/openapi/v2/balance', $body);
-            
-            return $this->sendResponse(json_decode($response),'Test.');
-        } catch (\Exception $e) {
-            return $this->sendError($e->getMessage(),500);
+        if ($env == 'local') {
+            $binanceQR = new BinanceQRGeneratorServiceTest($data, 'https://0153-2800-200-f410-2319-7285-c2ff-fec8-861f.ngrok-free.app');
+            $binanceQR->generate();
+        } else {
+            $binanceQR = new BinanceQRGeneratorServiceTest($data, env('APP_URL'));
+            $binanceQR->generate();
         }
+
+        // return $this->sendResponse(($binanceQR->getResponse()), 200);
+        return $binanceQR->getResponse();
     }
 
     public function client_index(Request $request)
@@ -391,14 +338,24 @@ class PaymentController extends AppBaseController
         
     }
 
-    public function pay(CreatePaymentRequest $request)
+    public function pay(Request $request)
     {
         $input = $request->all();
+        $qr = $this->generateQR($input);
+        // dump($qr);
+        if ($qr->status !== "SUCCESS"){
+            return redirect()->back()->withErrors("no se pudo crear codigo QR");
+        }
+
 
         $input["user_id"] = Auth::user()->id;
-        $input["month"] = "Diciembre";
-        $input["total"] = 1000.00;
         $input["date_transaction"] = Carbon::parse()->format('Y-m-d');
+        // $input["total"] = number_format($input["total"], 7);
+        $input["prepay_code"] = $qr->data->prepayId;
+
+        $expireTime = Carbon::createFromTimestamp($qr->data->expireTime / 1000)->format("Y-m-d H:i:s");
+
+        $input["expire_time"] = $expireTime;
 
         $payment = $this->paymentRepository->create($input);
 
@@ -419,8 +376,37 @@ class PaymentController extends AppBaseController
         ];
 
         $contract = Contract::create($contract);
-        Flash::success('Deposito recibido correctamente.');
+        // Flash::success('Deposito recibido correctamente.');
 
-        return redirect(route('payments.index2'));
+        $responseData = [
+            'qrcodeLink' => $qr->data->qrcodeLink,
+            'expiration' => $expireTime,
+        ];
+
+        return $this->sendResponse(($responseData), "QR info sent", 200);
+    }
+
+    public function webhook(Request $request){
+        $input = $request->input(); $data = json_decode($input["data"]);
+        try {
+            $payment = Payment::where("prepay_code", $input["bizId"])->first();
+
+            if ($input["bizStatus"] == "PAY_SUCCESS" && $payment->status == "PENDIENTE"){
+
+                $payment->status = "PAGADO";
+                $payment->transact_code = $data->transactionId;
+
+                $transactTime = Carbon::createFromTimestamp($data->transactTime/1000)->format("Y-m-d H:i:s");
+                $payment->transact_timestamp = $transactTime;
+
+                $payment->save();
+                return redirect()->route("payments.index2");
+            }
+        }
+        catch(\Exception $e){
+                return $this->setResponse($e->getMessage());
+        }
+        return;
+
     }
 }
