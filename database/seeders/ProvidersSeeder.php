@@ -84,8 +84,8 @@ class ProvidersSeeder extends Seeder
           'value' => Crypt::encryptString('9Oq4YrBSVn6c82GMPeT317EIvStq9mDJhQdJOjMmlYRUTvSOpq0LpUoQ1qums4Cb'),
         ],[
           'key' => 'API GENERAL BINANCE PAY',
-          'secret_key' => Crypt::encryptString('lbnhf4t7hrxifyfebbznfay0hqn5rdhnccezobxlr7bx1h3h0io7gseexx9abgsg'),
-          'value' => Crypt::encryptString('ygzrxw3ejjnw3jj1dgyr49shfrgrasq6kvbrwg2fdvr55t2jn1j5i673y7ypcwpj'),
+          'secret_key' => Crypt::encryptString('2axiuuqbk9j6toi03xhyzim3mphih8juyz35vwvswdxdrpjwbcythi0mvajl1mf2'),
+          'value' => Crypt::encryptString('apgd15ih53aaoikrbipr05v2e8mdewkv2hivtbmr3gsocqgrq6ulmryusjumnl5c'),
         ]]);
     }
 }

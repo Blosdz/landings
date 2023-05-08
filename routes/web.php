@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,14 +57,15 @@ Route::get('/profiles/user/verified',[App\Http\Controllers\ProfileController::cl
 
 Route::resource('payments', App\Http\Controllers\PaymentController::class);
 Route::get('/payments/user/data', [App\Http\Controllers\PaymentController::class, 'index2'])->name('payments.index2');
-Route::get('/payments/user/pay', [App\Http\Controllers\PaymentController::class, 'pay'])->name('payments.pay');
+Route::post('/payments/user/pay', [App\Http\Controllers\PaymentController::class, 'pay'])->name('payments.pay');
 Route::get('/payments/client/data', [App\Http\Controllers\PaymentController::class, 'client_index'])->name('clients.index');
 Route::post('/payments/client/data', [App\Http\Controllers\PaymentController::class, 'client_index'])->name('clients.filter');
 Route::get('/payments/select/plan',[App\Http\Controllers\PaymentController::class,'select_plan'])->name('payment.plan');
 Route::get('/payments/client/pay/{id}',[App\Http\Controllers\PaymentController::class,'plan_detail'])->name('payment.detail');
 Route::post('/payments/client/payment',[App\Http\Controllers\PaymentController::class,'client_pay'])->name('client.payment');
 Route::get('/payments/client/{id}',[App\Http\Controllers\PaymentController::class,'client_detail'])->name('payment.client.detail');
-Route::post('/payments/order', [App\Http\Controllers\PaymentController::class, 'new_order'])->name('payment.order');
+// Route::post('/payments/order', [App\Http\Controllers\PaymentController::class, 'new_order'])->name('payment.order');
+// Route::post('/webhook', [App\Http\Controllers\PaymentController::class, 'webhook'])->name('payment.webhook');
 
 Route::get('/invite/user/link', [App\Http\Controllers\UserController::class, 'invite'])->name('invite.user');
 
