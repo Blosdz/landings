@@ -76,7 +76,10 @@ Route::post('/send_invitation',[App\Http\Controllers\UserController::class,'send
 Route::get('/suscriptor/{invite_link}', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationSuscriptor'])->name('users.register.susp');
 Route::get('/cliente/{invite_link}', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationClient'])->name('users.register.client');
 
-Route::get('/confirmation-email/{token}', [App\Http\Controllers\UserController::class, 'confirmationEmail'])->name('user.confirmationEmail');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/confirmation-email/{token}', [App\Http\Controllers\UserController::class, 'confirmationEmail'])->name('user.confirmationEmail');
+});
 
 
 
