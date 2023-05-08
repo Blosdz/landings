@@ -15,8 +15,8 @@ class AddBinanceFieldsToPayments extends Migration
     {
         Schema::table('payments', function (Blueprint $table) {
             //
-            $table->string('prepay_code');
-            $table->timestamp('expire_time');
+            $table->string('prepay_code')->nullable();
+            $table->timestamp('expire_time')->nullable();
             $table->string('transact_code')->nullable();
             $table->timestamp('transact_timestamp')->nullable();
         });
