@@ -189,7 +189,7 @@ class PaymentController extends AppBaseController
         $env = \config('app.env');
 
         //IMPORTANT
-        if ($env == 'local' && env('APP_URL' == 'http://localhost:8000')) {
+        if ($env == 'local' && env('APP_URL') == 'http://localhost:8000') {
             $binanceQR = new BinanceQRGeneratorServiceTest($data, 'https://0153-2800-200-f410-2319-7285-c2ff-fec8-861f.ngrok-free.app');
             $binanceQR->generate();
         }
