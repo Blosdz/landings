@@ -188,10 +188,12 @@ class PaymentController extends AppBaseController
     {
         $env = \config('app.env');
 
-        if ($env == 'local') {
+        //IMPORTANT
+        if ($env == 'local' && env('APP_URL' == 'http://localhost:8000')) {
             $binanceQR = new BinanceQRGeneratorServiceTest($data, 'https://0153-2800-200-f410-2319-7285-c2ff-fec8-861f.ngrok-free.app');
             $binanceQR->generate();
-        } else {
+        }
+        else {
             $binanceQR = new BinanceQRGeneratorServiceTest($data, env('APP_URL'));
             $binanceQR->generate();
         }
@@ -344,7 +346,7 @@ class PaymentController extends AppBaseController
         $qr = $this->generateQR($input);
         // dump($qr);
         if ($qr->status !== "SUCCESS"){
-            return redirect()->back()->withErrors("no se pudo crear codigo QR");
+            return $this->sendError($qr, 400);
         }
 
 
