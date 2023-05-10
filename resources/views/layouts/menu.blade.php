@@ -92,7 +92,7 @@
 
 @php
   }
-  if( $user->rol == 3 ) { Cliente
+  if( $user->rol == 3 ) { // Cliente
 @endphp
 
 <li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
@@ -125,7 +125,7 @@
 
 @php
   }
-  if( $user->rol == 4 ) { Business
+  if( $user->rol == 4 ) { // Business
 @endphp
 
 <li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
