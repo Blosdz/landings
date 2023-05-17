@@ -56,7 +56,7 @@
                                 </div>
 
                                 <div class="row d-flex justify-content-center">
-                                    <button onclick="send()" type="button" class="btn btn-primary btn-xl p-2" data-toggle="modal" data-target="#exampleModal" id="modal-btn">
+                                    <button type="button" class="btn btn-primary btn-xl p-2" data-toggle="modal" data-target="#exampleModal" id="modal-btn">
                                         <h3>¡Depositar ahora!</h3>
                                     </button>
                                 </div>
