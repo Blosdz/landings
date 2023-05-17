@@ -190,7 +190,7 @@ class PaymentController extends AppBaseController
 
         //IMPORTANT
         if ($env == 'local' && env('APP_URL') == 'http://localhost:8000') {
-            $binanceQR = new BinanceQRGeneratorServiceTest($data, 'https://0153-2800-200-f410-2319-7285-c2ff-fec8-861f.ngrok-free.app');
+            $binanceQR = new BinanceQRGeneratorServiceTest($data, 'https://6f28-2800-200-f410-2319-ed04-e650-19b5-1011.ngrok-free.app');
             $binanceQR->generate();
         }
         else {
@@ -309,6 +309,14 @@ class PaymentController extends AppBaseController
 
         $input["user_id"] = Auth::user()->id;
 
+        $input["date_transaction"] = Carbon::parse()->format('Y-m-d');
+        // $input["total"] = number_format($input["total"], 7);
+        $input["prepay_code"] = $qr->data->prepayId;
+
+        $expireTime = Carbon::createFromTimestamp($qr->data->expireTime / 1000)->format("Y-m-d H:i:s");
+
+        $input["expire_time"] = $expireTime;
+
         $payment = $this->paymentRepository->create($input);
 
         $profile = Profile::where('user_id',$payment->user_id)->first();
@@ -407,7 +415,8 @@ class PaymentController extends AppBaseController
     }
 
     public function webhook(Request $request){
-        $input = $request->input(); $data = json_decode($input["data"]);
+        $input = $request->input();
+        $data = json_decode($input["data"]);
         try {
             $payment = Payment::where("prepay_code", $input["bizId"])->first();
 
