@@ -25,12 +25,12 @@
             <tr>
                 <td> {{$payment->client_payment->code}}</td>
                 <td>$ {{ $payment->total }}</td>
-                <td>{{$plans[$payment->client_payment->plan_id]}}
+                <td>{{$plans[$payment->client_payment->plan_id]}}</td>
                 <td>{{ $payment->date_transaction }}</td>
                 <td>{{ $payment->date_transaction->modify('+1 year')->modify('+1 day') }}</td>
                 <td>{{$payment->month}}/{{$payment->date_transaction->format('Y')}}</td>
                 <td>{{$payment->client_payment->referred_code}}</td>
-                <td>{{$status[$payment->client_payment->status]}}</td>
+                <td>{{$payment->status}}</td>
                 <td>
                     <a href="{{ route('payment.client.detail', [$payment->id]) }}" class='btn btn-ghost-success'>Ver detalle</a>
                     @if ($payment->contract)

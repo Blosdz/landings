@@ -190,7 +190,7 @@ class PaymentController extends AppBaseController
 
         //IMPORTANT
         if ($env == 'local' && env('APP_URL') == 'http://localhost:8000') {
-            $binanceQR = new BinanceQRGeneratorServiceTest($data, 'https://0153-2800-200-f410-2319-7285-c2ff-fec8-861f.ngrok-free.app');
+            $binanceQR = new BinanceQRGeneratorServiceTest($data, 'https://6f28-2800-200-f410-2319-ed04-e650-19b5-1011.ngrok-free.app');
             $binanceQR->generate();
         }
         else {
@@ -238,6 +238,7 @@ class PaymentController extends AppBaseController
         ->get();
         $plans = Plan::pluck('name','id')->toArray();
         
+        // dump($payments[0]->client_payment->get());
         return view('payments.clients')
             ->with(compact('payments', 'plans'));
     }
@@ -270,7 +271,7 @@ class PaymentController extends AppBaseController
     public function client_pay(Request $request)
     {
         $input = $request->all();
-        
+
         $months = [
             0 => 'Diciembre',
             1 => 'Enero',
@@ -286,17 +287,36 @@ class PaymentController extends AppBaseController
             11 => 'Noviembre',
             12 => 'Diciembre'
         ];
-        
-        $input["user_id"] = Auth::user()->id;
+
         if((int)Carbon::parse()->format('d') >= 28)
         {
             $input["month"] = $months[((int)Carbon::parse()->format('m')+1)%12];
         } else {
             $input["month"] = $months[(int)Carbon::parse()->format('m')];
         }
-        $input["total"] = $input["mount"];
+        $input["total"] = $input["amount"];
         $input["date_transaction"] = Carbon::parse()->format('Y-m-d');
-        
+        $input["name"] = $input["month"];
+        $input["details"] = $input["month"];
+
+
+        $qr = $this->generateQR($input);
+        // dump($qr);
+        if ($qr->status !== "SUCCESS"){
+            return $this->sendError($qr, 400);
+        }
+        dump($qr);
+
+        $input["user_id"] = Auth::user()->id;
+
+        $input["date_transaction"] = Carbon::parse()->format('Y-m-d');
+        // $input["total"] = number_format($input["total"], 7);
+        $input["prepay_code"] = $qr->data->prepayId;
+
+        $expireTime = Carbon::createFromTimestamp($qr->data->expireTime / 1000)->format("Y-m-d H:i:s");
+
+        $input["expire_time"] = $expireTime;
+
         $payment = $this->paymentRepository->create($input);
 
         $profile = Profile::where('user_id',$payment->user_id)->first();
@@ -318,7 +338,7 @@ class PaymentController extends AppBaseController
         $contract = Contract::create($contract);
 
         $referred_user = User::where('link',$input['code'])->first();
-        
+
         $client_payment = [
             'user_id' => $profile->user_id,
             'payment_id' => $payment->id,
@@ -326,7 +346,7 @@ class PaymentController extends AppBaseController
             'plan_id' => $input['plan_id'],
             'code' => uniqid()
         ];
-        
+
         if(!empty($referred_user))
         {
             $client_payment['referred_user_id'] = $referred_user->id;
@@ -334,11 +354,17 @@ class PaymentController extends AppBaseController
 
         ClientPayment::create($client_payment);
 
-        Flash::success('Deposito realizado correctamente.');
+        $expireTime = Carbon::createFromTimestamp($qr->data->expireTime / 1000)->format("Y-m-d H:i:s");
 
-        return redirect(route('clients.index'));
-        
+
+        $responseData = [
+            'qrcodeLink' => $qr->data->qrcodeLink,
+            'expiration' => $expireTime,
+        ];
+
+        return $this->sendResponse(($responseData), "QR info sent", 200);
     }
+
 
     public function pay(Request $request)
     {
@@ -389,7 +415,8 @@ class PaymentController extends AppBaseController
     }
 
     public function webhook(Request $request){
-        $input = $request->input(); $data = json_decode($input["data"]);
+        $input = $request->input();
+        $data = json_decode($input["data"]);
         try {
             $payment = Payment::where("prepay_code", $input["bizId"])->first();
 

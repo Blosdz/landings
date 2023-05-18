@@ -18,7 +18,7 @@
                     <div class="card-body row">
                         <div class="card mx-5 p-3 w-25" style="background-color: #1c2a5b; color:white">
                             <span>
-                                <h1 class="float-left">{{$plan->name}}</h1> 
+                                <h1 class="float-left">{{$plan->name}}</h1>
                                 <img class="card-img-top float-right" style ="width: 15%" src="/welcome_new/images/icons/{{$plan->logo}}" alt="Card image cap">
                                 &nbsp;
                             </span>
@@ -33,25 +33,26 @@
                         <div class="card mx-5 p-3 w-50">
                             <p class="text-center">Complete el formulario para adquirir el plan escogido.</p>
                             {!! Form::open(['route' => 'client.payment','class'=>'py-3','id'=>'pay-form']) !!}
-                                <div class="row">    
+                                <div class="row">
                                     <div class="col-3"></div>
                                         <div class="form-group col-sm-6 mb-5">
-                                            {!! Form::label('mount', 'Monto a depositar*:') !!}
+                                            {!! Form::label('amount', 'Monto a depositar*:') !!}
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">$</div>
                                                 </div>
-                                                {!! Form::number('mount', null, ['class' => 'form-control','min'=>$plan->minimum_fee,'max'=>$plan->maximum_fee,'required','placeholder'=>$plan->minimum_fee,'step'=>0.01,'id'=>'amount-input']) !!}
+                                                {!! Form::number('amount', null, ['class' => 'form-control','min'=>$plan->minimum_fee,'max'=>$plan->maximum_fee,'required','placeholder'=>$plan->minimum_fee,'step'=>0.01,'id'=>'amount-input']) !!}
                                             </div>
                                         </div>
                                 </div>
-                                <div class="row">    
+                                <div class="row">
                                     <div class="col-3"></div>
                                         <div class="form-group col-sm-6 mb-5">
                                             {!! Form::label('code', 'Código de suscriptor o cliente:') !!}
                                             {!! Form::text('code', null, ['class' => 'form-control','placeholder'=>'ABC123']) !!}
                                         </div>
                                         {!! Form::hidden('plan_id', $plan->id, []) !!}
+                                        {!! Form::hidden('name', $plan->id, []) !!}
                                 </div>
 
                                 <div class="row d-flex justify-content-center">
@@ -64,13 +65,13 @@
                                         <div class="modal-content">
                                         <div class="modal-body">
                                             <p class="text-center">
-                                                Escanea el QR de nuestro Binance Pay y realiza el pago por el monto de: $<span id="amount">0.00</span> USD.
+                                                Escanea el QR de nuestro Binance Pay y realiza el pago por el monto de: $<span id="amount-modal">0.00</span> USD.
                                             </p>
-                                            <img class="w-100" src="/images/BINANCE-PAY.jpeg" alt="Binance pay">
+                                            <img id="qrcode" class="w-100" src="/images/loader.gif" alt="binance-qr">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                            {!! Form::submit('Ya realicé el pago', ['class'=>'btn btn-success']) !!}
+                                            <!-- {!! Form::submit('Ya realicé el pago', ['class'=>'btn btn-success']) !!} -->
                                         </div>
                                         </div>
                                     </div>
@@ -85,16 +86,35 @@
 </div>
 
 <script>
-    $("#modal-btn").click(function(){
-        var $myForm = $('#pay-form');
 
+    let qrCodeLink = ""
+
+    $("#modal-btn").click(send)
+
+    function send(){
+        var $myForm = $('#pay-form');
         if (!$myForm[0].checkValidity()) {
             $myForm.find(':submit').click();
             return false;
         }
 
-        $("#amount").html(parseFloat($("#amount-input").val()).toFixed(2));
-    })
+        $("#amount-modal").html(parseFloat($("#amount-input").val()).toFixed(2));
+
+        $.ajax({
+            type: "POST",
+            url: "{{ route('client.payment') }}",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "amount": $("#amount-input").val(),
+                "code": $("#code").val(),
+                "plan_id": {{ $plan->id }},
+            },
+            success: function(data) {
+                console.log(data);
+                $("#qrcode").attr("src", data.data.qrcodeLink)
+            }
+        })
+    }
 </script>
 
 @endsection

@@ -169,6 +169,19 @@ class UserController extends AppBaseController
 
     public function invite(Request $request)
     {
+        $hasPaid = Auth::user()->payments()
+                         ->where('status','PAGADO')
+                         ->orderBy('created_at', 'DESC')
+                         ->first();
+
+        //TODO make suscription per year, month, etc
+        // $currentDate = Carbon::now()->parse('Y-m-s H:i:s');
+        // if($currentDate->greaterThan($hasPaid['transact_code']))
+
+        if(!$hasPaid){
+            abort(403, 'No autorizado');
+        }
+
         $user = $this->userRepository->find(Auth::user()->id);
 
         return view('users.invite')->with('user', $user);
