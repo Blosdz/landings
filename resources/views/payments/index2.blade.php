@@ -9,7 +9,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 50%;
+        width: 20%;
     }
 </style>
 
@@ -34,10 +34,9 @@
 
                             @if($current)
                             @else
-                                @include('payments.table2')
-                            
 
-                              <img src="/images/binance-banner.jpg" alt="" data-position="center center" class="center-img py-4" data-toggle="modal" data-target="#exampleModal" id=""/>
+
+                              <img src="/images/binance-banner.jpg" alt="Binance Logo" data-position="center center" class="center-img py-4" data-toggle="modal" data-target="#exampleModal" id=""/>
 
                               <div class="row d-flex justify-content-center">
                                   <!-- {!! Form::button('test', ['onClick'=> 'send()', 'class' => 'btn btn-outline-primary btn-xl p-2']) !!} -->
@@ -62,6 +61,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                <br>
+                                @include('payments.table2')
                                 <!-- <a href="{{ route('payments.pay') }}" class="btn btn-primary lg-12">Hacer deposito</a> -->
                             @endif
                         @php
