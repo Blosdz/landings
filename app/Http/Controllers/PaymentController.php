@@ -177,7 +177,6 @@ class PaymentController extends AppBaseController
     public function index2(Request $request)
     {
         $payments = $this->paymentRepository->all();
-        // dump(Auth::user());
         $payments = Payment::where("user_id", Auth::user()->id)->with('contract')->get();
         $current = null;
         return view('payments.index2')
@@ -238,7 +237,6 @@ class PaymentController extends AppBaseController
         ->get();
         $plans = Plan::pluck('name','id')->toArray();
         
-        // dump($payments[0]->client_payment->get());
         return view('payments.clients')
             ->with(compact('payments', 'plans'));
     }
@@ -301,11 +299,9 @@ class PaymentController extends AppBaseController
 
 
         $qr = $this->generateQR($input);
-        // dump($qr);
         if ($qr->status !== "SUCCESS"){
             return $this->sendError($qr, 400);
         }
-        dump($qr);
 
         $input["user_id"] = Auth::user()->id;
 
@@ -370,7 +366,6 @@ class PaymentController extends AppBaseController
     {
         $input = $request->all();
         $qr = $this->generateQR($input);
-        // dump($qr);
         if ($qr->status !== "SUCCESS"){
             return $this->sendError($qr, 400);
         }
