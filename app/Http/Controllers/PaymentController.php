@@ -13,7 +13,7 @@ use App\Models\User;
 use App\Models\Provider;
 use App\Models\ClientPayment;
 use App\Http\Controllers\AppBaseController;
-use App\Http\Services\BinanceQRGeneratorServiceTest;
+use App\Http\Services\BinanceQRGeneratorService;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -185,15 +185,15 @@ class PaymentController extends AppBaseController
 
     public function generateQR($data)
     {
-        $env = \config('app.env');
+        $env = \config('app');
 
         //IMPORTANT
-        if ($env == 'local' && env('APP_URL') == 'http://localhost:8000') {
-            $binanceQR = new BinanceQRGeneratorServiceTest($data, 'https://6f28-2800-200-f410-2319-ed04-e650-19b5-1011.ngrok-free.app');
+        if ($env["env"] == 'local' && $env["url"] == "http://localhost:8000") {
+            $binanceQR = new BinanceQRGeneratorService($data, 'https://6f28-2800-200-f410-2319-ed04-e650-19b5-1011.ngrok-free.app');
             $binanceQR->generate();
         }
         else {
-            $binanceQR = new BinanceQRGeneratorServiceTest($data, env('APP_URL'));
+            $binanceQR = new BinanceQRGeneratorService($data, $env["url"]);
             $binanceQR->generate();
         }
 
@@ -204,7 +204,7 @@ class PaymentController extends AppBaseController
     public function client_index(Request $request)
     {
         $input = $request->all();
-        
+
         $payments = $this->paymentRepository->all();
         $payments = Payment::where("user_id", Auth::user()->id)
         ->with('contract')
@@ -236,7 +236,7 @@ class PaymentController extends AppBaseController
         } )
         ->get();
         $plans = Plan::pluck('name','id')->toArray();
-        
+
         return view('payments.clients')
             ->with(compact('payments', 'plans'));
     }
