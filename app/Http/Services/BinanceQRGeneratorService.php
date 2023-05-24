@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
 
-class BinanceQRGeneratorServiceTest implements BinanceQRGenerator
+class BinanceQRGeneratorService implements BinanceQRGenerator
 {
     protected $data;
     protected $webHookUrl;
