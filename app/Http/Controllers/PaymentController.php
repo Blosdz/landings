@@ -179,8 +179,32 @@ class PaymentController extends AppBaseController
         $payments = $this->paymentRepository->all();
         $payments = Payment::where("user_id", Auth::user()->id)->with('contract')->get();
         $current = null;
+        $expireTimestamp = null;
+        
+        //   TODO this might work cleaner implementing an scope
+        $lastPayment = Payment::where("user_id", Auth::user()->id)
+                     ->where('status', 'PAGADO')
+                     ->orderBy('created_at', 'desc')
+                     ->with('contract')
+                     ->first();
+
+        if (!$lastPayment){
+            return view('payments.index2')
+                ->with(compact('payments', 'current'));
+        };
+
+        $expireTimestamp = $lastPayment->created_at->addYear(1);
+
+        if ($expireTimestamp->gt(Carbon::now())){
+            $current = true;
+        }
+
         return view('payments.index2')
-            ->with(compact('payments', 'current'));
+            ->with(compact('payments', 'current', 'expireTimestamp'));
+
+
+
+
     }
 
     public function generateQR($data)
