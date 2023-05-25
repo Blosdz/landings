@@ -13,7 +13,8 @@ use App\Models\User;
 use App\Models\Provider;
 use App\Models\ClientPayment;
 use App\Http\Controllers\AppBaseController;
-use App\Http\Services\BinanceQRGeneratorService;
+use App\Http\Requests\ClientPaymentRequest;
+use App\Http\Services\BinanceQRGeneratorServiceTest;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -290,7 +291,7 @@ class PaymentController extends AppBaseController
         return view('payments.detail')->with(compact('plan'));
     }
 
-    public function client_pay(Request $request)
+    public function client_pay(ClientPaymentRequest $request)
     {
         $input = $request->all();
 
