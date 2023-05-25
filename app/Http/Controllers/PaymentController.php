@@ -337,6 +337,7 @@ class PaymentController extends AppBaseController
         $expireTime = Carbon::createFromTimestamp($qr->data->expireTime / 1000)->format("Y-m-d H:i:s");
 
         $input["expire_time"] = $expireTime;
+        $input["qr_url"] = $qr->data->qrcodeLink;
 
         $payment = $this->paymentRepository->create($input);
 
@@ -404,6 +405,8 @@ class PaymentController extends AppBaseController
         $expireTime = Carbon::createFromTimestamp($qr->data->expireTime / 1000)->format("Y-m-d H:i:s");
 
         $input["expire_time"] = $expireTime;
+
+        $input["qr_url"] = $qr->data->qrcodeLink;
 
         $payment = $this->paymentRepository->create($input);
 

@@ -40,7 +40,9 @@ class Payment extends Model
         'prepay_code',
         'expire_time',
         'transact_code',
-        'transact_timestamp'
+        'transact_timestamp',
+        'qr_url',
+
     ];
 
     /**
