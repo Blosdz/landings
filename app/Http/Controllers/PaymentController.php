@@ -14,7 +14,7 @@ use App\Models\Provider;
 use App\Models\ClientPayment;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\ClientPaymentRequest;
-use App\Http\Services\BinanceQRGeneratorServiceTest;
+use App\Http\Services\BinanceQRGeneratorService;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
