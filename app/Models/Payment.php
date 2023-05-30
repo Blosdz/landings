@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Contract;
 use App\Models\ClientPayment;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Class Payment
@@ -65,7 +66,7 @@ class Payment extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function contract(): BelongsTo
@@ -77,4 +78,18 @@ class Payment extends Model
     {
         return $this->belongsTo(ClientPayment::class,'id','payment_id');
     }
+
+    public function scopeLastPayment($query) {
+        return $query->orderBy('created_at', 'desc')
+                     ->with('contract');
+    }
+
+    public function scopeIsPaid($query) {
+        return $query->where('status', 'PAGADO');
+    }
+
+    public function scopeIsPending($query) {
+        return $query->where('status', 'PENDIENTE');
+    }
+
 }

@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Profile;
 use App\Models\RejectionHistory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -62,7 +63,7 @@ class User extends Authenticatable
         return $this->hasMany(RejectionHistory::class);
     }
 
-    public function payments() {
+    public function payments(): HasMany {
         return $this->hasMany(Payment::class, 'user_id');
     }
 

@@ -33,9 +33,6 @@
                         @endphp
 
                             @if($current)
-                                <div class="alert alert-warning" role="alert">
-                                    No puede hacer más pagos hasta {{ $expireTimestamp }}
-                                </div>
                             @else
                               <img src="/images/binance-banner.jpg" alt="Binance Logo" data-position="center center" class="center-img py-4" data-toggle="modal" data-target="#exampleModal" id=""/>
 
