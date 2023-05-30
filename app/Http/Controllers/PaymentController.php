@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Auth;
 
 
 use Flash;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Database\Eloquent\Builder;
 use Response;
 
 class PaymentController extends AppBaseController
@@ -177,31 +179,47 @@ class PaymentController extends AppBaseController
      */
     public function index2(Request $request)
     {
-        $payments = $this->paymentRepository->all();
-        $payments = Payment::where("user_id", Auth::user()->id)->with('contract')->get();
-        $current = null;
-        $expireTimestamp = null;
-        
-        //   TODO this might work cleaner implementing an scope
-        $lastPayment = Payment::where("user_id", Auth::user()->id)
-                     ->where('status', 'PAGADO')
-                     ->orderBy('created_at', 'desc')
-                     ->with('contract')
-                     ->first();
+        $user = Auth::user();
 
-        if (!$lastPayment){
-            return view('payments.index2')
-                ->with(compact('payments', 'current'));
+        $payments = $user
+                  ->payments()
+                  ->with('contract')
+                  ->get();
+
+        $current = null;
+
+        //TODO this must be better implemented
+        $lastPaidPayment = $user->payments()
+                            ->lastPayment()
+                            ->isPaid()
+                            ->first();
+
+        $lastPendingPayment = $user->payments()
+                            ->lastPayment()
+                            ->isPending()
+                            ->first();
+
+
+        if ($lastPaidPayment){
+
+            $expireTimestamp = $lastPaidPayment->created_at->addYear(1);
+
+            if ($expireTimestamp->gt(Carbon::now())) {
+
+                $current = true;
+                $message = "No puedes hacer mas pagos hasta ". $expireTimestamp;
+                Flash::error($message, 'message');
+            }
         };
 
-        $expireTimestamp = $lastPayment->created_at->addYear(1);
-
-        if ($expireTimestamp->gt(Carbon::now())){
+        if($lastPendingPayment){
             $current = true;
+            $message = "Tiene un estado de pago en PENDIENTE";
+            Flash::error($message, 'message');
         }
-
+;
         return view('payments.index2')
-            ->with(compact('payments', 'current', 'expireTimestamp'));
+        ->with(compact('payments', 'current'));
 
 
 
