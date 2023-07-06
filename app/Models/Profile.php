@@ -141,5 +141,19 @@ class Profile extends Model
         return $this->belongsTo(User::class);
     }
 
-    
+    public function scopeFilterByNameOrLastName($query, $nameOrLastName)
+    {
+        if($nameOrLastName){
+            return $query->where("first_name", "ilike", "%{$nameOrLastName}%")
+                         ->orWhere("lastname", "ilike", "%{$nameOrLastName}%");
+        }
+    }
+
+    public function scopeFilterByStatus($query, $status)
+    {
+        if($status){
+            return $query->where("verified", $status);
+        }
+    }
+
 }

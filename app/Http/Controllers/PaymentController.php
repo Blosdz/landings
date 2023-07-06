@@ -250,34 +250,46 @@ class PaymentController extends AppBaseController
 
         $payments = $this->paymentRepository->all();
         $payments = Payment::where("user_id", Auth::user()->id)
-        ->with('contract')
-        ->with('client_payment')
-        ->when( (isset($input['plan']) && $input['plan']!= 0) , function($query) use ($input){
-            return $query->whereHas('client_payment', function($query2) use ($input) {
-                $query2->where('plan_id',$input['plan']);
-            });
-        })
-        ->when( (isset($input['year']) && is_numeric($input['year'])) , function ($query) use ($input) {
-            return $query->whereBetween('created_at',[$input['year'].'-01-01 00:00:00',$input['year'].'-12-31 23:59:59']);
-        })
-        ->when( (isset($input['funds']) && $input['funds'] != 0), function ($query) use ($input) {
-            $months = [
-                1 => 'Enero',
-                2 => 'Febrero',
-                3 => 'Marzo',
-                4 => 'Abril',
-                5 => 'Mayo',
-                6 => 'Junio',
-                7 => 'Julio',
-                8 => 'Agosto',
-                9 => 'Setiembre',
-                10 => 'Octubre',
-                11 => 'Noviembre',
-                12 => 'Diciembre'
-            ];
-            return $query->where('month',$months[$input['funds']]);
-        } )
-        ->get();
+                  ->with('contract')
+                  ->with('client_payment')
+                  ->when( (isset($input['plan']) && $input['plan']!= 0) , function($query) use ($input){
+                      return $query->whereHas('client_payment', function($query2) use ($input) {
+                          $query2->where('plan_id',$input['plan']);
+                      });
+                  })
+                  ->when( (isset($input['year']) && is_numeric($input['year'])) , function ($query) use ($input) {
+                      return $query->whereBetween('created_at',[$input['year'].'-01-01 00:00:00',$input['year'].'-12-31 23:59:59']);
+                  })
+                  ->when( (isset($input['funds']) && $input['funds'] != 0), function ($query) use ($input) {
+                      $months = [
+                          1 => 'Enero',
+                          2 => 'Febrero',
+                          3 => 'Marzo',
+                          4 => 'Abril',
+                          5 => 'Mayo',
+                          6 => 'Junio',
+                          7 => 'Julio',
+                          8 => 'Agosto',
+                          9 => 'Setiembre',
+                          10 => 'Octubre',
+                          11 => 'Noviembre',
+                          12 => 'Diciembre'
+                      ];
+                      return $query->where('month',$months[$input['funds']]);
+                  } )
+                  ->get()
+                  ->sortBy(function ($payment) {
+                      switch ($payment->status) {
+                          case 'PENDIENTE':
+                              return 1;
+                          case 'PAGADO':
+                              return 2;
+                          case 'VENCIDO':
+                              return 3;
+                          default:
+                              return 4;
+                      }
+                  });
         $plans = Plan::pluck('name','id')->toArray();
 
         return view('payments.clients')

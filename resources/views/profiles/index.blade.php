@@ -15,6 +15,7 @@
                              Perfiles a verificar
                          </div>
                          <div class="card-body">
+                             @include('profiles.filters')
                              @include('profiles.table')
                               <div class="pull-right mr-3">
                                      
