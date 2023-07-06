@@ -42,7 +42,10 @@ class ProfileController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $profiles = $this->profileRepository->all();
+        $profiles = Profile::orderBy('verified', 'desc')
+                  ->filterByNameOrLastName($request['name'])
+                  ->filterByStatus($request['status'])
+                  ->get();
 
         return view('profiles.index')
             ->with('profiles', $profiles);
