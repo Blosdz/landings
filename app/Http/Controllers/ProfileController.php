@@ -42,7 +42,7 @@ class ProfileController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $profiles = Profile::orderBy('verified', 'desc')
+        $profiles = Profile::orderBy('verified')
                   ->filterByNameOrLastName($request['name'])
                   ->filterByStatus($request['status'])
                   ->get();
@@ -144,6 +144,12 @@ class ProfileController extends AppBaseController
 
         $data = $request->all();
         //dd($data);
+
+        if(!$data["obs"] && $request['verified'] == 3){
+            Flash::error("Tiene que ingresar observacion.");
+            return redirect()->back();
+        }
+
         $profile = $this->profileRepository->update($request->all(), $id);
         $user = User::where("id", $profile->user_id);
         if ($profile->verified == 2) {
