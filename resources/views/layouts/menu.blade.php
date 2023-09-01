@@ -146,6 +146,13 @@
   } if( $user->rol == 5 ) { //Gestor comercial
 @endphp
 
+<li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('profiles.subscribers') }}">
+       <i class="mdi mdi-24px mdi-account"></i>
+        <span>Suscriptores</span>
+    </a>
+</li>
+
 @php
   } if( $user->rol == 6 ) { //Verificador
 @endphp

@@ -28,14 +28,19 @@ class UserSeeder extends Seeder
           'rol'      => 1,
         ]);
 
-        $gestor = User::create([
-          'name'      => 'Gestor',
-          'email'     => 'gestor@yopmail.com',
-          'password'  => Hash::make('12345678'),
-          'email_verified_at' => Carbon::now(),
-          'validated' => 1,
-          'rol'      => 5,
-        ]);
+        $gestor = User::updateOrCreate(
+            [
+                'name' => 'Gestor'
+            ],
+            [
+                'name'              => 'Gerente General',
+                'email'             => 'gerente@yopmail.com',
+                'password'          => Hash::make('12345678'),
+                'email_verified_at' => Carbon::now(),
+                'validated'         => 1,
+                'rol'               => 5,
+            ]
+        );
 
         $verificator = User::create([
           'name'      => 'Verificador',
@@ -54,12 +59,17 @@ class UserSeeder extends Seeder
           'user_id'                => $user->id,
         ]);
 
-        Profile::create([
-          'first_name'         => 'Gestor',
-          'type_document'      => 'dni',
-          'country'            => 'peru',
-          'user_id'                => $gestor->id,
-        ]);
+        Profile::updateOrCreate(
+            [
+                'first_name' => 'Gestor'
+            ],
+            [
+                'first_name'         => 'Gerente General',
+                'type_document'      => 'dni',
+                'country'            => 'peru',
+                'user_id'            => $gestor->id,
+            ]
+        );
 
         Profile::create([
           'first_name'         => 'Verificador',

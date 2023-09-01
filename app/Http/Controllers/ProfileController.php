@@ -50,6 +50,20 @@ class ProfileController extends AppBaseController
         return view('profiles.index')
             ->with('profiles', $profiles);
     }
+
+    public function indexSubscribers(Request $request)
+    {
+        $profiles = Profile::orderBy('verified')
+                  ->filterByNameOrLastName($request['name'])
+                  ->filterByStatus($request['status'])
+                  ->whereHas('user', function($query) {
+                      $query->where('rol', 2);
+                  })
+                  ->get();
+
+        return view('profiles.index')
+            ->with('profiles', $profiles);
+    }
     public function verified()
     {
         return view('profiles.verified');

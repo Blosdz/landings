@@ -15,7 +15,11 @@
                              Perfiles a verificar
                          </div>
                          <div class="card-body">
-                             @include('profiles.filters')
+                             @if(auth()->user()->rol !== 5 )
+                                 @include('profiles.filters')
+                             @else
+                                 @include('profiles.filters2')
+                             @endif
                              @include('profiles.table')
                               <div class="pull-right mr-3">
                                      

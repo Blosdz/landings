@@ -25,14 +25,31 @@
             <td>{{ $profile->birthdate }}</td>
             <td>{{ $profile->nacionality }}</td>
             <td>{{ $verified_list[$profile->verified] }}</td>
-                <td>
-                    <div class='btn-group'>
-                        <a href="{{ route('profiles.edit', [$profile->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
-                        <a href="{{ route('rejectionHistory', [$profile->user_id]) }}" class='btn btn-ghost-info'><i class="fa fa-file"></i></a>
-
-                    </div>
-                </td>
+            @php
+            if (auth()->user()->rol !== 5){
+            @endphp
+            <td>
+                <div class='btn-group'>
+                    <a href="{{ route('profiles.edit', [$profile->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
+                    <a href="{{ route('rejectionHistory', [$profile->user_id]) }}" class='btn btn-ghost-info'><i class="fa fa-file"></i></a>
+                </div>
+            </td>
             </tr>
+            @php
+            }
+            @endphp
+
+            @php
+            if(auth()->user()->rol === 5){ //gestor
+            @endphp
+            <td>
+                <div class='btn-group'>
+                    <a href="{{ route('profiles.show', [$profile->id]) }}" class='btn btn-ghost-info'><i class="fa fa-eye"></i></a>
+                </div>
+            </td>
+            @php
+            }
+            @endphp
         @endforeach
         </tbody>
     </table>
