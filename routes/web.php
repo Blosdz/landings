@@ -48,6 +48,7 @@ Route::post('/mail/sendmail', [App\Http\Controllers\HomeController::class, 'send
 Route::resource('users', App\Http\Controllers\UserController::class);
 
 
+Route::get('profiles/subscribers', [App\Http\Controllers\ProfileController::class, 'indexSubscribers'])->name('profiles.subscribers');
 Route::resource('profiles', App\Http\Controllers\ProfileController::class);
 
 Route::get('/profiles/user/data', [App\Http\Controllers\ProfileController::class, 'edit2'])->name('profiles.user');
