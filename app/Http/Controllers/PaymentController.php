@@ -201,15 +201,9 @@ class PaymentController extends AppBaseController
 
 
         if ($lastPaidPayment){
-
-            $expireTimestamp = $lastPaidPayment->created_at->addYear(1);
-
-            if ($expireTimestamp->gt(Carbon::now())) {
-
-                $current = true;
-                $message = "No puedes hacer mas pagos hasta ". $expireTimestamp;
-                Flash::error($message, 'message');
-            }
+            $current = true;
+            $message = "No puedes hacer mas pagos hasta " . $lastPaidPayment->expiration_date;
+            Flash::error($message, 'message');
         };
 
         if($lastPendingPayment){
@@ -229,10 +223,11 @@ class PaymentController extends AppBaseController
     public function generateQR($data)
     {
         $env = \config('app');
+        $ngrok = \config('binance.ngrok');
 
         //IMPORTANT
         if ($env["env"] == 'local' && $env["url"] == "http://localhost:8000") {
-            $binanceQR = new BinanceQRGeneratorService($data, 'https://6f28-2800-200-f410-2319-ed04-e650-19b5-1011.ngrok-free.app');
+            $binanceQR = new BinanceQRGeneratorService($data, $ngrok);
             $binanceQR->generate();
         }
         else {
@@ -440,6 +435,7 @@ class PaymentController extends AppBaseController
 
         $payment = $this->paymentRepository->create($input);
 
+
         $profile = Profile::where('user_id',$payment->user_id)->first();
         $contract = [
             'user_id' => $profile->user_id,
@@ -473,6 +469,7 @@ class PaymentController extends AppBaseController
         try {
             $payment = Payment::where("prepay_code", $input["bizId"])->first();
 
+
             if ($input["bizStatus"] == "PAY_SUCCESS" && $payment->status == "PENDIENTE"){
 
                 $payment->status = "PAGADO";
@@ -481,8 +478,13 @@ class PaymentController extends AppBaseController
                 $transactTime = Carbon::createFromTimestamp($data->transactTime/1000)->format("Y-m-d H:i:s");
                 $payment->transact_timestamp = $transactTime;
 
+                if ($payment->user->rol === 2) {
+                    $payment->update([
+                        'expiration_date' => $payment->date_transaction->addYear(1),
+                    ]);
+                }
+
                 $payment->save();
-                return redirect()->route("payments.index2");
             }
         }
         catch(\Exception $e){

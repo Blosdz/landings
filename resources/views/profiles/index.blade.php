@@ -17,10 +17,11 @@
                          <div class="card-body">
                              @if(auth()->user()->rol !== 5 )
                                  @include('profiles.filters')
+                                 @include('profiles.table')
                              @else
                                  @include('profiles.filters2')
+                                 @include('profiles.table2')
                              @endif
-                             @include('profiles.table')
                               <div class="pull-right mr-3">
                                      
                               </div>

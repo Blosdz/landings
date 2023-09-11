@@ -5,21 +5,21 @@ namespace App\Console\Commands;
 use App\Traits\UpdatePaymentTrait;
 use Illuminate\Console\Command;
 
-class UpdatePaymentStatus extends Command
+class UpdatePaidPayment extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'payments:update-pendings';
+    protected $signature = 'payments:update-paids';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Update the payments status from pendiente to vencido according to QR';
+    protected $description = 'Update the payments status from pagado to vencido according to expiration_date';
 
     /**
      * Create a new command instance.
@@ -38,9 +38,9 @@ class UpdatePaymentStatus extends Command
      */
     public function handle()
     {
-        UpdatePaymentTrait::updatePendings();
+        UpdatePaymentTrait::updatePaids();
 
-        $this->info("pending payments have been updated to vencido");
+        $this->info("paid payments have been updated to vencido");
 
         return Command::SUCCESS;
     }

@@ -67,4 +67,14 @@ class User extends Authenticatable
         return $this->hasMany(Payment::class, 'user_id');
     }
 
+    public function getLastPaidPaymentAttribute()
+    {
+        return $this->getLastPayment()->status === 'PAGADO' ? 'Activo' : 'Inactivo';
+    }
+
+    public function getLastPayment()
+    {
+        return $this->payments()->orderBy('created_at', 'desc')->first();
+    }
+
 }
