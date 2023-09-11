@@ -28,7 +28,7 @@ class Payment extends Model
     public $table = 'payments';
     
 
-    protected $dates = ['deleted_at', 'date_transaction'];
+    protected $dates = ['deleted_at', 'date_transaction', 'expire_time', 'expiration_date'];
 
 
 
@@ -43,6 +43,7 @@ class Payment extends Model
         'transact_code',
         'transact_timestamp',
         'qr_url',
+        'expiration_date',
 
     ];
 
@@ -83,7 +84,6 @@ class Payment extends Model
         return $query->orderBy('created_at', 'desc')
                      ->with('contract');
     }
-
     public function scopeIsPaid($query) {
         return $query->where('status', 'PAGADO');
     }

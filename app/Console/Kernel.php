@@ -2,7 +2,9 @@
 
 namespace App\Console;
 
+use App\Console\Commands\UpdatePaidPayment;
 use App\Console\Commands\UpdatePaymentStatus;
+use App\Console\Commands\UpdatePaymentStatusExpirationDate;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,6 +17,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         UpdatePaymentStatus::class,
+        UpdatePaidPayment::class,
     ];
 
     /**
@@ -26,7 +29,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('payments:update')->hourly();
+        $schedule->command('payments:update-pendings')->hourly();
+        $schedule->command('payments:update-paids')->dailyAt('23:59');
     }
 
     /**

@@ -62,7 +62,7 @@ class ProfileController extends AppBaseController
                   ->get();
 
         return view('profiles.index')
-            ->with('profiles', $profiles);
+            ->with(compact('profiles'));
     }
     public function verified()
     {
