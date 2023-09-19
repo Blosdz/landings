@@ -30,10 +30,10 @@ class UserSeeder extends Seeder
 
         $gestor = User::updateOrCreate(
             [
-                'name' => 'Gestor'
+                'name' => 'Gerente General'
             ],
             [
-                'name'              => 'Gerente General',
+                'name'              => 'Gerente Comercial',
                 'email'             => 'gerente@yopmail.com',
                 'password'          => Hash::make('12345678'),
                 'email_verified_at' => Carbon::now(),
@@ -61,10 +61,10 @@ class UserSeeder extends Seeder
 
         Profile::updateOrCreate(
             [
-                'first_name' => 'Gestor'
+                'first_name' => 'Gerente General'
             ],
             [
-                'first_name'         => 'Gerente General',
+                'first_name'         => 'Gerente Comercial',
                 'type_document'      => 'dni',
                 'country'            => 'peru',
                 'user_id'            => $gestor->id,
