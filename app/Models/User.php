@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,7 +9,6 @@ use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Profile;
 use App\Models\RejectionHistory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -69,6 +67,10 @@ class User extends Authenticatable
 
     public function getLastPaidPaymentAttribute()
     {
+        if (! $this->getLastPayment()){
+            return 'Inactivo';
+        }
+
         return $this->getLastPayment()->status === 'PAGADO' ? 'Activo' : 'Inactivo';
     }
 

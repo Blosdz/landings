@@ -15,7 +15,7 @@
                          <div class="card">
                              <div class="card-header">
                                  <strong>Details</strong>
-                                  <a href="{{ route('profiles.index') }}" class="btn btn-light">Back</a>
+                                  <a href="{{ url()->previous() }}" class="btn btn-light">Back</a>
                              </div>
                              <div class="card-body">
                                  @include('profiles.show_fields')
