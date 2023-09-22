@@ -14,8 +14,8 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-header">
-                                 <strong>Details</strong>
-                                  <a href="{{ url()->previous() }}" class="btn btn-light">Back</a>
+                                 <strong>Detalles</strong>
+                                  <a href="{{ url()->previous() }}" class="btn btn-light">Atrás</a>
                              </div>
                              <div class="card-body">
                                  @include('profiles.show_fields')

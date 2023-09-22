@@ -7,55 +7,55 @@
 
 <!-- First Name Field -->
 <div class="form-group">
-    {!! Form::label('first_name', 'First Name:') !!}
+    {!! Form::label('first_name', 'Nombres:') !!}
     <p>{{ $profile->first_name }}</p>
 </div>
 
 <!-- Lastname Field -->
 <div class="form-group">
-    {!! Form::label('lastname', 'Lastname:') !!}
+    {!! Form::label('lastname', 'Apellidos:') !!}
     <p>{{ $profile->lastname }}</p>
 </div>
 
 <!-- Country Document Field -->
 <div class="form-group">
-    {!! Form::label('country_document', 'Country Document:') !!}
+    {!! Form::label('country_document', 'Pais de Documento:') !!}
     <p>{{ $profile->country_document }}</p>
 </div>
 
 <!-- Type Document Field -->
 <div class="form-group">
-    {!! Form::label('type_document', 'Type Document:') !!}
+    {!! Form::label('type_document', 'Tipo de Documento:') !!}
     <p>{{ $profile->type_document }}</p>
 </div>
 
 <!-- Birthdate Field -->
 <div class="form-group">
-    {!! Form::label('birthdate', 'Birthdate:') !!}
+    {!! Form::label('birthdate', 'Fecha de Nacimiento') !!}
     <p>{{ $profile->birthdate }}</p>
 </div>
 
 <!-- Nacionality Field -->
 <div class="form-group">
-    {!! Form::label('nacionality', 'Nacionality:') !!}
+    {!! Form::label('nacionality', 'Nacionalidad:') !!}
     <p>{{ $profile->nacionality }}</p>
 </div>
 
 <!-- City Field -->
 <div class="form-group">
-    {!! Form::label('city', 'City:') !!}
+    {!! Form::label('city', 'Ciudad:') !!}
     <p>{{ $profile->city }}</p>
 </div>
 
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
+    {!! Form::label('created_at', 'Creado en:') !!}
     <p>{{ $profile->created_at }}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
+    {!! Form::label('updated_at', 'Actualizado en:') !!}
     <p>{{ $profile->updated_at }}</p>
 </div>
 
