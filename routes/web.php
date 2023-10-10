@@ -66,7 +66,7 @@ Route::get('/payments/client/pay/{id}',[App\Http\Controllers\PaymentController::
 Route::post('/payments/client/payment',[App\Http\Controllers\PaymentController::class,'client_pay'])->name('client.payment');
 Route::get('/payments/client/{id}',[App\Http\Controllers\PaymentController::class,'client_detail'])->name('payment.client.detail');
 // Route::post('/payments/order', [App\Http\Controllers\PaymentController::class, 'new_order'])->name('payment.order');
-// Route::post('/webhook', [App\Http\Controllers\PaymentController::class, 'webhook'])->name('payment.webhook');
+Route::get('/test', [App\Http\Controllers\PaymentController::class, 'testSendingMoney'])->name('payment.test');
 
 Route::get('/invite/user/link', [App\Http\Controllers\UserController::class, 'invite'])->name('invite.user');
 

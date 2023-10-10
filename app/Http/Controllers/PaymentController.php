@@ -18,6 +18,7 @@ use App\Http\Services\BinanceQRGeneratorService;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\BinanceDoughSenderTrait;
 //use Symfony\Component\HttpFoundation\Response;
 
 
@@ -491,6 +492,10 @@ class PaymentController extends AppBaseController
                 return $this->setResponse($e->getMessage());
         }
         return;
+    }
 
+    public function testSendingMoney(){
+        $test = BinanceDoughSenderTrait::send(0.0000001, "572351555");
+        dd($test);
     }
 }
