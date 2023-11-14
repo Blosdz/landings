@@ -9,33 +9,39 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
 trait BinanceDoughSenderTrait {
-    public static function send($amount, $destinationAccount) {
+    public static function send(array $data) {
         try {
-            $db_key = Provider::where('key','API GENERAL BINANCE PAY')->first();
+            $db_key = Provider::where('slug', 'binance_pay')->first();
             $apiKey = Crypt::decryptString($db_key->value);
             $secretKey = Crypt::decryptString($db_key->secret_key);
 
             $nonce = Str::random(32);
             $merchantSendId = Str::random(32);
 
-            $transferDetailList = [
-                [
+            $transferDetailList = [];
+            $totalAmount = 0;
+
+            foreach ($data as $element) {
+                $transferDetail = [
                     'merchantSendId'     => $merchantSendId,
                     'receiveType'        => "BINANCE_ID",
-                    'receiver'           => $destinationAccount,
-                    'transferAmount'     => $amount,
-                    'transferMethod'     => "SPOT_WALLET",
-                ]
-            ];
+                    'receiver'           => $element['receiver'],
+                    'transferAmount'     => $element['amount'],
+                    'transferMethod'     => "FUNDING_WALLET",
+                ];
+
+                $totalAmount = $totalAmount + $element['amount'];
+                array_push($transferDetailList, $transferDetail);
+            }
 
             $timestamp = Carbon::now()->isoFormat('x');
 
             $body = [
-                'requestId'           => "testing12345",
-                'batchName'           => "testing transfers",
-                'currency'            => "BUSD",
-                'totalAmount'         => $amount,
-                'totalNumber'         => 1,
+                'requestId'           => $nonce,
+                'batchName'           => "AEIA Transfer",
+                'currency'            => "USDT",
+                'totalAmount'         => $totalAmount,
+                'totalNumber'         => count($transferDetailList),
                 'transferDetailList'  => $transferDetailList,
             ];
 

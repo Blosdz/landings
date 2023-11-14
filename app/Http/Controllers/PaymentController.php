@@ -10,15 +10,18 @@ use App\Models\Profile;
 use App\Models\Contract;
 use App\Models\Plan;
 use App\Models\User;
-use App\Models\Provider;
 use App\Models\ClientPayment;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Interfaces\BinanceTransferInterface;
 use App\Http\Requests\ClientPaymentRequest;
 use App\Http\Services\BinanceQRGeneratorService;
+use App\Http\Services\BinanceTransferMoneyToClientsService;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\BinanceMoneySplitterTrait;
 use App\Traits\BinanceDoughSenderTrait;
+use App\Traits\BinanceBalanceCheckerTrait;
 //use Symfony\Component\HttpFoundation\Response;
 
 
@@ -32,9 +35,12 @@ class PaymentController extends AppBaseController
     /** @var  PaymentRepository */
     private $paymentRepository;
 
+    protected ?BinanceTransferInterface $transfer;
+
     public function __construct(PaymentRepository $paymentRepo)
     {
         $this->paymentRepository = $paymentRepo;
+        $this->transfer = null;
     }
 
     /**
@@ -337,12 +343,13 @@ class PaymentController extends AppBaseController
             12 => 'Diciembre'
         ];
 
-        if((int)Carbon::parse()->format('d') >= 28)
-        {
-            $input["month"] = $months[((int)Carbon::parse()->format('m')+1)%12];
-        } else {
-            $input["month"] = $months[(int)Carbon::parse()->format('m')];
-        }
+        $currentDate = Carbon::parse();
+        $dayOfMonth = (int)$currentDate->format('d');
+        $currentMonth = (int)$currentDate->format('m');
+        $month = $months[($dayOfMonth >= 28 ? ($currentMonth + 1) % 12 : $currentMonth)];
+        $input["month"] = $month;
+
+
         $input["total"] = $input["amount"];
         $input["date_transaction"] = Carbon::parse()->format('Y-m-d');
         $input["name"] = $input["month"];
@@ -433,6 +440,7 @@ class PaymentController extends AppBaseController
         $input["expire_time"] = $expireTime;
 
         $input["qr_url"] = $qr->data->qrcodeLink;
+        $input['month'] = 'annual_subscription';
 
         $payment = $this->paymentRepository->create($input);
 
@@ -470,9 +478,7 @@ class PaymentController extends AppBaseController
         try {
             $payment = Payment::where("prepay_code", $input["bizId"])->first();
 
-
             if ($input["bizStatus"] == "PAY_SUCCESS" && $payment->status == "PENDIENTE"){
-
                 $payment->status = "PAGADO";
                 $payment->transact_code = $data->transactionId;
 
@@ -486,16 +492,16 @@ class PaymentController extends AppBaseController
                 }
 
                 $payment->save();
+
+                if($payment->month !== "annual_subscription"){
+                    $transfer = new BinanceTransferMoneyToClientsService($payment);
+                }
+                // TODO split for subscribers hasn't been implemented yet.
+                dump(BinanceMoneySplitterTrait::split($transfer));
             }
         }
         catch(\Exception $e){
-                return $this->setResponse($e->getMessage());
+            return $e->getMessage();
         }
-        return;
-    }
-
-    public function testSendingMoney(){
-        $test = BinanceDoughSenderTrait::send(0.0000001, "572351555");
-        dd($test);
     }
 }

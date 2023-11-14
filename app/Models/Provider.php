@@ -17,6 +17,7 @@ class Provider extends Model
     public $fillable = [
         'key',
         'value',
+        'binance_user'
     ];
 
     protected $casts = [
