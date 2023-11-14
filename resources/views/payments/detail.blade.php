@@ -25,7 +25,7 @@
                             <div class="card-body text-center">
                                 <p class="card-text mt-4 text-left"> Deposito permitido desde: </p>
                                 <p><h1 class="" style="color: #eab226"><b>${{$plan->minimum_fee}} a {{$plan->maximum_fee?'$'.$plan->maximum_fee:"más"}}</b></h1></p>
-                                <p class="text-left"><b>Membresía: </b> ${{$plan->annual_membership}}/Anual</p>
+                                <p class="text-left"><b>Membresía: </b>$<span id="anual_membership">{{$plan->annual_membership}}</span>/Anual</p>
                                 <p class="text-left"><b>Comisión: </b> {{$plan->commission}}%</p>
                                 <p>"La comisión se ejecuta sobre la ganancia y se realiza al finalizar el ciclo de inversión"</p>
                             </div>
@@ -45,6 +45,18 @@
                                             </div>
                                         </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-3"></div>
+                                    <div class="form-group col-sm-6 mb-5">
+                                        <p>
+                                            <strong>Capital a invertir: <span id="total_inversion"></span></strong>
+                                        </p>
+                                        <p>
+                                            <strong>Membresia: ${{ $plan->annual_membership }}</strong>
+                                        </p>
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <div class="col-3"></div>
                                         <div class="form-group col-sm-6 mb-5">
@@ -88,8 +100,15 @@
 <script>
 
     let qrCodeLink = ""
+    let anual = parseInt($('#anual_membership').html())
+ console.log(anual)
 
-    $("#modal-btn").click(send)
+    $("#modal-btn").click(send);
+ $('#amount-input').on('input', function(){
+     let amount = parseInt($(this).val())
+     let totalInversion = $('#total_inversion')
+     totalInversion.text(amount + anual)
+ })
 
     function send(){
         var $myForm = $('#pay-form');
@@ -98,14 +117,14 @@
             return false;
         }
 
-        $("#amount-modal").html(parseFloat($("#amount-input").val()).toFixed(2));
+        $("#amount-modal").html(parseFloat(parseInt($("#amount-input").val()) + anual ).toFixed(2));
 
         $.ajax({
             type: "POST",
             url: "{{ route('client.payment') }}",
             data: {
                 "_token": "{{ csrf_token() }}",
-                "amount": $("#amount-input").val(),
+                "amount": parseInt($("#amount-input").val()) + anual,
                 "code": $("#code").val(),
                 "plan_id": {{ $plan->id }},
             },

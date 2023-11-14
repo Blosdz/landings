@@ -92,7 +92,6 @@
                 data: {
                     "_token": "{{ csrf_token() }}",
                     "total": amount.toFixed(7),
-                    "month": "Anual Suscription",
                     "name": "Suscription",
                     "details": "Suscription",
                 },

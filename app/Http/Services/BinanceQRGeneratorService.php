@@ -22,7 +22,7 @@ class BinanceQRGeneratorService implements BinanceQRGenerator
 
     public function generate(){
         try {
-            $db_key = Provider::where('key','API GENERAL BINANCE PAY')->first();
+            $db_key = Provider::where('slug','binance_pay')->first();
             $apiKey = Crypt::decryptString($db_key->value);
             $secretKey = Crypt::decryptString($db_key->secret_key);
 
@@ -43,7 +43,7 @@ class BinanceQRGeneratorService implements BinanceQRGenerator
             $body = [
                 'env'              => array('terminalType' => "APP"),
                 'wallet'           => "SPOT_WALLET",
-                'currency'         => "BUSD",
+                'currency'         => "USDT",
                 'orderAmount'      => $this->data["total"],
                 'goods'            => $goods,
                 'merchantTradeNo'  => Str::random(32),

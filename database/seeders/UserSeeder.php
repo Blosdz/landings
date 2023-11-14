@@ -28,6 +28,24 @@ class UserSeeder extends Seeder
           'rol'      => 1,
         ]);
 
+        // $clientTest = User::create([
+        //   'name'      => 'Client',
+        //   'email'     => 'cliente@yopmail.com',
+        //   'password'  => Hash::make('12345678'),
+        //   'email_verified_at' => Carbon::now(),
+        //   'validated' => 1,
+        //   'rol'      => 3,
+        // ]);
+
+        // $subscriberTest = User::create([
+        //   'name'      => 'Subscriber',
+        //   'email'     => 'subscriber@yopmail.com',
+        //   'password'  => Hash::make('12345678'),
+        //   'email_verified_at' => Carbon::now(),
+        //   'validated' => 1,
+        //   'rol'      => 2,
+        // ]);
+
         $gestor = User::updateOrCreate(
             [
                 'name' => 'Gerente General'
@@ -50,6 +68,7 @@ class UserSeeder extends Seeder
           'validated' => 1,
           'rol'      => 6,
         ]);
+
         Profile::truncate();
         
         Profile::create([
@@ -77,5 +96,19 @@ class UserSeeder extends Seeder
           'country'            => 'peru',
           'user_id'                => $verificator->id,
         ]);
+
+        // Profile::create([
+        //   'first_name'         => 'Verificador',
+        //   'type_document'      => 'dni',
+        //   'country'            => 'peru',
+        //   'user_id'                => $subscriberTest->id,
+        // ]);
+
+        // Profile::create([
+        //   'first_name'         => 'Verificador',
+        //   'type_document'      => 'dni',
+        //   'country'            => 'peru',
+        //   'user_id'                => $clientTest->id,
+        // ]);
     }
 }

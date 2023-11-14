@@ -10,7 +10,7 @@ use App\Models\User;
 use App\Models\Contract;
 use App\Models\ClientPayment;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Payment
@@ -80,6 +80,11 @@ class Payment extends Model
         return $this->belongsTo(ClientPayment::class,'id','payment_id');
     }
 
+    public function binanceTransfers(): HasMany
+    {
+        return $this->hasMany(BinanceTransfer::class);
+    }
+
     public function scopeLastPayment($query) {
         return $query->orderBy('created_at', 'desc')
                      ->with('contract');
@@ -91,5 +96,6 @@ class Payment extends Model
     public function scopeIsPending($query) {
         return $query->where('status', 'PENDIENTE');
     }
+
 
 }
