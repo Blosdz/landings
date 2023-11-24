@@ -16,6 +16,7 @@ use App\Http\Interfaces\BinanceTransferInterface;
 use App\Http\Requests\ClientPaymentRequest;
 use App\Http\Services\BinanceQRGeneratorService;
 use App\Http\Services\BinanceTransferMoneyToClientsService;
+use App\Http\Services\BinanceTransferMoneyToSubscribersService;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -194,6 +195,7 @@ class PaymentController extends AppBaseController
                   ->get();
 
         $current = null;
+        $total = 200;
 
         //TODO this must be better implemented
         $lastPaidPayment = $user->payments()
@@ -220,7 +222,7 @@ class PaymentController extends AppBaseController
         }
 ;
         return view('payments.index2')
-        ->with(compact('payments', 'current'));
+        ->with(compact('payments', 'current', 'total'));
 
 
 
@@ -476,7 +478,7 @@ class PaymentController extends AppBaseController
         $input = $request->input();
         $data = json_decode($input["data"]);
         try {
-            $payment = Payment::where("prepay_code", $input["bizId"])->first();
+            $payment = Payment::where("prepay_code", $input["bizIdStr"])->first(); //use bizIdStr please
 
             if ($input["bizStatus"] == "PAY_SUCCESS" && $payment->status == "PENDIENTE"){
                 $payment->status = "PAGADO";
@@ -492,12 +494,14 @@ class PaymentController extends AppBaseController
                 }
 
                 $payment->save();
+                $payment->refresh();
 
                 if($payment->month !== "annual_subscription"){
                     $transfer = new BinanceTransferMoneyToClientsService($payment);
+                }else{
+                    $transfer = new BinanceTransferMoneyToSubscribersService($payment);
                 }
-                // TODO split for subscribers hasn't been implemented yet.
-                dump(BinanceMoneySplitterTrait::split($transfer));
+                BinanceMoneySplitterTrait::split($transfer);
             }
         }
         catch(\Exception $e){

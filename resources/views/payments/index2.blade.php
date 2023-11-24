@@ -47,7 +47,7 @@
                                         <div class="modal-content">
                                         <div class="modal-body">
                                             <p class="text-center">
-                                                Escanea el QR de nuestro Binance Pay y realiza el pago por el monto de: $<span id="amount"></span> USD.
+                                                Escanea el QR de nuestro Binance Pay y realiza el pago por el monto de: $<span>{{ $total }}</span> USD.
                                             </p>
                                             <img id="qrcode" class="w-100" src="/images/loader.gif" alt="binance-qr">
                                         </div>
@@ -81,10 +81,10 @@
     </div>
     <script>
         let qrCodeLink = ""
-        let amount = 0.0000001;
+        let amount = {{$total}};
 
 
-        $("#amount").text(amount);
+     // $("#amount").text(amount);
         function send() {
             $.ajax({
                 type: "POST",
