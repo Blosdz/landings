@@ -43,8 +43,8 @@
                     <div class="card-body">
                         <form method="post" action="{{ url('/login') }}">
                             @csrf
-                            <h1>Iniciar Session</h1>
-                            <p class="text-muted">Inicio de session al dashboard</p>
+                            <h1>Iniciar Sesión</h1>
+                            <p class="text-muted">Inicio de sesión al dashboard</p>
                             <br>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -74,7 +74,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <button class="btn btn-primary px-4" type="submit">Iniciar Session</button>
+                                    <button class="btn btn-primary px-4" type="submit">Iniciar Sesión</button>
                                 </div>
                             </div>
                         </form>

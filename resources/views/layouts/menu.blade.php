@@ -20,29 +20,22 @@
 
 <li class="nav-item {{ Request::is('users*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('users.index') }}">
-        <i class="nav-icon icon-cursor"></i>
+       <i class="mdi mdi-24px mdi-account-group-outline"></i>
         <span>Suscriptores y clientes</span>
     </a>
 </li>
 
 <li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('profiles.index') }}">
-        <i class="nav-icon icon-cursor"></i>
+       <i class="mdi mdi-24px mdi-account-check-outline"></i>
         <span>Perfiles a verificar</span>
     </a>
 </li>
 
 <li class="nav-item {{ Request::is('payments*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('payments.index') }}">
-        <i class="nav-icon icon-cursor"></i>
+       <i class="mdi mdi-24px mdi-hand-coin-outline"></i>
         <span>Depositos</span>
-    </a>
-</li>
-
-<li class="nav-item {{ Request::is('events*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('events.index') }}">
-        <i class="nav-icon icon-cursor"></i>
-        <span>Eventos</span>
     </a>
 </li>
 
@@ -83,13 +76,6 @@
     </a>
 </li>
 
-<li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
-    <a class="nav-link disabled" href="{{ route('dashboard') }}">
-        <i class="mdi mdi-24px mdi-clock"></i>
-        <span>Eventos</span>
-    </a>
-</li>
-
 @php
   }
   if( $user->rol == 3 ) { // Cliente
@@ -116,13 +102,6 @@
     </a>
 </li>
 
-<li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('dashboard') }}">
-        <i class="mdi mdi-24px mdi-clock"></i>
-        <span>Eventos</span>
-    </a>
-</li>
-
 @php
   }
   if( $user->rol == 4 ) { // Business
@@ -130,17 +109,11 @@
 
 <li class="nav-item {{ Request::is('profiles*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('profiles.user') }}">
-        <i class="nav-icon icon-cursor"></i>
-        <span>Verificacion</span>
+        <i class="mdi mdi-24px mdi-account"></i>
+        <span>Verificación</span>
     </a>
 </li>
 
-<li class="nav-item {{ Request::is('dashboard*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('dashboard') }}">
-        <i class="nav-icon icon-cursor"></i>
-        <span>Eventos</span>
-    </a>
-</li>
 
 @php
   } if( $user->rol == 5 ) { //Gestor comercial

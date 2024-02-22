@@ -3,7 +3,7 @@
 @section('content')
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-         <a href="{!! route('events.index') !!}">Eventos</a>
+          <!-- <a href="{!! route('events.index') !!}">Eventos</a> -->
       </li>
       <li class="breadcrumb-item active">Nuevo</li>
     </ol>

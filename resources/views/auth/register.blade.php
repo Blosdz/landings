@@ -101,7 +101,7 @@
                         <button type="submit" class="btn btn-primary btn-block btn-flat">Registrarme</button>
 
                         <br>
-                        <a href="{{ url('/login') }}" class="text-center">Iniciar Session</a>
+                        <a href="{{ url('/login') }}" class="text-center">Iniciar Sesión</a>
                     </form>
                 </div>
             </div>
