@@ -7,6 +7,8 @@
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="apple-touch-icon" href="apple-touch-icon.png">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
       
       <!-- Place favicon.ico in the root directory -->
       <!-- all css here -->
@@ -93,8 +95,8 @@
                               <li><a href="1">SUSCRIPTOR</a></li>
                               <li><a href="2">CARACTERÍSTICAS</a></li>
                               <li><a href="3">¿CÓMO FUNCIONA?</a></li>
-                              <li><a href="4">EVENTOS</a></li>
-                              <li><a href="5">CONTACTO</a></li>
+                              <!-- <li><a href="4">EVENTOS</a></li> -->
+                              <!-- <li><a href="5">CONTACTO</a></li> -->
                            </ul>
                         </nav>
                         
@@ -138,8 +140,8 @@
                                  <li><a href="1">SUSCRIPTOR</a></li>
                                  <li><a href="2">CARACTERÍSTICAS</a></li>
                                  <li><a href="3">¿CÓMO FUNCIONA?</a></li>
-                                 <li><a href="4">EVENTOS</a></li>
-                                 <li><a href="5">CONTACTO</a></li>
+                                 <!-- <li><a href="4">EVENTOS</a></li> -->
+                                 <!-- <li><a href="5">CONTACTO</a></li> -->
                               </ul>
                            </div>
                         </div>
@@ -169,15 +171,14 @@
                                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="slider-content">
                                        <ul>
-                                          <li data-animation="animated bounceInDown" class="slider_social_icon1"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                          <li data-animation="animated bounceInDown" class="slider_social_icon2"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                          <li data-animation="animated bounceInDown" class="slider_social_icon3"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                          <li data-animation="animated bounceInDown" class="slider_social_icon4"><a href="#"><i class="fa fa-telegram"></i></a></li>
-                                          <li data-animation="animated bounceInDown" class="slider_social_icon5"><a href="#"><i class="fa fa-envelope"></i></a></li>
+                                          <li data-animation="animated bounceInDown" class="slider_social_icon1"><a href="https://www.facebook.com/aeiainvestments"><i class="fa-brands fa-facebook"></i></a></li>
+                                          <li data-animation="animated bounceInDown" class="slider_social_icon2"><a href="https://www.instagram.com/aeiainvestments"><i class="fa-brands fa-instagram"></i></a></li>
+                                          <li data-animation="animated bounceInDown" class="slider_social_icon3"><a href="https://www.linkedin.com/company/aeia-investment/"><i class="fa-brands fa-linkedin"></i></a></li>
+                                          <li data-animation="animated bounceInDown" class="slider_social_icon4"><a href="https://www.tiktok.com/@aeia.92"><i class="fa-brands fa-tiktok"></i></a></li>
+                                          <li data-animation="animated bounceInDown" class="slider_social_icon5"><a href="mailto:aeiainvestments.peru@gmail.com"><i class="fa fa-envelope"></i></a></li>
                                        </ul>
                                        <h2 data-animation="animated bounceInLeft">INVERSIÓN, TRANSPARENCIA, RENTABILIDAD</h2>
                                        <div class="buttons">
-                                          <a href="#" class="btn1" data-animation="animated bounceInUp">CLIENTES</a>
                                           <a href="/register" class="btn2" data-animation="animated bounceInUp">CREAR CUENTA</a>
                                        </div>
                                     </div>
@@ -187,19 +188,19 @@
                                        <div id="clockdiv">
                                           <div>
                                              <span class="days"></span>
-                                             <div class="smalltext">Days</div>
+                                             <div class="smalltext">Días</div>
                                           </div>
                                           <div>
                                              <span class="hours"></span>
-                                             <div class="smalltext">Hours</div>
+                                             <div class="smalltext">Horas</div>
                                           </div>
                                           <div>
                                              <span class="minutes"></span>
-                                             <div class="smalltext">Minutes</div>
+                                             <div class="smalltext">Minutos</div>
                                           </div>
                                           <div>
                                              <span class="seconds"></span>
-                                             <div class="smalltext">Seconds</div>
+                                             <div class="smalltext">Segundos</div>
                                           </div>
                                        </div>
                                     </div>
@@ -214,16 +215,15 @@
                               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                  <div class="slider-content">
                                     <ul>
-                                       <li data-animation="animated bounceInDown" class="slider_social_icon1"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                       <li data-animation="animated bounceInDown" class="slider_social_icon2"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                       <li data-animation="animated bounceInDown" class="slider_social_icon3"><a href="#"><i class="fa fa-send-o"></i></a></li>
-                                       <li data-animation="animated bounceInDown" class="slider_social_icon4"><a href="#"><i class="fa fa-bitcoin"></i></a></li>
-                                       <li data-animation="animated bounceInDown" class="slider_social_icon5"><a href="#"><i class="fa fa-envelope"></i></a></li>
+                                       <li data-animation="animated bounceInDown" class="slider_social_icon1"><a href="https://www.facebook.com/aeiainvestments"><i class="fa-brands fa-facebook"></i></a></li>
+                                       <li data-animation="animated bounceInDown" class="slider_social_icon2"><a href="https://www.instagram.com/aeiainvestments"><i class="fa-brands fa-instagram"></i></a></li>
+                                       <li data-animation="animated bounceInDown" class="slider_social_icon3"><a href="https://www.linkedin.com/company/aeia-investment/"><i class="fa-brands fa-linkedin"></i></a></li>
+                                       <li data-animation="animated bounceInDown" class="slider_social_icon4"><a href="https://www.tiktok.com/@aeia.92"><i class="fa-brands fa-tiktok"></i></a></li>
+                                       <li data-animation="animated bounceInDown" class="slider_social_icon5"><a href="mailto:aeiainvestments.peru@gmail.com"><i class="fa fa-envelope"></i></a></li>
                                     </ul>
                                     <h2 data-animation="animated bounceInLeft">ICO Cryptocurrency - Lending & <br>Investment Platform</h2>
                                     <div class="buttons">
-                                       <a href="#" class="btn1" data-animation="animated bounceInUp">WHITEPAPER</a>
-                                       <a href="#" class="btn2" data-animation="animated bounceInUp">Buy Tokens Now!</a>
+                                       <a href="/register" class="btn2" data-animation="animated bounceInUp">CREATE ACCOUNT</a>
                                     </div>
                                  </div>
                               </div>
@@ -546,36 +546,47 @@
          
       </div>
       <div section-scroll='4' class="wd_scroll_wrap">
-         <section class="blog-area section">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                     <div class="section-heading2">
-                        <h2>Eventos semanales</h2>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="blog-slider">
-
-                  @foreach($events as $event)
-                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="blog">
-                           <figure><img src="{{ asset('storage/'.$event->image) }}" alt=""/></figure>
-                           <div class="content">
-                              <span><i class="fa  fa-calendar-o"></i>{{ $event->date }}</span>
-                              <h4><a>{{$event->title}}</a></h4>
-                              <p>{{ $event->description }}</p>
-                              <a href="{{ route('registration', ['event_id'=>$event->id]) }}" class="blog-btn">ASISTIR <i class="fa  fa-arrow-circle-o-right"></i></a>
+         <footer class="top-foo">
+            <div id="footer-js">
+               <div class="footer-top section">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                           <div class="con">
+                              <h2>Nuestras redes sociales</h2>
+                              <ul>
+                                 <li><a href="https://www.facebook.com/aeiainvestments"><i class="fa-brands fa-facebook"></i></a></li>
+                                 <li><a href="https://www.instagram.com/aeiainvestments"><i class="fa-brands fa-instagram"></i></a></li>
+                                 <li><a href="https://www.linkedin.com/company/aeia-investment/"><i class="fa-brands fa-linkedin"></i></a></li>
+                                 <li><a href="https://www.tiktok.com/@aeia.92"><i class="fa-brands fa-tiktok"></i></a></li>
+                                 <li><a href="mailto:aeiainvestments.peru@gmail.com"><i class="fa fa-envelope"></i></a></li>
+                              </ul>
                            </div>
                         </div>
                      </div>
-                  @endforeach
-
+                  </div>
                </div>
             </div>
-         </section>
+         </footer>
+         <footer class="foo-bot">
+            <div class="footer-bottom">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="copyright">
+                          <p>© 2024 <a href="#"><span>AEIA Investments</span></a> | All rights reserved. Design by
+                                    <a href="http://apselom.com/" target="_blank"> <span>Apselom</span></a>
+                                </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </footer>
       </div>
+   </body>
+
+
       <!--Footer area end here-->
       <!-- all js here -->
       <!-- jquery latest version -->
@@ -610,12 +621,11 @@
       <script src="welcome_new/js/Youtube.min.js"></script>
       <!-- main js -->
       <script src="welcome_new/js/main.js"></script>
-      <script type="text/javascript">
-         $('html').css("overflow-y","hidden");
-         $('#homeModal').css("overflow-y","hidden");
-         $(window).on('load', function() {
-             $('#homeModal').modal('show');
-         });
-     </script>
-   </body>
+      <!-- <script type="text/javascript">
+           $('html').css("overflow-y","hidden");
+           $('#homeModal').css("overflow-y","hidden");
+           $(window).on('load', function() {
+           $('#homeModal').modal('show');
+           });
+           </script> -->
 </html>

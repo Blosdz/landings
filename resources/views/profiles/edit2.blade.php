@@ -9,10 +9,7 @@
     $document_types = ["DNI"=>"DNI", "Pasaporte"=>"Pasaporte", "Carnet de extranjería"=>"Carnet de extranjería"];
 @endphp
     <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-             <a href="{!! route('profiles.index') !!}">Perfil</a>
-          </li>
-          <li class="breadcrumb-item active">Verificación</li>
+          <li class="breadcrumb-item active">Perfil / Verificación</li>
         </ol>
     <div class="container-fluid">
          <div class="animated fadeIn">
