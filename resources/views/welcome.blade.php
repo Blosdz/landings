@@ -559,7 +559,7 @@
                                  <li><a href="https://www.instagram.com/aeiainvestments"><i class="fa-brands fa-instagram"></i></a></li>
                                  <li><a href="https://www.linkedin.com/company/aeia-investment/"><i class="fa-brands fa-linkedin"></i></a></li>
                                  <li><a href="https://www.tiktok.com/@aeia.92"><i class="fa-brands fa-tiktok"></i></a></li>
-                                 <li><a href="mailto:aeiainvestments.peru@gmail.com"><i class="fa fa-envelope"></i></a></li>
+                                 <li><a href="contact_support@aeia.capital"><i class="fa-regular fa-envelopes"></i></a></li>
                               </ul>
                            </div>
                         </div>
